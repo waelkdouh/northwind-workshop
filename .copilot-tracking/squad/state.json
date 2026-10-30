@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.4",
+  "updated": "2026-10-30T19:50:48Z",
+  "turn": 18,
+  "mode": "interactive",
+  "activeRoles": [
+    "Functional Planner"
+  ],
+  "openEscalations": [],
+  "currentRun": {
+    "sessionModel": "auto",
+    "modelOverrides": {},
+    "estCostUsd": 38.4674,
+    "estCreditsTotal": 3846.74,
+    "costPreflight": {
+      "runId": "",
+      "roundId": "",
+      "ceilingUsd": null,
+      "evaluatedSpendUsd": 0,
+      "remainingUsd": null,
+      "plannedDispatches": 0,
+      "projectedCostUsd": 0,
+      "reserveMultiplier": 3.0,
+      "admissionCostUsd": 0,
+      "confidence": "not-applicable",
+      "basis": "not-requested",
+      "decision": "not-requested",
+      "reason": "No cost ceiling configured."
+    }
+  },
+  "notify": {
+    "approvalChannel": "in-chat",
+    "enabled": false,
+    "email": "",
+    "github": {
+      "handle": "",
+      "repo": ""
+    }
+  }
+}
