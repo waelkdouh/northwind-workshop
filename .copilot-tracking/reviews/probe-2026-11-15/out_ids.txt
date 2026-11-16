@@ -1,0 +1,545 @@
+== ids defined in exactly one register row (new or local ids) ==
+  A-50 [PRD] New. The users and journeys in section 3 are role descriptions taken from business-case.md and current-state.md. They are not research-based personas. | section 3 | Lena Varga
+  A-55 [BACKLOG] New. The backlog authoring decisions BD-01 to BD-05 (section 1.4): one story per FR-, enabler and story kept distinct, feature grouping chosen here, plain titles, no invented numbers. | Lena Varga
+  A-56 [BACKLOG] New. A warning for a possible duplicate claim (same order line and reason) is part of recording a claim, derived from SM-06 (11 % of claims lost or recorded twice; target under 1 %). Not stated in FR-
+  A-57 [BACKLOG] New. For the claims dashboard, "time to resolve" runs from the claim being recorded to it being approved or rejected. The business case does not define it. | Lena Varga
+  A-D1-01 [REL dotnet-r1.md] ASSUMPTION: (release-local, to be registered by the coordinator) | The team has a .NET 10 SDK and a local SQL Server for the exit tests; no cloud resource is needed to finish this release. Not stated 
+  A-D1-02 [REL dotnet-r1.md] ASSUMPTION: (release-local, to be registered by the coordinator) | The regression checklist for the staff screens (STORY-201/AC2) is written by the .NET team from the current screens and reviewed by t
+  A-D2-01 [REL dotnet-r2.md] ASSUMPTION: (release-local, to be registered by the coordinator) | The team has a local SQL Server and the sample data to run the exit tests, including a data set with orders for at least two customer
+  A-D2-02 [REL dotnet-r2.md] ASSUMPTION: (release-local, to be registered by the coordinator) | Approval of this release covers code, tests and review evidence produced locally. Choosing the 20 pilot customers, hosting the pilot 
+  A-D3-01 [REL dotnet-r3.md] ASSUMPTION: (release-local, to be registered by the coordinator) | Pilot feedback from dotnet-r2 reaches the product owner before dotnet-r3 items are committed. The backlog places the items after pilo
+  A-D3-02 [REL dotnet-r3.md] ASSUMPTION: (release-local, to be registered by the coordinator) | Approval of this release covers code, tests and documents produced locally. General availability itself, hosting and rollout follow a
+  O-29 [BACKLOG] New. What columns, file naming and format does the finance system's CSV import expect for a credit-note request (EP-05, STORY-322)? Not stated in the sources. | Julien Moreau
+  O-30 [BACKLOG] New. Which values may a warehouse supervisor record as the cause of a claim (STORY-350)? Not stated in the sources. | Pieter Janssens
+  O-D2-01 [REL dotnet-r2.md] OPEN: (release-local, to be registered by the coordinator) | dotnet-r2 window (1 Mar to 30 Apr 2027) starts before the azure-r2 window ends (31 Mar 2027), yet PRD section 6.3 says dotnet-r2 "can start
+  O-D2-02 [REL dotnet-r2.md] OPEN: (release-local, to be registered by the coordinator) | The canonical theme says "(Must items)" but this release contains one Should item, STORY-237 (French and English), because BR-11 is split b
+  O-D3-01 [REL dotnet-r3.md] OPEN: (release-local, to be registered by the coordinator) | STORY-264 must stay Draft until O-26 names the data and the source. If O-26 is still open at approval, does the product owner approve dotne
+  O-D3-02 [REL dotnet-r3.md] OPEN: (release-local, to be registered by the coordinator) | Wording difference between documents. experiments.md section 3.2.5 says a MVE-02 Stop holds back the customer-facing portal stories of EPIC
+  RG-01 [BACKLOG] Same as O-15. | Ahmed Benali, Julien Moreau
+  T-11 [PRD] ES-25 private endpoints versus customers and Power Platform needing a reachable endpoint. | ES-25; X-13, X-22 | FR-102, EA-02; X-13, X-22 stay OPEN:.
+  T-12 [PRD] CS-12 says order confirmations are sent, but the code sends no mail and the settings point to the on-premises relay. | CS-12; research C#12 | A-51; O-17. FR-113 and FR-232 depend on the answer.
+
+== ids whose named owner or opening words differ across docs ==
+  A-01:
+     [BRD] owner=('Marc Dubois',) :: Build starts December 2026 after approval; release approval dates are targets. | business-case header and section 8, T-16 | Marc Dubois
+     [PRD] owner=('Marc Dubois',) :: Build starts December 2026 after approval; release approval dates are targets. | business-case header and section 8, T-16 | Marc Dubois
+     [BACKLOG] owner=('Marc Dubois',) :: Build starts December 2026 after approval; release approval dates are targets. | Marc Dubois
+     [REL azure-r1.md] owner=('Marc Dubois',) :: Build starts December 2026 after approval; release approval dates are targets. | Marc Dubois
+     [REL azure-r2.md] owner=('Marc Dubois',) :: Build starts December 2026 after approval; release approval dates are targets. | Marc Dubois
+     [REL azure-r3.md] owner=('Marc Dubois',) :: Build starts December 2026 after approval; release approval dates are targets. | Marc Dubois
+     [REL dotnet-r1.md] owner=('Marc Dubois',) :: ASSUMPTION: | Build starts December 2026 after approval; windows are targets. | Marc Dubois
+     [REL dotnet-r2.md] owner=('Marc Dubois',) :: ASSUMPTION: | Build starts December 2026 after approval; windows are targets. | Marc Dubois
+     [REL dotnet-r3.md] owner=('Marc Dubois',) :: ASSUMPTION: | Build starts December 2026 after approval; windows are targets. | Marc Dubois
+  A-02:
+     [BRD] owner=('Ahmed Benali',) :: Boundary: .NET owns Order Desk code changes. Azure owns hosting, infrastructure as code (IaC), disaster recovery, monitoring and the C-04 cost model. Shared items are spl
+     [PRD] owner=('Ahmed Benali',) :: Boundary: .NET owns Order Desk code changes. Azure owns hosting, infrastructure as code (IaC), disaster recovery, monitoring and the C-04 cost model. Shared items are spl
+     [BACKLOG] owner=('Ahmed Benali',) :: .NET owns Order Desk code changes. Azure owns hosting, IaC, disaster recovery, monitoring and the C-04 cost model. Shared items are split per ES-30. | Ahmed Benali
+     [REL azure-r1.md] owner=('Ahmed Benali',) :: .NET owns Order Desk code changes. Azure owns hosting, IaC, disaster recovery, monitoring and the C-04 cost model. | Ahmed Benali
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: ASSUMPTION: | .NET owns Order Desk code changes; Azure owns hosting, IaC, DR, monitoring and the C-04 cost model. | Ahmed Benali
+  A-03:
+     [BRD] owner=('Lena Varga',) :: BR-04: Received, Confirmed and Cancelled are current as of Order Desk. Picking and Shipped are current as of the last nightly run, shown with an "as of" time. Delivered i
+     [PRD] owner=('Lena Varga',) :: BR-04: Received, Confirmed and Cancelled are current as of Order Desk. Picking and Shipped are current as of the last nightly run, shown with an "as of" time. Delivered i
+     [EXP] owner=('Lena Varga',) :: BR-04: Received, Confirmed and Cancelled are current as of Order Desk. Picking and Shipped are current as of the last nightly run, shown with an "as of" time. Delivered i
+     [BACKLOG] owner=('Lena Varga',) :: BR-04: Received, Confirmed and Cancelled are current as of Order Desk. Picking and Shipped are current as of the last nightly run, shown with an "as of" time. Delivered i
+     [REL dotnet-r2.md] owner=('Lena Varga',) :: ASSUMPTION: | Received, Confirmed and Cancelled are current as of Order Desk; Picking and Shipped are current as of the last nightly run and shown with an "as of" time; D
+     [REL dotnet-r3.md] owner=('Lena Varga',) :: ASSUMPTION: | Freshness rule for BR-04 and BR-09: Picking and Shipped are current as of the last nightly run and shown with an "as of" time. | Lena Varga
+  A-04:
+     [BRD] owner=('Lena Varga',) :: "Portal launch" in SM-01 to SM-04 means general availability, not the 20-customer pilot. | G-05, T-06 | Lena Varga
+     [PRD] owner=('Lena Varga',) :: "Portal launch" in SM-01 to SM-04 means general availability, not the 20-customer pilot. | G-05, T-06 | Lena Varga
+     [EXP] owner=('Lena Varga',) :: "Portal launch" in SM-01 to SM-04 means general availability, not the 20-customer pilot. | MVE-02 | Lena Varga
+     [BACKLOG] owner=('Lena Varga',) :: "Portal launch" in SM-01 to SM-04 means general availability, not the 20-customer pilot. | Lena Varga
+     [REL dotnet-r3.md] owner=('Lena Varga',) :: ASSUMPTION: | "Portal launch" in SM-01 to SM-04 means general availability, not the 20-customer pilot. | Lena Varga
+  A-05:
+     [BRD] owner=('Ahmed Benali',) :: NFR-01 is measured by a synthetic probe at the hosting edge, in local Central European time with summer time. NFR-02 is measured server-side at the 95th percentile, with 
+     [PRD] owner=('Ahmed Benali',) :: NFR-01 is measured by a synthetic probe at the hosting edge, in local Central European time with summer time. NFR-02 is measured on the server at the 95th percentile, wit
+     [BACKLOG] owner=('Ahmed Benali',) :: NFR-01 is measured by a synthetic probe at the hosting edge, in local Central European time with summer time. NFR-02 is measured on the server at the 95th percentile, wit
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: NFR-01 is measured by a synthetic probe at the hosting edge, in local Central European time with summer time. | Ahmed Benali
+     [REL azure-r3.md] owner=('Ahmed Benali',) :: NFR-01 is measured by a synthetic probe at the hosting edge, in local Central European time with summer time. | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: ASSUMPTION: | NFR-02 is measured on the server at the 95th percentile with a load model from CS-03 and an agreed customer figure. | Ahmed Benali
+  A-06:
+     [BRD] owner=('Lena Varga',) :: Prioritisation is MoSCoW (Must, Should, Could, Won't) from the business case, then date and dependency risk. NFRs are treated as Must. | G-06 | Lena Varga
+     [PRD] owner=('Lena Varga',) :: Prioritisation is MoSCoW (Must, Should, Could, Won't) from the business case, then date and dependency risk. NFRs are treated as Must. | G-06 | Lena Varga
+     [BACKLOG] owner=('Lena Varga',) :: Prioritisation is MoSCoW from the business case, then date and dependency risk. NFRs are Must. | Lena Varga
+     [REL dotnet-r1.md] owner=('Lena Varga',) :: ASSUMPTION: | MoSCoW from the business case, then date and dependency risk; NFRs are Must. | Lena Varga
+  A-09:
+     [BRD] owner=('Lena Varga',) :: Minimum viable experiments (MVEs) are local, prototype or paper-based. | ES-27, ES-37 | Lena Varga
+     [PRD] owner=('Lena Varga',) :: Minimum viable experiments (MVEs) are local, prototype or paper-based. | ES-27, ES-37 | Lena Varga
+     [EXP] owner=('Lena Varga',) :: MVEs are local, prototype or paper-based. | Section 1 | Lena Varga
+  A-10:
+     [BRD] owner=('Ahmed Benali',) :: Customer sign-in is provider-neutral. A test identity is used in experiments and local builds. | OQ-01 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: Customer sign-in is provider-neutral. A test identity is used in experiments and local builds. | OQ-01 | Ahmed Benali
+     [EXP] owner=('Ahmed Benali',) :: Customer sign-in is provider-neutral. A test identity is used in experiments and local builds. | MVE-02 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: Customer sign-in is provider-neutral. A test identity is used in experiments and local builds. | Ahmed Benali
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: ASSUMPTION: | Customer and staff sign-in is provider-neutral; a test identity is used locally. | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: ASSUMPTION: | Customer sign-in is provider-neutral; a test identity is used in experiments and local builds. | Ahmed Benali
+  A-11:
+     [BRD] owner=('Lena Varga', 'Sofie Peeters') :: Portal release 1 covers French and English. Dutch follows. | OQ-02 | Sofie Peeters, Lena Varga
+     [PRD] owner=('Lena Varga', 'Sofie Peeters') :: Portal release 1 covers French and English. Dutch follows. | OQ-02 | Sofie Peeters, Lena Varga
+     [BACKLOG] owner=('Lena Varga', 'Sofie Peeters') :: Portal release 1 covers French and English. Dutch follows. | Sofie Peeters, Lena Varga
+     [REL dotnet-r2.md] owner=('Lena Varga', 'Sofie Peeters') :: ASSUMPTION: | Portal release 1 covers French and English; Dutch follows. | Sofie Peeters, Lena Varga
+     [REL dotnet-r3.md] owner=('Lena Varga', 'Sofie Peeters') :: ASSUMPTION: | Portal release 1 covers French and English; Dutch follows. | Sofie Peeters, Lena Varga
+  A-12:
+     [BRD] owner=('Lena Varga',) :: A customer administrator role exists. Who gets it is OPEN. | OQ-03 | Lena Varga
+     [PRD] owner=('Lena Varga',) :: A customer administrator role exists. Who gets it is OPEN:. | OQ-03 | Lena Varga
+     [BACKLOG] owner=('Lena Varga',) :: A customer administrator role exists. Who gets it is OPEN:. | Lena Varga
+     [REL dotnet-r3.md] owner=('Lena Varga',) :: ASSUMPTION: | A customer administrator role exists; who gets it is OPEN:. | Lena Varga
+  A-15:
+     [BRD] owner=('Julien Moreau',) :: The invoice number on an order is filled by the finance process, and the invoice folder year equals the invoice year. | G-09, CS-11 | Julien Moreau
+     [PRD] owner=('Julien Moreau',) :: The invoice number on an order is filled by the finance process, and the invoice folder year equals the invoice year. | G-09, CS-11 | Julien Moreau
+     [BACKLOG] owner=('Julien Moreau',) :: The invoice number on an order is filled by the finance process, and the invoice folder year equals the invoice year. | Julien Moreau
+     [REL azure-r2.md] owner=('Julien Moreau',) :: The invoice number on an order is filled by the finance process, and the invoice folder year equals the invoice year. | Julien Moreau
+     [REL dotnet-r3.md] owner=('Julien Moreau',) :: ASSUMPTION: | The invoice number is filled by the finance process, and the invoice folder year equals the invoice year. | Julien Moreau
+  A-16:
+     [BRD] owner=('Ahmed Benali',) :: 24 months is a display window over the complete history held in the database. | G-09, BR-02 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: 24 months is a display window over the complete history held in the database. | G-09, BR-02 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: 24 months is a display window over the complete history held in the database. | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: ASSUMPTION: | 24 months is a display window over the complete history in the database. | Ahmed Benali
+  A-17:
+     [BRD] owner=('Ahmed Benali',) :: Pilot customer concurrency is small (20 customers). No customer load figure exists. | G-09, business-case section 8 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: Pilot customer concurrency is small (20 customers). No customer load figure exists. | G-09, business-case section 8 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: Pilot customer concurrency is small (20 customers). No customer load figure exists. | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: Pilot customer concurrency is small (20 customers). No customer load figure exists. | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: ASSUMPTION: | Pilot customer concurrency is small (20 customers); no customer load figure exists. | Ahmed Benali
+  A-18:
+     [BRD] owner=('Pieter Janssens',) :: The warehouse for each claim line can be derived from StockPilot or product data. It is not on order lines. | BR-17 | Pieter Janssens
+     [PRD] owner=('Pieter Janssens',) :: The warehouse for each claim line can be derived from StockPilot or product data. It is not on order lines. | BR-17 | Pieter Janssens
+     [EXP] owner=('Pieter Janssens',) :: The warehouse for each claim line can be derived from StockPilot or product data. It is not on order lines. | MVE-03 | Pieter Janssens
+     [BACKLOG] owner=('Pieter Janssens',) :: The warehouse for each claim line can be derived from StockPilot or product data. It is not on order lines. | Pieter Janssens
+     [REL dotnet-r3.md] owner=('Pieter Janssens',) :: ASSUMPTION: | The warehouse for each claim line can be derived from StockPilot or product data; it is not on order lines. | Pieter Janssens
+  A-19:
+     [BRD] owner=('Lena Varga',) :: In dotnet-r2, staff onboard customer users until BR-08 is built. | BR-01, BR-08 | Lena Varga
+     [PRD] owner=('Lena Varga',) :: In dotnet-r2, staff onboard customer users until BR-08 is built. | BR-01, BR-08 | Lena Varga
+     [BACKLOG] owner=('Lena Varga',) :: In dotnet-r2, staff onboard customer users until BR-08 is built. | Lena Varga
+     [REL dotnet-r2.md] owner=('Lena Varga',) :: ASSUMPTION: | In dotnet-r2, staff onboard customer users until BR-08 is built. | Lena Varga
+     [REL dotnet-r3.md] owner=('Lena Varga',) :: ASSUMPTION: | Staff onboard customer users until BR-08 is built. | Lena Varga
+  A-24:
+     [BRD] owner=('Ahmed Benali',) :: Azure runs in UTC by default. Order Desk stores local time. Parity needs explicit handling. | Order Desk source code (research finding, not in knowledge-docs) | Ahmed Ben
+     [PRD] owner=('Ahmed Benali',) :: Azure runs in UTC by default. Order Desk stores local time. Parity needs explicit handling. | Order Desk source code (research finding, not in knowledge-docs) | Ahmed Ben
+     [EXP] owner=('Ahmed Benali',) :: Azure runs in UTC by default. Order Desk stores local time. Parity needs explicit handling. | MVE-01 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: Azure runs in UTC by default. Order Desk stores local time. Parity needs explicit handling. (From the code, not in knowledge-docs.) | Ahmed Benali
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: ASSUMPTION: | Azure runs in UTC by default; Order Desk stores local time; parity needs explicit handling (from the code, not knowledge-docs). | Ahmed Benali
+  A-27:
+     [BRD] owner=('Ahmed Benali',) :: The StockPilot CSV contract and file pick-up stay as they are. | C-03, CS-10 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: The StockPilot CSV contract and file pick-up stay as they are. | C-03, CS-10 | Ahmed Benali
+     [EXP] owner=('Ahmed Benali',) :: The StockPilot CSV contract and file pick-up stay as they are. | MVE-01 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: The StockPilot CSV contract and file pick-up stay as they are. | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: The StockPilot CSV contract and file pick-up stay as they are. | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: ASSUMPTION: | The StockPilot CSV contract and file pick-up stay as they are. | Ahmed Benali
+  A-29:
+     [BRD] owner=('Ahmed Benali',) :: The unauthenticated on-premises e-mail relay is not usable after the lease. A replacement mail path is needed. | CS-12 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: The unauthenticated on-premises e-mail relay is not usable after the lease. A replacement mail path is needed. | CS-12 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: The unauthenticated on-premises e-mail relay is not usable after the lease. A replacement mail path is needed. | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: The unauthenticated on-premises e-mail relay is not usable after the lease. A replacement mail path is needed. | Ahmed Benali
+     [REL dotnet-r3.md] owner=('Ahmed Benali',) :: ASSUMPTION: | The unauthenticated on-premises e-mail relay is not usable after the lease; a replacement mail path is needed. | Ahmed Benali
+  A-31:
+     [BRD] owner=('Ahmed Benali',) :: Backup and long-term retention can cover the 7-year audit retention (feature limits not verified). | NFR-08, NFR-09, X-15 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: Backup and long-term retention can cover the 7-year audit retention (feature limits not verified). | NFR-08, NFR-09, X-15 | Ahmed Benali
+     [EXP] owner=('Ahmed Benali',) :: Backup and long-term retention can cover the 7-year audit retention (feature limits not verified). | MVE-01 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: Backup and long-term retention can cover the 7-year audit retention (feature limits not verified). | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: Backup and long-term retention can cover the 7-year audit retention (feature limits not verified). | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: ASSUMPTION: | Backup and long-term retention can cover the 7-year audit retention. | Ahmed Benali
+  A-35:
+     [BRD] owner=('Lena Varga',) :: MVE success thresholds are starting points. | MVE design | Lena Varga
+     [PRD] owner=('Lena Varga',) :: MVE success thresholds are starting points. Lena Varga sets the final numbers. | MVE design | Lena Varga
+     [EXP] owner=('Lena Varga',) :: MVE success thresholds are starting points. Lena Varga sets the final numbers. | All | Lena Varga
+     [BACKLOG] owner=('Lena Varga',) :: MVE success thresholds are starting points. Lena Varga sets the final numbers. | Lena Varga
+     [REL azure-r1.md] owner=('Lena Varga',) :: MVE success thresholds are starting points. Lena Varga sets the final numbers. | Lena Varga
+     [REL azure-r2.md] owner=('Lena Varga',) :: MVE success thresholds are starting points. Lena Varga sets the final numbers. | Lena Varga
+     [REL azure-r3.md] owner=('Lena Varga',) :: MVE success thresholds are starting points. Lena Varga sets the final numbers. | Lena Varga
+     [REL dotnet-r2.md] owner=('Lena Varga',) :: ASSUMPTION: | MVE success thresholds are starting points; Lena Varga sets the final numbers. | Lena Varga
+     [REL dotnet-r3.md] owner=('Lena Varga',) :: ASSUMPTION: | MVE thresholds are starting points; Lena Varga sets the final numbers. | Lena Varga
+  A-37:
+     [BRD] owner=('Ahmed Benali',) :: The pilot reads the Azure-hosted database after azure-r2, not the on-premises one. | T-08 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: The pilot reads the Azure-hosted database after azure-r2, not the on-premises one. | T-08 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: The pilot reads the Azure-hosted database after azure-r2, not the on-premises one. | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: The pilot reads the Azure-hosted database after azure-r2, not the on-premises one. | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: ASSUMPTION: The pilot reads the Azure-hosted database after azure-r2, not the on-premises one. | Consumer-side | .NET needs Azure | Ahmed Benali | If it is not true, the 
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: ASSUMPTION: | The pilot reads the Azure-hosted database after azure-r2. | Ahmed Benali
+  A-39:
+     [BRD] owner=('Marc Dubois',) :: Documents only: no deployment, no commit and no Git tags in this run. Tags and the commit follow approval. | ES-27, ES-31, ES-37 | Marc Dubois
+     [PRD] owner=('Marc Dubois',) :: Documents only: no deployment, no commit and no Git tags in this run. Tags and the commit follow approval. | ES-27, ES-31, ES-37 | Marc Dubois
+     [BACKLOG] owner=('Marc Dubois',) :: Documents only: no deployment, no commit and no Git tags in this run. Tags and the commit follow approval. | Marc Dubois
+     [REL azure-r1.md] owner=('Marc Dubois',) :: Documents only: no deployment, no commit and no Git tags in this run. Tags and the commit follow approval. | Marc Dubois
+     [REL azure-r2.md] owner=('Marc Dubois',) :: Documents only: no deployment, no commit and no Git tags in this run. Tags and the commit follow approval. | Marc Dubois
+     [REL azure-r3.md] owner=('Marc Dubois',) :: Documents only: no deployment, no commit and no Git tags in this run. Tags and the commit follow approval. | Marc Dubois
+     [REL dotnet-r1.md] owner=('Marc Dubois',) :: ASSUMPTION: | Documents only: no deployment, no commit, no Git tags until approval. | Marc Dubois
+  A-42:
+     [BRD] owner=('Marc Dubois',) :: A target window is the period by which release content is complete and ready to approve. Targets, not commitments. | plan C1 | Marc Dubois
+     [PRD] owner=('Marc Dubois',) :: A target window is the period by which release content is complete and ready to approve. Targets, not commitments. | plan C1 | Marc Dubois
+     [BACKLOG] owner=('Marc Dubois',) :: A target window is the period by which release content is complete and ready to approve. Targets, not commitments. | Marc Dubois
+     [REL azure-r1.md] owner=('Marc Dubois',) :: A target window is the period by which release content is complete and ready to approve. Targets, not commitments. | Marc Dubois
+     [REL azure-r2.md] owner=('Marc Dubois',) :: A target window is the period by which release content is complete and ready to approve. Targets, not commitments. | Marc Dubois
+     [REL azure-r3.md] owner=('Marc Dubois',) :: A target window is the period by which release content is complete and ready to approve. Targets, not commitments. | Marc Dubois
+     [REL dotnet-r1.md] owner=('Marc Dubois',) :: ASSUMPTION: | A target window is the period by which content is complete and ready to approve. | Marc Dubois
+  A-45:
+     [BRD] owner=('Ahmed Benali',) :: Cross-track needs are OPEN rows in the release files of the needing track and never a wait. | ES-31, G-03 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: Cross-track needs are OPEN: rows in the release files of the needing track and never a wait. | ES-31, G-03 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: Cross-track needs are OPEN: rows in the release files of the needing track and never a wait. | Ahmed Benali
+     [REL azure-r1.md] owner=('Ahmed Benali',) :: Cross-track needs are OPEN: rows in the release files of the needing track and never a wait. | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: Cross-track needs are OPEN: rows in the release files of the needing track and never a wait. | Ahmed Benali
+     [REL azure-r3.md] owner=('Ahmed Benali',) :: Cross-track needs are OPEN: rows in the release files of the needing track and never a wait. | Ahmed Benali
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: ASSUMPTION: | Cross-track needs are OPEN: rows and never a wait. | Ahmed Benali
+  A-46:
+     [BRD] owner=('Lena Varga',) :: Backlog rank per track: enablers before the features that need them, then Must, Should, Could, then date risk. | G-06 | Lena Varga
+     [PRD] owner=('Lena Varga',) :: Backlog rank per track: enablers before the features that need them, then Must, Should, Could, then date risk. | G-06 | Lena Varga
+     [BACKLOG] owner=('Lena Varga',) :: Backlog rank per track: enablers before the features that need them, then Must, Should, Could, then date risk. | Lena Varga
+     [REL azure-r1.md] owner=('Lena Varga',) :: Backlog rank: enablers before the stories that need them, then Must, Should, Could, then date risk. | Lena Varga
+     [REL dotnet-r1.md] owner=('Lena Varga',) :: ASSUMPTION: | Rank: enablers before the features that need them, then Must, Should, Could. | Lena Varga
+  A-49:
+     [PRD] owner=('Lena Varga',) :: New. An enabler takes the highest priority of the requirements it serves in its own track. An enabler that protects an NFR- is Must (A-06). An enabler that serves only an
+     [BACKLOG] owner=('Lena Varga',) :: An enabler takes the highest priority of the requirements it serves in its own track. An enabler that protects an NFR- is Must. An enabler that serves only another track'
+     [REL azure-r1.md] owner=('Lena Varga',) :: An enabler that protects an NFR- is Must; an enabler that serves only another track's requirements is Should. | Lena Varga
+     [REL azure-r2.md] owner=('Lena Varga',) :: An enabler takes the highest priority of the requirements it serves in its own track. | Lena Varga
+     [REL azure-r3.md] owner=('Lena Varga',) :: An enabler that protects an NFR- is Must (EA-14 protects NFR-06). | Lena Varga
+     [REL dotnet-r1.md] owner=('Lena Varga',) :: ASSUMPTION: | An enabler takes the highest priority of the requirements it serves in its own track. | Lena Varga
+  A-51:
+     [PRD] owner=('Ahmed Benali',) :: New. Facts the research read from the Order Desk code and database scripts are not stated in knowledge-docs: (a) the current code does not check that an order belongs to 
+     [BACKLOG] owner=('Ahmed Benali',) :: Facts the research read from the Order Desk code and database scripts are not stated in knowledge-docs: the code has no company check on an order, no role check on changi
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: Facts read from the Order Desk code and scripts are not stated in knowledge-docs. | Ahmed Benali
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: ASSUMPTION: | Facts read from the Order Desk code and database scripts (for example the channel is taken from the form) are not in knowledge-docs. | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: ASSUMPTION: | Facts read from the Order Desk code (no company check on an order, no role check on a status change, the channel is taken from the form, the channel is reco
+  A-52:
+     [PRD] owner=('Lena Varga',) :: New. FR-234 (instrumentation for SM-01 to SM-04) is Should, because the business case gives the measures no priority and names no measurement source. | SM-01 to SM-04, O-
+     [BACKLOG] owner=('Lena Varga',) :: FR-234 (instrumentation for SM-01 to SM-04) is Should, because the business case gives the measures no priority and names no measurement source. | Lena Varga
+     [REL dotnet-r3.md] owner=('Lena Varga',) :: ASSUMPTION: | FR-234 (instrumentation for SM-01 to SM-04) is Should, because the business case gives the measures no priority and names no source. | Lena Varga
+  A-53:
+     [PRD] owner=('Ahmed Benali',) :: New. Release approval of azure-r3 covers the reviewed rehearsal plan, the cutover and rollback runbooks, the recovery test plan and the decommission plan. The rehearsals,
+     [BACKLOG] owner=('Ahmed Benali',) :: Release approval of azure-r3 covers the reviewed rehearsal plan, runbooks, recovery test plan and decommission plan. Rehearsals, the live cutover and the recovery test fo
+     [REL azure-r3.md] owner=('Ahmed Benali',) :: Release approval of azure-r3 covers the reviewed rehearsal plan, runbooks, recovery test plan and decommission plan. Rehearsals, the live cutover and the recovery test fo
+  A-54:
+     [PRD] owner=('Lena Varga', 'Ahmed Benali') :: New. The measurement rules for NFR-03 to NFR-09 in section 8 are the author's proposals, because the business case defines none. | section 8, G-05 | Ahmed Benali, Lena Va
+     [BACKLOG] owner=('Lena Varga', 'Ahmed Benali') :: The measurement rules for NFR-03 to NFR-09 are the author's proposals, because the business case defines none. | Ahmed Benali, Lena Varga
+     [REL azure-r1.md] owner=('Lena Varga', 'Ahmed Benali') :: Measurement rules for NFR-03 to NFR-09 are the author's proposals, because the business case defines none. | Ahmed Benali, Lena Varga
+     [REL azure-r2.md] owner=('Lena Varga', 'Ahmed Benali') :: Measurement rules for NFR-03 to NFR-09 are the author's proposals. | Ahmed Benali, Lena Varga
+     [REL dotnet-r1.md] owner=('Lena Varga', 'Ahmed Benali') :: ASSUMPTION: | The measurement rules for NFR-03 to NFR-09 are the author's proposals. | Ahmed Benali, Lena Varga
+     [REL dotnet-r2.md] owner=('Lena Varga', 'Ahmed Benali') :: ASSUMPTION: | The measurement rules for NFR-03 to NFR-09 are the author's proposals. | Ahmed Benali, Lena Varga
+  BG-01:
+     [BRD] owner=('Lena Varga',) :: Customers serve themselves: they see, reorder and follow their orders without phoning the Order Desk. | BA-02 | P-02, P-03, P-04, P-05 | SM-01, SM-02, SM-03, SM-04 | Lena
+     [PRD] owner=() :: Customers serve themselves: they see, reorder and follow their orders without phoning the Order Desk. | BA-02 | .NET | SM-01, SM-02, SM-03, SM-04 | FR-202, FR-203, FR-210
+     [EXP] owner=() :: Customers serve themselves | MVE-02
+  BG-05:
+     [BRD] owner=('Ahmed Benali',) :: Customer data stays protected and every order change and claim decision leaves an audit trail. | all areas | none stated | NFR-03, NFR-04, NFR-05, NFR-08, NFR-09 | Ahmed 
+     [PRD] owner=() :: Customer data stays protected and every order change and claim decision leaves an audit trail. | all areas | all | NFR-03, NFR-04, NFR-05, NFR-08, NFR-09 | FR-103, FR-104
+     [EXP] owner=() :: Customer data protected, audit trail kept | MVE-01 (linked), MVE-02 (linked), MVE-03 (linked)
+  G-05:
+     [BRD] owner=('Lena Varga',) :: Weak testability: NFR-01 and NFR-02 have no measurement point or load; C-04 says both "target" and "at most"; SM-01 to SM-04 say "portal launch"; CET and CEST are mixed. 
+     [PRD] owner=('Lena Varga',) :: Weak testability: no measurement point or load for NFR-01 and NFR-02; "target" and "at most" in C-04; "portal launch"; CET and CEST mixed. | A-04, A-05, O-05, T-17, secti
+  MVE-01:
+     [PRD] owner=() :: track-azure (BA-01) | A managed data tier can host NorthwindOrders, keep the StockPilot exchange with the file contract unchanged and stay inside the cost cap, with RPO 1
+     [EXP] owner=('Marc Dubois', 'Ahmed Benali') :: BA-01 Platform and data-centre exit | track-azure | A PaaS data tier can host NorthwindOrders, keep the nightly StockPilot exchange (file contract unchanged) and stay ins
+  MVE-02:
+     [PRD] owner=() :: track-dotnet (BA-02) | Customers reorder unaided and trust a status that is refreshed once a night. | EPIC-202, instrumentation in EPIC-203 | R1 at least 80 % finish a re
+     [EXP] owner=('Lena Varga',) :: BA-02 Ordering and customer self-service | track-dotnet | Customers will reorder unaided and will trust an order status that is refreshed only once a night, enough to sto
+  MVE-03:
+     [PRD] owner=() :: track-power-platform (BA-03) | A claims solution can meet the connector rule (ES-36) and the cap C-08 for about 52 users, and hand credit-note requests to a finance syste
+     [EXP] owner=('Lena Varga', 'Marc Dubois', 'Ahmed Benali') :: BA-03 Delivery claims and credit notes | track-power-platform | A claims solution can meet the custom-connector rule and the EUR 900 cap for about 52 users, and can hand 
+  MVE-A-02:
+     [PRD] owner=('Ahmed Benali',) :: Public price lists are an adequate basis for indicative monthly figures; each price is date-stamped. | Ahmed Benali
+     [EXP] owner=('Ahmed Benali',) :: Public price lists (Azure pricing calculator, Microsoft licensing guide) are an adequate basis for indicative monthly figures; prices change, so each is date-stamped. | M
+  MVE-A-03:
+     [PRD] owner=('Ahmed Benali',) :: Growth stays linear: the database reaches about 56 GB and invoices about 136 GB by 30 June 2027. | Ahmed Benali
+     [EXP] owner=('Ahmed Benali',) :: Growth stays linear: the database reaches about 56 GB and invoices about 136 GB by 30 June 2027 (48 GB plus 8 months at 1 GB; 120 GB plus 8 months at 2 GB; the date of th
+     [BACKLOG] owner=('Ahmed Benali',) :: Growth stays linear (database about 56 GB and invoices about 136 GB by 30 June 2027). | Ahmed Benali
+  MVE-A-06:
+     [PRD] owner=('Lena Varga',) :: The experiment checks are leading indicators. Passing one does not show that an SM- or BG- is met. | Lena Varga
+     [EXP] owner=('Lena Varga',) :: The checks in this document (M1a to M1c, R1 to R3, P3a to P3d) are leading indicators. Passing one does not show that a success measure (SM-nn) or goal (BG-nn) is met. Th
+  MVE-O-01:
+     [PRD] owner=('Ahmed Benali',) :: Which IT team member runs MVE-01 with the adviser. | Ahmed Benali
+     [EXP] owner=('Ahmed Benali',) :: Which person from the IT team runs MVE-01 with the adviser. | Ahmed Benali
+     [REL azure-r1.md] owner=('Ahmed Benali',) :: Name the engineer who runs MVE-01. | Ahmed Benali
+  MVE-O-05:
+     [PRD] owner=('Ahmed Benali',) :: Where the SQL Server Agent job and the Windows scheduled task for the Antwerp transfer are defined; they are not in the repository. | Ahmed Benali
+     [EXP] owner=('Ahmed Benali',) :: Where are the SQL Server Agent job "NW - StockPilot nightly" and the Windows scheduled task that copies files to the Antwerp SFTP server defined? They are not in the repo
+     [BACKLOG] owner=('Ahmed Benali',) :: Where the SQL Server Agent job and the Windows scheduled task for the Antwerp transfer are defined. | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: Where are the SQL Server Agent job and the Windows scheduled task for the Antwerp transfer defined? | Ahmed Benali
+  O-01:
+     [BRD] owner=('Ahmed Benali',) :: Who owns the Order Desk API (an enabler under track-dotnet, or another owner)? | G-01, CS-27 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: Who owns the Order Desk API (an enabler under track-dotnet, or another owner)? | G-01, CS-27 | Ahmed Benali
+     [EXP] owner=('Ahmed Benali',) :: Who owns the Order Desk API (an enabler under track-dotnet, or another owner)? (G-01) | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: Who owns the Order Desk API (an enabler under track-dotnet, or another owner)? | Ahmed Benali
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: OPEN: | Who owns the Order Desk API? Only the API part of EN-13 depends on it. | Ahmed Benali
+     [REL dotnet-r3.md] owner=('Ahmed Benali',) :: OPEN: | Who owns the Order Desk API (an enabler under track-dotnet, or another owner)? | Ahmed Benali
+  O-03:
+     [BRD] owner=('Ahmed Benali',) :: Does azure-r1 rehost .NET Framework 4.8 or wait for net10.0? Is staff Entra sign-in in BA-01? | G-03 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: Does azure-r1 rehost .NET Framework 4.8 or wait for net10.0? Is staff Entra sign-in in BA-01? | G-03 | Ahmed Benali
+     [EXP] owner=('Ahmed Benali',) :: Does azure-r1 rehost .NET Framework 4.8 or wait for net10.0? Is staff Entra sign-in in BA-01? (G-03) | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: Does azure-r1 rehost .NET Framework 4.8 or wait for net10.0? Is staff Entra sign-in in BA-01? | Ahmed Benali
+     [REL azure-r1.md] owner=('Ahmed Benali',) :: Does azure-r1 rehost .NET Framework 4.8 or wait for net10.0? Is staff Entra sign-in in BA-01? | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: Rehost .NET Framework 4.8 or wait for net10.0; is staff Entra sign-in in BA-01? | Ahmed Benali
+     [REL azure-r3.md] owner=('Ahmed Benali',) :: Rehost .NET Framework 4.8 or wait for net10.0; is staff Entra sign-in in BA-01? | Ahmed Benali
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: OPEN: | Rehost .NET Framework 4.8 or wait for net10.0 in azure-r1; is staff Entra sign-in in BA-01? | Ahmed Benali
+  O-04:
+     [BRD] owner=('Lena Varga',) :: What status freshness is acceptable, given the nightly batch? | G-04 | Lena Varga
+     [PRD] owner=('Lena Varga',) :: What status freshness is acceptable, given the nightly batch? | G-04 | Lena Varga
+     [EXP] owner=('Lena Varga',) :: What status freshness is acceptable, given the nightly batch? (G-04) | Lena Varga
+     [BACKLOG] owner=('Lena Varga',) :: What status freshness is acceptable, given the nightly batch? | Lena Varga
+     [REL dotnet-r2.md] owner=('Lena Varga',) :: OPEN: | What status freshness is acceptable, given the nightly batch? | Lena Varga
+  O-05:
+     [BRD] owner=('Lena Varga',) :: Does "portal launch" mean the pilot or general availability? | G-05 | Lena Varga
+     [PRD] owner=('Lena Varga',) :: Does "portal launch" mean the pilot or general availability? | G-05 | Lena Varga
+     [EXP] owner=('Lena Varga',) :: Does "portal launch" mean the pilot or general availability? (G-05) | Lena Varga
+     [BACKLOG] owner=('Lena Varga',) :: Does "portal launch" mean the pilot or general availability? | Lena Varga
+     [REL dotnet-r3.md] owner=('Lena Varga',) :: OPEN: | Does "portal launch" mean the pilot or general availability? | Lena Varga
+  O-06:
+     [BRD] owner=('Lena Varga',) :: Which backlog tool and which ES-28 prefix? | G-06 | Lena Varga
+     [PRD] owner=('Lena Varga',) :: Which backlog tool and which ES-28 prefix? | G-06 | Lena Varga
+     [BACKLOG] owner=('Lena Varga',) :: Which backlog tool and which ES-28 prefix? Also: item types and fields in the tool are not validated. | Lena Varga
+     [REL azure-r1.md] owner=('Lena Varga',) :: Which backlog tool and which ES-28 prefix? Item types and fields in the tool are not validated. | Lena Varga
+     [REL dotnet-r1.md] owner=('Lena Varga',) :: OPEN: | Which backlog tool and which ES-28 prefix; item types and fields in a tool are not validated. | Lena Varga
+     [REL dotnet-r3.md] owner=('Lena Varga',) :: OPEN: | Which backlog tool and which ES-28 prefix; item types and fields in a tool are not validated. | Lena Varga
+  O-08:
+     [BRD] owner=('Ahmed Benali',) :: Order-to-invoice mapping, order retention, customer concurrency, and warehouse per order line. | G-09 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: Order-to-invoice mapping, order retention, customer concurrency, and warehouse per order line. | G-09 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: Order-to-invoice mapping, order retention, customer concurrency, and warehouse per order line. | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: OPEN: | Order-to-invoice mapping, order retention, customer concurrency, warehouse per order line. | Ahmed Benali
+  O-09:
+     [BRD] owner=('Marc Dubois',) :: Who is the named release approver for each track? | G-11 | Marc Dubois
+     [PRD] owner=('Marc Dubois',) :: Who is the named release approver for each track? | G-11 | Marc Dubois
+     [BACKLOG] owner=('Marc Dubois',) :: Who is the named release approver for each track? | Marc Dubois
+     [REL azure-r1.md] owner=('Marc Dubois',) :: Who is the named release approver for the Azure track? | Marc Dubois
+     [REL azure-r2.md] owner=('Marc Dubois',) :: Who is the named release approver for the Azure track? | Marc Dubois
+     [REL azure-r3.md] owner=('Marc Dubois',) :: Who is the named release approver for the Azure track? | Marc Dubois
+     [REL dotnet-r1.md] owner=('Marc Dubois',) :: OPEN: | Who is the named release approver for the .NET track? | Marc Dubois
+     [REL dotnet-r2.md] owner=('Marc Dubois',) :: OPEN: | Named release approver for the .NET track. | Marc Dubois
+     [REL dotnet-r3.md] owner=('Marc Dubois',) :: OPEN: | Named release approver for the .NET track. | Marc Dubois
+  O-10:
+     [BRD] owner=('Ahmed Benali',) :: Which identity provider do customer users use (OQ-01)? | business case | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: Which identity provider do customer users use (OQ-01)? | business case | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: Which identity provider do customer users use (OQ-01)? | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: OPEN: | Which identity provider do customer users use (OQ-01)? | Ahmed Benali
+  O-11:
+     [BRD] owner=('Lena Varga', 'Sofie Peeters') :: Must Dutch be in the first release (OQ-02)? | business case | Sofie Peeters, Lena Varga
+     [PRD] owner=('Lena Varga', 'Sofie Peeters') :: Must Dutch be in the first release (OQ-02)? | business case | Sofie Peeters, Lena Varga
+     [BACKLOG] owner=('Lena Varga', 'Sofie Peeters') :: Must Dutch be in the first release (OQ-02)? | Sofie Peeters, Lena Varga
+     [REL dotnet-r2.md] owner=('Lena Varga', 'Sofie Peeters') :: OPEN: | Must Dutch be in the first release (OQ-02)? | Sofie Peeters, Lena Varga
+     [REL dotnet-r3.md] owner=('Lena Varga', 'Sofie Peeters') :: OPEN: | Must Dutch be in the first release (OQ-02)? | Sofie Peeters, Lena Varga
+  O-12:
+     [BRD] owner=('Lena Varga',) :: Do customer administrators exist for every customer or only for large ones (OQ-03)? | business case | Lena Varga
+     [PRD] owner=('Lena Varga',) :: Do customer administrators exist for every customer or only for large ones (OQ-03)? | business case | Lena Varga
+     [BACKLOG] owner=('Lena Varga',) :: Do customer administrators exist for every customer or only for large ones (OQ-03)? | Lena Varga
+     [REL dotnet-r3.md] owner=('Lena Varga',) :: OPEN: | Do customer administrators exist for every customer or only for large ones (OQ-03)? | Lena Varga
+  O-15:
+     [BRD] owner=('Ahmed Benali', 'Julien Moreau') :: Where do the finance system, the NWFS01 shares (claims.xlsx, finance-import, invoices), the domain controllers and the Antwerp file-transfer (SFTP) route live after 30 Ju
+     [PRD] owner=('Ahmed Benali', 'Julien Moreau') :: Where do the finance system, the NWFS01 shares (claims.xlsx, finance-import, invoices), the domain controllers and the Antwerp file-transfer (SFTP) route live after 30 Ju
+     [EXP] owner=('Ahmed Benali', 'Julien Moreau') :: Where do the finance system, the NWFS01 shares (claims.xlsx, finance-import, invoices), the domain controllers and the Antwerp file-transfer (SFTP) route live after 30 Ju
+     [BACKLOG] owner=('Ahmed Benali', 'Julien Moreau') :: Where do the finance system, the NWFS01 shares, the domain controllers and the Antwerp SFTP route live after 30 June 2027 (RG-01)? | Ahmed Benali, Julien Moreau
+     [REL azure-r1.md] owner=('Ahmed Benali', 'Julien Moreau') :: Where do the finance system, the NWFS01 shares, the domain controllers and the Antwerp SFTP route live after 30 June 2027 (RG-01)? | Ahmed Benali, Julien Moreau
+     [REL azure-r2.md] owner=('Ahmed Benali', 'Julien Moreau') :: Where do the finance system, the NWFS01 shares, the domain controllers and the Antwerp SFTP route live after 30 June 2027? | Ahmed Benali, Julien Moreau
+     [REL azure-r3.md] owner=('Ahmed Benali', 'Julien Moreau') :: Where do the finance system, the NWFS01 shares, the domain controllers and the Antwerp SFTP route live after 30 June 2027 (RG-01)? | Both (an unanswered business question
+     [REL azure-r3.md] owner=('Ahmed Benali', 'Julien Moreau') :: Where do the finance system, the NWFS01 shares, the domain controllers and the Antwerp SFTP route live after 30 June 2027? | Ahmed Benali, Julien Moreau
+     [REL dotnet-r3.md] owner=('Ahmed Benali', 'Julien Moreau') :: OPEN: | Where do the finance system, the NWFS01 shares, the domain controllers and the Antwerp SFTP route live after 30 June 2027? | Ahmed Benali, Julien Moreau
+  O-16:
+     [BRD] owner=('Ahmed Benali', 'Pieter Janssens') :: How does an order get the status Delivered, and can StockPilot's file pick-up run more than nightly without changing StockPilot (RG-02)? | CS-10, C-03 | Ahmed Benali, Pie
+     [PRD] owner=('Ahmed Benali', 'Pieter Janssens') :: How does an order get the status Delivered, and can StockPilot's file pick-up run more than nightly without changing StockPilot (RG-02)? | CS-10, C-03 | Ahmed Benali, Pie
+     [EXP] owner=('Ahmed Benali', 'Pieter Janssens') :: How does an order get the status Delivered, and can StockPilot's file pick-up run more than nightly without changing StockPilot (RG-02)? | Ahmed Benali, Pieter Janssens
+     [BACKLOG] owner=('Ahmed Benali', 'Pieter Janssens') :: How does an order get the status Delivered, and can StockPilot's file pick-up run more than nightly without changing StockPilot (RG-02)? | Ahmed Benali, Pieter Janssens
+     [REL azure-r2.md] owner=('Ahmed Benali', 'Pieter Janssens') :: How does an order get the status Delivered, and can StockPilot's file pick-up run more than nightly without changing StockPilot? | Ahmed Benali, Pieter Janssens
+     [REL dotnet-r2.md] owner=('Ahmed Benali', 'Pieter Janssens') :: OPEN: | How an order gets Delivered; can StockPilot's pick-up run more than nightly without changing StockPilot? | Ahmed Benali, Pieter Janssens
+  O-17:
+     [BRD] owner=('Ahmed Benali',) :: What sends order confirmations today (RG-03)? | CS-12 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: What sends order confirmations today (RG-03)? | CS-12 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: What sends order confirmations today (RG-03)? | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: What sends order confirmations today? | Ahmed Benali
+     [REL dotnet-r3.md] owner=('Ahmed Benali',) :: OPEN: | What sends order confirmations today? | Ahmed Benali
+  O-18:
+     [BRD] owner=('Lena Varga',) :: Where do the customer e-mail address and language preference live? | BR-09, BR-11, BR-19 | Lena Varga
+     [PRD] owner=('Lena Varga',) :: Where do the customer e-mail address and language preference live? | BR-09, BR-11, BR-19 | Lena Varga
+     [BACKLOG] owner=('Lena Varga',) :: Where do the customer e-mail address and language preference live? | Lena Varga
+     [REL dotnet-r2.md] owner=('Lena Varga',) :: OPEN: | Where do the customer e-mail address and language preference live? | Lena Varga
+     [REL dotnet-r3.md] owner=('Lena Varga',) :: OPEN: | Where do the customer e-mail address and language preference live? | Lena Varga
+  O-19:
+     [BRD] owner=('Ahmed Benali',) :: Which build and deployment pipeline tool (RG-04)? | CS-19 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: Which build and deployment pipeline tool (RG-04)? | CS-19 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: Which build and deployment pipeline tool (RG-04)? | Ahmed Benali
+     [REL azure-r1.md] owner=('Ahmed Benali',) :: Which build and deployment pipeline tool (RG-04)? | Ahmed Benali
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: OPEN: | Which build and deployment pipeline tool (EN-09)? | Ahmed Benali
+  O-20:
+     [BRD] owner=('Ahmed Benali',) :: Decision record on the portal and API project shape (ES-13). | ES-13 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: Decision record on the portal and API project shape (ES-13). | ES-13 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: Decision record on the portal and API project shape (ES-13). | Ahmed Benali
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: OPEN: | Decision record on the portal and API project shape (EN-13, ES-13). | Ahmed Benali
+  O-21:
+     [BRD] owner=('Marc Dubois',) :: Approval and funding to build (the status says "not yet approved for build"). | business-case header | Marc Dubois
+     [PRD] owner=('Marc Dubois',) :: Approval and funding to build (the status says "not yet approved for build"). | business-case header | Marc Dubois
+     [EXP] owner=('Marc Dubois',) :: Approval and funding to build (the status says "not yet approved for build"). | Marc Dubois
+     [BACKLOG] owner=('Marc Dubois',) :: Approval and funding to build (the business case says "not yet approved for build"). | Marc Dubois
+     [REL azure-r1.md] owner=('Marc Dubois',) :: Approval and funding to build. | Marc Dubois
+     [REL azure-r2.md] owner=('Marc Dubois',) :: Approval and funding to build. | Marc Dubois
+     [REL azure-r3.md] owner=('Marc Dubois',) :: Approval and funding to build. | Marc Dubois
+     [REL dotnet-r1.md] owner=('Marc Dubois',) :: OPEN: | Approval and funding to build. | Marc Dubois
+     [REL dotnet-r2.md] owner=('Marc Dubois',) :: OPEN: | Approval and funding to build. | Marc Dubois
+     [REL dotnet-r3.md] owner=('Marc Dubois',) :: OPEN: | Approval and funding to build. | Marc Dubois
+  O-23:
+     [BRD] owner=('Ahmed Benali',) :: Which database does the Q2 2027 portal pilot read (T-08)? | C-05, business-case section 8 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: Which database does the Q2 2027 portal pilot read (T-08)? | C-05, business-case section 8 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: Which database does the Q2 2027 portal pilot read (T-08)? | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: Which database does the Q2 2027 portal pilot read (T-08)? | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: Which database does the Q2 2027 portal pilot read (T-08)? | Consumer-side | .NET needs Azure | Ahmed Benali | The portal reads and writes orders only through Order Desk, 
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: OPEN: | Which database does the Q2 2027 portal pilot read (T-08)? | Ahmed Benali
+  O-24:
+     [BRD] owner=('Ahmed Benali',) :: What does the customer identity service cost, and does it count toward C-04? | OQ-01, C-04 | Ahmed Benali
+     [PRD] owner=('Ahmed Benali',) :: What does the customer identity service cost, and does it count toward C-04? | OQ-01, C-04 | Ahmed Benali
+     [BACKLOG] owner=('Ahmed Benali',) :: What does the customer identity service cost, and does it count toward C-04? | Ahmed Benali
+     [REL azure-r1.md] owner=('Ahmed Benali',) :: What does the customer identity service cost, and does it count toward C-04? | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: What does the customer identity service cost, and does it count toward C-04? | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: OPEN: | What does the customer identity service cost, and does it count toward C-04? | Ahmed Benali
+  O-25:
+     [BRD] owner=('Lena Varga', 'Marc Dubois') :: Confirm the release counts, windows and the three placement changes in the plan (C2). | plan C2 | Lena Varga, Marc Dubois
+     [PRD] owner=('Lena Varga', 'Marc Dubois') :: Confirm the release counts, windows and the three placement changes in section 6.3. | plan C2 | Lena Varga, Marc Dubois
+     [BACKLOG] owner=('Lena Varga', 'Marc Dubois') :: Confirm the release counts, windows and the three placement changes (PRD section 6.3). | Lena Varga, Marc Dubois
+     [REL azure-r1.md] owner=('Lena Varga', 'Marc Dubois') :: Confirm the release counts, windows and the three placement changes. | Lena Varga, Marc Dubois
+     [REL azure-r2.md] owner=('Lena Varga', 'Marc Dubois') :: Confirm the release counts, windows and placements. | Lena Varga, Marc Dubois
+     [REL azure-r3.md] owner=('Lena Varga', 'Marc Dubois') :: Confirm the release counts, windows and placements. | Lena Varga, Marc Dubois
+     [REL dotnet-r1.md] owner=('Lena Varga', 'Marc Dubois') :: OPEN: | Confirm release counts, windows and the three placement changes (C2). | Lena Varga, Marc Dubois
+     [REL dotnet-r2.md] owner=('Lena Varga', 'Marc Dubois') :: OPEN: | Confirm release counts, windows and placement changes. | Lena Varga, Marc Dubois
+     [REL dotnet-r3.md] owner=('Lena Varga', 'Marc Dubois') :: OPEN: | Confirm release counts, windows and placement changes. | Lena Varga, Marc Dubois
+  O-26:
+     [BRD] owner=('Lena Varga',) :: Name a measurement source and an owner for each goal and success measure (BG-01 to BG-05, SM-01 to SM-07); confirm the proposed goal owners in section 4.1; name who speak
+     [PRD] owner=('Lena Varga',) :: Name a measurement source and an owner for each goal and success measure (BG-01 to BG-05, SM-01 to SM-07); confirm the proposed goal owners in BRD section 4.1; name who s
+     [EXP] owner=('Lena Varga',) :: Name a measurement source and an owner for each goal and success measure (BG-01 to BG-05, SM-01 to SM-07); confirm the proposed goal owners in BRD section 4.1; name who s
+     [BACKLOG] owner=('Lena Varga',) :: Name a measurement source and an owner for each goal and success measure (BG-01 to BG-05, SM-01 to SM-07). | Lena Varga
+     [REL dotnet-r2.md] owner=('Lena Varga',) :: OPEN: | Name a measurement source and an owner for each goal and success measure. | Lena Varga
+     [REL dotnet-r3.md] owner=('Lena Varga',) :: OPEN: | Name a measurement source and an owner for each goal and success measure. | Lena Varga
+  O-27:
+     [PRD] owner=('Marc Dubois', 'Ahmed Benali') :: New. The azure-r3 target window ends on 31 May 2027, but the rehearsal and live Sundays (6, 13, 20 and 27 June 2027, computed from CS-21) fall after it. Confirm that rele
+     [BACKLOG] owner=('Marc Dubois', 'Ahmed Benali') :: The azure-r3 window ends 31 May 2027 but the rehearsal and live Sundays (6, 13, 20, 27 June 2027) fall after it. Confirm that release approval covers the plans and runboo
+     [REL azure-r3.md] owner=('Marc Dubois', 'Ahmed Benali') :: The azure-r3 window ends 31 May 2027 but the rehearsal and live Sundays (6, 13, 20, 27 June 2027) fall after it. Confirm approval covers the plans and runbooks (A-53), or
+  O-28:
+     [BACKLOG] owner=('Lena Varga',) :: New. What happens to a line of a copied order whose product is no longer available (STORY-234)? Not stated in the sources. | Lena Varga
+     [REL dotnet-r2.md] owner=('Lena Varga',) :: OPEN: | What happens to a line of a copied order whose product is no longer available (STORY-234)? | Lena Varga
+  T-01:
+     [BRD] owner=() :: BR-04 says status is "always up to date", but Picking and Shipped change once a night and StockPilot is unchanged. | BR-04, BR-09, CS-10, C-03 | A-03, O-04, O-16
+     [PRD] owner=() :: BR-04 says status is "always up to date". Picking and Shipped change once a night, Picking really means "exported to StockPilot", Delivered is set by hand, and StockPilot
+     [BACKLOG] owner=('Lena Varga',) :: BR-04 says "always up to date" but Picking and Shipped change once a night (handled by A-03). | Lena Varga
+     [REL dotnet-r2.md] owner=('Lena Varga',) :: Tension | BR-04 says "always up to date" but Picking and Shipped change once a night (handled by A-03). | Lena Varga
+  T-08:
+     [BRD] owner=() :: The Q2 2027 portal pilot and C-05 (single order source) versus a database migration before 30 June 2027. | C-05, C-01, section 8 | A-37, O-23
+     [PRD] owner=() :: The Q2 2027 portal pilot and C-05 (single order source) versus a database migration before 30 June 2027. | C-05, C-01, business-case section 8 | A-37, O-23. dotnet-r2 car
+     [BACKLOG] owner=('Ahmed Benali',) :: The Q2 2027 portal pilot and C-05 versus the database migration (A-37, O-23). | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: Tension | The Q2 2027 portal pilot and C-05 versus the database migration (A-37, O-23). | Ahmed Benali
+  T-10:
+     [PRD] owner=() :: ES-13 (one solution, three projects) and ES-19 (modernise in place) versus a portal, an API and a re-platform of the web layer. | ES-13, ES-19, ES-14 | EN-13: a decision 
+     [BACKLOG] owner=('Ahmed Benali',) :: ES-13 (one solution) and ES-19 versus a portal, an API and a re-platform (EN-13). | Ahmed Benali
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: Tension | ES-13 and ES-19 versus a portal, an API and a re-platform (EN-13). | Ahmed Benali
+  T-13:
+     [BRD] owner=() :: NFR-08 asks for who, what, when and channel, but the current audit rows may not record all of these. | NFR-08 | Acceptance criteria in the backlog; recorded, not fixed si
+     [PRD] owner=() :: NFR-08 asks for who, what, when and channel, but the audit rows may not record all of these, and the shipment import writes audit rows for unchanged orders. | NFR-08; res
+     [BACKLOG] owner=('Ahmed Benali',) :: NFR-08 asks for who, what, when and channel but today's audit rows may not record all (listed, not fixed silently). | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: Tension | NFR-08 asks for who, what, when and channel but today's audit rows may not record all. | Ahmed Benali
+  T-14:
+     [BRD] owner=() :: NFR-06 RPO of 1 hour is met by 15-minute log backups on paper, but recovery has never been tested. | NFR-06, CS-07, CS-23 | azure-r3 recovery proof
+     [PRD] owner=() :: NFR-06 RPO of 1 hour is met by 15-minute log backups on paper, but recovery has never been tested. | NFR-06, CS-07, CS-23 | FR-118 and EA-14 in azure-r3.
+     [BACKLOG] owner=('Ahmed Benali',) :: The RPO of 1 hour is met on paper by 15-minute log backups but recovery was never tested (EA-14). | Ahmed Benali
+  T-15:
+     [BRD] owner=() :: NFR-03 and NFR-04 apply "wherever relevant", but BA-02 does not list NFR-03 and BA-01 does not list NFR-04. | business-case section 4, G-03 | Split per track (A-43) and l
+     [PRD] owner=() :: NFR-03 and NFR-04 apply "wherever relevant", but BA-02 does not list NFR-03 and BA-01 does not list NFR-04. | business-case section 4, G-03 | Split per track (A-43): FR-1
+     [BACKLOG] owner=('Ahmed Benali',) :: NFR-03 and NFR-04 apply "wherever relevant" but BA-02 does not list NFR-03 and BA-01 does not list NFR-04 (split per track, A-43). | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: Tension | NFR-03 and NFR-04 apply "wherever relevant" but BA-02 does not list NFR-03 and BA-01 does not list NFR-04 (split per track, A-43). | Ahmed Benali
+  T-16:
+     [BRD] owner=() :: Business case "not yet approved for build" versus a December 2026 start. | business-case header, section 8 | A-01, O-21
+     [PRD] owner=() :: The business case is "not yet approved for build", but the plan starts in December 2026. | business-case header, section 8 | A-01, O-21.
+  X-01:
+     [BRD] owner=('Ahmed Benali',) :: A hosting target and a pilot test environment for the modernised app | .NET from Azure | Ahmed Benali | (source: C-01, ES-23)
+     [PRD] owner=('Ahmed Benali',) :: A hosting target for the modernised application and a pilot test environment | .NET needs Azure | Azure | (source: C-01, ES-23, business-case section 8) | Building and te
+     [BACKLOG] owner=('Ahmed Benali',) :: Hosting target and pilot test environment for the modernised application | .NET needs Azure | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: Hosting target and pilot test environment for the modernised application (.NET needs Azure) | Ahmed Benali | Azure provides the tst definition. .NET builds and tests loca
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: Hosting target and pilot test environment for the modernised application | Consumer-side | .NET needs Azure | Ahmed Benali | Build and test locally with a local SQL Serve
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: Hosting target and pilot test environment for the modernised application | Consumer-side | .NET needs Azure | Ahmed Benali | Build and test locally with a local SQL Serve
+  X-02:
+     [BRD] owner=('Ahmed Benali',) :: An app that follows a documented configuration and identity contract (no secrets) | Azure from .NET | Ahmed Benali | (source: CS-13, CS-17, NFR-05)
+     [PRD] owner=('Ahmed Benali',) :: A net10.0 application that follows a documented configuration and identity contract (environment variables, managed identity, no secrets) | Azure needs .NET | .NET | (sou
+     [BACKLOG] owner=('Ahmed Benali',) :: A net10.0 application that follows a documented configuration and identity contract | Azure needs .NET | Ahmed Benali
+     [REL azure-r1.md] owner=('Ahmed Benali',) :: A net10.0 application that follows a documented configuration and identity contract | Azure needs .NET | Ahmed Benali | Stub: Azure writes infrastructure around a configu
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: A net10.0 application that follows a documented configuration and identity contract | Azure needs .NET | Ahmed Benali | Stub: the tst definition does not depend on how th
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: A net10.0 application that follows a documented configuration and identity contract | Supplier-side | Azure needs .NET | Ahmed Benali | EN-01, EN-03 and STORY-205 supply 
+  X-05:
+     [BRD] owner=('Ahmed Benali',) :: StockPilot exchange redesigned for a managed database, file contract unchanged | .NET from Azure | Ahmed Benali | (source: CS-10, C-03)
+     [PRD] owner=('Ahmed Benali',) :: StockPilot exchange redesign for a managed data tier; file contract fixed (C-03) | .NET needs Azure | Azure | (source: CS-10, C-03) | Azure owns it end to end; .NET only 
+     [BACKLOG] owner=('Ahmed Benali',) :: StockPilot exchange redesign for a managed data tier; file contract fixed | .NET needs Azure | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: StockPilot exchange redesign for a managed data tier; file contract fixed (.NET needs Azure) | Ahmed Benali | Azure owns the exchange end to end; .NET only reads the stat
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: StockPilot exchange redesign for a managed data tier; the file contract is fixed | Consumer-side | .NET needs Azure | Ahmed Benali | The StockPilot CSV contract and file 
+  X-06:
+     [BRD] owner=('Lena Varga',) :: Order status freshness shown in the portal is bounded by the exchange cadence | .NET from Azure and StockPilot | Lena Varga | (source: BR-04, CS-10, C-03, T-01)
+     [PRD] owner=('Lena Varga',) :: Status freshness shown in the portal (BR-04) is bounded by the exchange cadence | .NET needs Azure and StockPilot | Azure, StockPilot (unchanged) | (source: BR-04, CS-10,
+     [BACKLOG] owner=('Lena Varga',) :: Status freshness is bounded by the exchange cadence | .NET needs Azure and StockPilot | Lena Varga
+     [REL dotnet-r2.md] owner=('Lena Varga',) :: Status freshness is bounded by the exchange cadence | Consumer-side | .NET needs Azure and StockPilot | Lena Varga | Show Picking and Shipped with the time of the last ni
+     [REL dotnet-r3.md] owner=('Lena Varga',) :: Status freshness is bounded by the exchange cadence | Consumer-side | .NET needs Azure and StockPilot | Lena Varga | The shipping e-mail arrives after the nightly update 
+  X-07:
+     [BRD] owner=('Ahmed Benali',) :: The order in progress is held in memory on the web server; scale-out needs a change | Azure from .NET | Ahmed Benali | (source: CS-16)
+     [PRD] owner=('Ahmed Benali',) :: The in-process session draft (CS-16) must become stateless or distributed before scale-out or slot swaps | Azure needs .NET | .NET | (source: CS-16) | Azure starts with a
+     [BACKLOG] owner=('Ahmed Benali',) :: The in-process session draft must be stateless before scale-out | Azure needs .NET | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: The in-process session order draft must be stateless before scale-out | Azure needs .NET | Ahmed Benali | Deferral and assumption: the pilot environment is designed for a
+     [REL azure-r3.md] owner=('Ahmed Benali',) :: The in-process session order draft must be stateless before scale-out (single instance) | Azure needs .NET | Ahmed Benali | Deferral and assumption: the cutover and rollb
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: The in-process session draft must be stateless before scale-out | Supplier-side | Azure needs .NET | Ahmed Benali | EN-06 supplies it; Azure starts with a single instance
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: The in-process session draft must be stateless before scale-out | Supplier-side | Azure needs .NET | Ahmed Benali | EN-06 (dotnet-r1) supplies it, and STORY-234/AC3 prove
+  X-08:
+     [BRD] owner=('Ahmed Benali',) :: Logging moves to Azure monitoring and replaces the Windows Event Log | .NET from Azure | Ahmed Benali | (source: CS-15, CS-22, ES-26)
+     [PRD] owner=('Ahmed Benali',) :: Logging moves to Application Insights and Log Analytics (ES-26) and replaces the Event Log and ping checks | .NET needs Azure | Azure | (source: CS-15, CS-22, ES-26) | .N
+     [BACKLOG] owner=('Ahmed Benali',) :: Logging moves to Application Insights and Log Analytics | .NET needs Azure | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: Logging moves to Application Insights and Log Analytics (.NET needs Azure) | Ahmed Benali | .NET logs through the standard logger to the console meanwhile. | EA-04, STORY
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: Logging moves to Application Insights and Log Analytics | Consumer-side | .NET needs Azure | Ahmed Benali | Log through ILogger<T> to the console (EN-05/AC3); wiring to A
+  X-10:
+     [BRD] owner=('Ahmed Benali',) :: Outbound e-mail: the current relay is not usable after the lease | .NET and Azure | Ahmed Benali | (source: CS-12, BR-09)
+     [PRD] owner=('Ahmed Benali',) :: Outbound mail: the unauthenticated on-premises relay (CS-12) is not available after the lease; no send code exists today (A-51) | Both | Both | (source: CS-12, BR-09) | .
+     [BACKLOG] owner=('Ahmed Benali',) :: Outbound mail replaces the on-premises relay | Both | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: Outbound mail replaces the on-premises relay | Both | Ahmed Benali | Stub: the .NET track uses a mail abstraction and a local mail catcher meanwhile. Azure designs the re
+     [REL dotnet-r3.md] owner=('Ahmed Benali',) :: Outbound mail replaces the on-premises relay | Consumer-side and supplier-side | Both | Ahmed Benali | A mail abstraction and a local mail catcher meanwhile; a mail failu
+  X-11:
+     [BRD] owner=('Ahmed Benali',) :: Build, test and deployment pipelines | .NET and Azure | Ahmed Benali | (source: CS-18, CS-19, ES-22)
+     [PRD] owner=('Ahmed Benali',) :: Build and test pipeline (.NET) and deployment pipeline and infrastructure code (Azure) | Both | Both | (source: CS-18, CS-19, ES-22, ES-27) | Each track writes its own pi
+     [BACKLOG] owner=('Ahmed Benali',) :: Build and test pipeline (.NET) and deployment pipeline (Azure) | Both | Ahmed Benali
+     [REL azure-r1.md] owner=('Ahmed Benali',) :: Build and test pipeline (.NET) and deployment pipeline (Azure) | Both | Ahmed Benali | Assumption: each track keeps its own pipeline. The Azure pipeline definition is too
+     [REL dotnet-r1.md] owner=('Ahmed Benali',) :: Build and test pipeline (.NET) and deployment pipeline (Azure) | Consumer-side and supplier-side | Both | Ahmed Benali | The .NET team writes its own build and test pipel
+  X-13:
+     [BRD] owner=('Ahmed Benali',) :: Customers reach the portal from the internet while data services stay private | .NET from Azure | Ahmed Benali | (source: ES-25, BR-01, NFR-03)
+     [PRD] owner=('Ahmed Benali',) :: An internet-facing entry for customers while data services use private endpoints (ES-25) | .NET needs Azure | Azure | (source: ES-25, BR-01, NFR-03) | .NET builds the por
+     [BACKLOG] owner=('Ahmed Benali',) :: An internet-facing entry for customers while data services use private endpoints | .NET needs Azure | Ahmed Benali
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: An internet-facing entry for customers while data services use private endpoints | Consumer-side | .NET needs Azure | Ahmed Benali | Azure designs the entry; .NET lists e
+  X-15:
+     [BRD] owner=('Ahmed Benali',) :: Keeping the 7-year order audit trail once the database is in Azure | .NET from Azure | Ahmed Benali | (source: NFR-08, CS-07)
+     [PRD] owner=('Ahmed Benali',) :: Keeping the 7-year audit trail once the database is in Azure (backup and long-term retention settings) | .NET needs Azure | Azure | (source: NFR-08, CS-07) | .NET defines
+     [BACKLOG] owner=('Ahmed Benali',) :: Keeping the 7-year audit trail once the database is in Azure | .NET needs Azure | Ahmed Benali
+     [REL azure-r2.md] owner=('Ahmed Benali',) :: Keeping the 7-year audit trail once the database is in Azure (.NET needs Azure) | Ahmed Benali | .NET defines the audit content (T-13); Azure sets the retention period. A
+     [REL dotnet-r2.md] owner=('Ahmed Benali',) :: Keeping the 7-year audit trail once the database is in Azure | Consumer-side | .NET needs Azure | Ahmed Benali | Record who, what, when and channel of each change (STORY-
+  X-23:
+     [BRD] owner=('Ahmed Benali',) :: Sign-in for the connector (Entra app registration) | Power Platform from Azure or IT | Ahmed Benali | (source: ES-36, NFR-04, CS-28)
+     [PRD] owner=('Ahmed Benali',) :: Connector sign-in (Entra app registration, OAuth) | Power Platform needs Azure or IT | Azure or IT | (source: ES-36, NFR-04, CS-28) | The stub uses a placeholder security
+     [BACKLOG] owner=('Ahmed Benali',) :: Connector sign-in (Entra app registration, OAuth) | Power Platform needs Azure or IT | Ahmed Benali
+     [REL dotnet-r3.md] owner=('Ahmed Benali',) :: Connector sign-in (Entra app registration, OAuth) | Neither a need of dotnet-r3 nor a wait: a placeholder only | Power Platform needs Azure or IT | Ahmed Benali | The con
+  X-24:
+     [BRD] owner=('Ahmed Benali', 'Julien Moreau') :: Finance CSV drop before 18:00, and where the share lives after the lease | Power Platform from Azure | Julien Moreau, Ahmed Benali | (source: CS-25, C-01)
+     [PRD] owner=('Ahmed Benali', 'Julien Moreau') :: Finance CSV drop to the finance import share before 18:00 (CS-25), and where the share lives after the lease | Power Platform needs Azure | Azure (storage and network) | 
+     [BACKLOG] owner=('Ahmed Benali', 'Julien Moreau') :: Finance CSV drop before 18:00, and where the share lives after the lease | Power Platform needs Azure | Julien Moreau, Ahmed Benali
+  X-25:
+     [BRD] owner=('Pieter Janssens',) :: The warehouse for each order line (for BR-17) | Power Platform from .NET and StockPilot data | Pieter Janssens | (source: BR-17)
+     [PRD] owner=('Pieter Janssens',) :: Warehouse for each order line, for BR-17 | Power Platform needs .NET and StockPilot data | .NET | (source: BR-17, A-18) | The supervisor view is designed with the cause f
+     [BACKLOG] owner=('Pieter Janssens',) :: Warehouse for each order line, for BR-17 | Power Platform needs .NET and StockPilot data | Pieter Janssens
+     [REL dotnet-r3.md] owner=('Pieter Janssens',) :: Warehouse for each order line, for BR-17 | Supplier-side (field in the contract) | Power Platform needs .NET and StockPilot data | Pieter Janssens | EN-14/AC3 marks the w
+  X-26:
+     [BRD] owner=('Lena Varga',) :: The customer e-mail address (for BR-19 and BR-09) | Power Platform and .NET | Lena Varga | (source: BR-09, BR-19)
+     [PRD] owner=('Lena Varga',) :: Customer e-mail address, for BR-19 and the portal's BR-09 | Both | .NET | (source: BR-09, BR-19) | BR-19 is Could; listed as OPEN: (O-18). | Lena Varga
+     [BACKLOG] owner=('Lena Varga',) :: Customer e-mail address, for BR-19 and the portal's BR-09 | Both | Lena Varga
+  X-27:
+     [BRD] owner=('Ahmed Benali',) :: Governed environments, DLP and licensing in the Microsoft 365 tenant | Power Platform from IT | Ahmed Benali | (source: CS-26, ES-35, C-07, C-08)
+     [PRD] owner=('Ahmed Benali',) :: Environments, DLP and licensing: no Azure involvement; administration of the Microsoft 365 tenant | Power Platform | IT | (source: CS-26, ES-35, C-07, C-08) | Design only
+     [BACKLOG] owner=('Ahmed Benali',) :: Environments, DLP and licensing: administration of the Microsoft 365 tenant | Power Platform needs IT | Ahmed Benali
+
+== where undefined/unusual ids are cited ==
+  A-26: ['BRD:428', 'PRD:663']
+      > [BRD:428] An assumption is not in `knowledge-docs`. It is never presented as a requirement. Each item has an owner who can confirm it (ES-03). A-26 and A-28 are unused; the numbers are kept stable.
+  A-28: ['BRD:428', 'PRD:663']
+      > [BRD:428] An assumption is not in `knowledge-docs`. It is never presented as a requirement. Each item has an owner who can confirm it (ES-03). A-26 and A-28 are unused; the numbers are kept stable.
+  RG-02: ['BRD:502', 'PRD:757', 'EXP:375', 'BACKLOG:1873']
+      > [BRD:502] | O-16 | How does an order get the status Delivered, and can StockPilot's file pick-up run more than nightly without changing StockPilot (RG-02)? | CS-10, C-03 | Ahmed Benali, Pieter Janssens |
+  RG-03: ['BRD:503', 'PRD:758', 'BACKLOG:1874']
+      > [BRD:503] | O-17 | What sends order confirmations today (RG-03)? | CS-12 | Ahmed Benali |
+  RG-04: ['BRD:505', 'BRD:544', 'PRD:760', 'PRD:809', 'BACKLOG:1876', 'REL azure-r1.md:212']
+      > [BRD:505] | O-19 | Which build and deployment pipeline tool (RG-04)? | CS-19 | Ahmed Benali |
+  X-16: ['BRD:404', 'PRD:535']
+      > [BRD:404] The id range X-16 to X-19 is not used (kept as in the research).
+  X-19: ['BRD:404', 'PRD:535']
+      > [BRD:404] The id range X-16 to X-19 is not used (kept as in the research).
+  PNFR-05: ['PRD:75']
+      > [PRD:75] | DD-06 | Release names, counts, target windows, themes, main epics and "leaves out" text in section 6 are copied from the plan's canonical release proposal without change. | All documents must agree (plan C1, PNFR-05). | Marc Dubois |
+  RC-03: ['REL dotnet-r1.md:169', 'REL dotnet-r2.md:213', 'REL dotnet-r3.md:157']
+  RC-05: ['TRACE:214', 'REL dotnet-r1.md:169', 'REL dotnet-r2.md:213', 'REL dotnet-r3.md:157']

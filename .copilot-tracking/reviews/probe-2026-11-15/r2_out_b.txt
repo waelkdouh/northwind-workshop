@@ -1,0 +1,114 @@
+=== B1. C1 release table ===
+  BRD 10.2: releases found ['azure-r1', 'azure-r2', 'azure-r3', 'dotnet-r1', 'dotnet-r2', 'dotnet-r3']
+  PRD 6.2: releases found ['azure-r1', 'azure-r2', 'azure-r3', 'dotnet-r1', 'dotnet-r2', 'dotnet-r3']
+  BL 1.1: releases found ['azure-r1', 'azure-r2', 'azure-r3', 'dotnet-r1', 'dotnet-r2', 'dotnet-r3']
+  PLAN C1: releases found ['azure-r1', 'azure-r2', 'azure-r3', 'dotnet-r1', 'dotnet-r2', 'dotnet-r3']
+  -- azure-r1
+     BRD 10.2  window='1 Dec 2026 to 29 Jan 2027' | epics='EPIC-101, EPIC-102' | covered-len=63 | left-out-len=91
+     PRD 6.2   window='1 Dec 2026 to 29 Jan 2027' | epics='EPIC-101, EPIC-102' | covered-len=63 | left-out-len=91
+     BL 1.1    window='1 Dec 2026 to 29 Jan 2027' | epics='EPIC-101, EPIC-102' | covered-len=63 | left-out-len=91
+     PLAN C1   window='1 Dec 2026 to 29 Jan 2027' | epics='EPIC-101, EPIC-102' | covered-len=63 | left-out-len=91
+  -- azure-r2
+     BRD 10.2  window='1 Feb to 31 Mar 2027' | epics='EPIC-103' | covered-len=93 | left-out-len=67
+     PRD 6.2   window='1 Feb to 31 Mar 2027' | epics='EPIC-103' | covered-len=93 | left-out-len=67
+     BL 1.1    window='1 Feb to 31 Mar 2027' | epics='EPIC-103' | covered-len=93 | left-out-len=67
+     PLAN C1   window='1 Feb to 31 Mar 2027' | epics='EPIC-103' | covered-len=93 | left-out-len=67
+  -- azure-r3
+     BRD 10.2  window='1 Apr to 27 June 2027' | epics='EPIC-104' | covered-len=65 | left-out-len=46
+     PRD 6.2   window='1 Apr to 27 June 2027' | epics='EPIC-104' | covered-len=65 | left-out-len=46
+     BL 1.1    window='1 Apr to 27 June 2027' | epics='EPIC-104' | covered-len=65 | left-out-len=46
+     PLAN C1   window='1 Apr to 31 May 2027' | epics='EPIC-104' | covered-len=65 | left-out-len=46
+       DIFF window PLAN C1 vs BRD 10.2:
+         PLAN C1: 1 Apr to 31 May 2027
+         BRD 10.2: 1 Apr to 27 June 2027
+  -- dotnet-r1
+     BRD 10.2  window='1 Dec 2026 to 26 Feb 2027' | epics='EPIC-201' | covered-len=61 | left-out-len=47
+     PRD 6.2   window='1 Dec 2026 to 26 Feb 2027' | epics='EPIC-201' | covered-len=61 | left-out-len=47
+     BL 1.1    window='1 Dec 2026 to 26 Feb 2027' | epics='EPIC-201' | covered-len=61 | left-out-len=47
+     PLAN C1   window='1 Dec 2026 to 26 Feb 2027' | epics='EPIC-201' | covered-len=61 | left-out-len=47
+  -- dotnet-r2
+     BRD 10.2  window='1 Mar to 30 Apr 2027' | epics='EPIC-202' | covered-len=184 | left-out-len=99
+     PRD 6.2   window='1 Mar to 30 Apr 2027' | epics='EPIC-202' | covered-len=184 | left-out-len=99
+     BL 1.1    window='1 Mar to 30 Apr 2027' | epics='EPIC-202' | covered-len=184 | left-out-len=99
+     PLAN C1   window='1 Mar to 30 Apr 2027' | epics='EPIC-202' | covered-len=184 | left-out-len=99
+  -- dotnet-r3
+     BRD 10.2  window='1 May to 30 Sep 2027' | epics='EPIC-203' | covered-len=66 | left-out-len=79
+     PRD 6.2   window='1 May to 30 Sep 2027' | epics='EPIC-203' | covered-len=66 | left-out-len=79
+     BL 1.1    window='1 May to 30 Sep 2027' | epics='EPIC-203' | covered-len=66 | left-out-len=79
+     PLAN C1   window='1 May to 30 Sep 2027' | epics='EPIC-203' | covered-len=66 | left-out-len=79
+  -- release file headers:
+     azure-r1.md: frontmatter='1 Dec 2026 to 29 Jan 2027' | section2 row='1 Dec 2026 to 29 Jan 2027. This is the period by which the release content is expected to be complete and ready for the '
+     azure-r2.md: frontmatter='1 Feb to 31 Mar 2027' | section2 row='1 Feb to 31 Mar 2027. This is the period by which the release content is expected to be complete and ready for the produ'
+     azure-r3.md: frontmatter='1 Apr to 27 June 2027' | section2 row='1 Apr to 27 June 2027. This is the period by which the release content is expected to be complete and ready for the prod'
+     dotnet-r1.md: frontmatter='1 Dec 2026 to 26 Feb 2027' | section2 row='None'
+     dotnet-r2.md: frontmatter='1 Mar to 30 Apr 2027' | section2 row='None'
+     dotnet-r3.md: frontmatter='1 May to 30 Sep 2027' | section2 row='None'
+
+=== B2. release files: cited ids without a local row ===
+  azure-r1.md: cited 41, local rows 35, cited without local row: ['MVE-A-01', 'MVE-A-03', 'MVE-A-04', 'OQ-01', 'T-03', 'T-10']
+      L63: FEAT-101 ... cites T-10
+      L69: FEAT-102 ... cites T-10
+      L72: FEAT-103 ... cites T-10
+      L76: FEAT-104 ... cites T-10
+      L79: FEAT-105 ... cites T-10
+      L81: STORY-121 ... cites T-03
+      L136: X-14 ... cites T-10
+      L142: X-04 ... cites OQ-01
+      L154: EC-3 ... cites MVE-A-01
+      L207: MVE-A-01, MVE-A-03, MVE-A-04 ... cites MVE-A-01
+      L216: O-10 ... cites OQ-01
+  azure-r2.md: cited 48, local rows 45, cited without local row: ['T-08', 'T-13', 'T-17']
+      L142: X-15 ... cites T-13
+      L172: XC-6 ... cites T-17
+      L225: O-23 ... cites T-08
+  azure-r3.md: cited 29, local rows 28, cited without local row: ['T-14']
+      L75: FEAT-111 ... cites T-14
+      L76: EA-14 ... cites T-14
+  dotnet-r1.md: cited 35, local rows 31, cited without local row: ['G-03', 'G-08', 'G-10', 'X-04']
+      L82: FEAT-204 ... cites G-03
+      L83: STORY-204 ... cites G-03
+      L102: NFR-04 (staff) ... cites X-04
+      L117: All BA-03 items (`EPIC-301` to `EPIC-304 ... cites G-08
+      L131: X-04 (staff) ... cites X-04
+  dotnet-r2.md: cited 57, local rows 52, cited without local row: ['G-08', 'OQ-01', 'OQ-02', 'OQ-03', 'X-04']
+      L90: STORY-240 ... cites OQ-01
+      L100: FEAT-209 ... cites OQ-02
+      L102: STORY-237 ... cites OQ-02
+      L129: NFR-04 (customers) ... cites X-04
+      L144: All BA-03 items ... cites G-08
+      L171: X-04 (customers) ... cites OQ-01
+      L253: O-10 ... cites OQ-01
+      L254: O-11 ... cites OQ-02
+      L255: O-12 ... cites OQ-03
+  dotnet-r3.md: cited 45, local rows 37, cited without local row: ['G-01', 'G-05', 'G-08', 'G-10', 'OQ-02', 'OQ-03', 'X-20', 'X-21']
+      L63: **Adjust** ... cites G-05
+      L72: EPIC-203 ... cites G-01
+      L76: FEAT-212 ... cites OQ-03
+      L77: STORY-261 ... cites OQ-03
+      L79: FEAT-213 ... cites OQ-02
+      L80: STORY-263 ... cites OQ-02
+      L82: FEAT-214 ... cites G-01
+      L83: EN-14 ... cites G-01
+      L84: STORY-265 ... cites G-01
+      L108: **Order Desk API implementation** (`EPIC ... cites G-01
+      L109: All BA-03 items: `EPIC-301` to `EPIC-304 ... cites G-08
+      L126: X-20 (outbound) ... cites X-20
+      L127: X-21 (outbound) ... cites X-21
+      L195: O-11 ... cites OQ-02
+      L196: O-12 ... cites OQ-03
+
+=== B3. stale or coordinator-addressed text in product docs ===
+  BRD /must add/ lines [532]
+  BRD /coordinator must/ lines [532]
+  BRD /O-26 to O-31/ lines [532]
+  BRD /register of record/ lines [430]
+  BRD /license:/ lines [23]
+  BRD /business_goal_smart_status/ lines [11]
+  BRD /diagram_format/ lines [12]
+  PRD /must add/ lines [745]
+  PRD /coordinator must/ lines [745]
+  PRD /license:/ lines [26]
+  PRD /diagram_format/ lines [14]
+  PRD /fr_to_ac_coverage_threshold/ lines [12]
+  PRD /fr_to_goal_coverage_threshold/ lines [13]
+  BL /register of record/ lines [1844]

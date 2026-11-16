@@ -1,0 +1,202 @@
+=== 1. COUNTS ===
+register total: 144 | types: {'epic': 12, 'feature': 39, 'enabler': 36, 'story': 57}
+tracks: {'track-azure': 54, 'track-dotnet': 60, 'track-power-platform': 30}
+releases: {'azure-r1': 21, 'azure-r2': 20, 'azure-r3': 13, 'dotnet-r1': 23, 'dotnet-r2': 21, 'dotnet-r3': 13, 'unplanned': 33}
+  expect total=144 got 144 OK
+  expect epic=12 got 12 OK
+  expect feature=39 got 39 OK
+  expect story=57 got 57 OK
+  expect enabler=36 got 36 OK
+  expect track-azure=54 got 54 OK
+  expect azure-r2=20 got 20 OK
+  expect azure-r3=13 got 13 OK
+--- backlog §3 rows:
+    4 Track | Release | Epics | Features | Stories | Enablers | Items (all four types)
+    6 Azure | azure-r1 | 2 | 5 | 8 | 6 | 21
+    7 Azure | azure-r2 | 1 | 5 | 7 | 7 | 20
+    8 Azure | azure-r3 | 1 | 4 | 5 | 3 | 13
+    9 Azure | total | 4 | 14 | 20 | 16 | 54
+    10 .NET | dotnet-r1 | 1 | 5 | 6 | 11 | 23
+    11 .NET | dotnet-r2 | 1 | 5 | 14 | 1 | 21
+    12 .NET | dotnet-r3 | 1 | 4 | 6 | 2 | 13
+    13 .NET | unplanned | 1 | 1 | 1 | 0 | 3
+    14 .NET | total | 4 | 15 | 27 | 14 | 60
+    15 Power Platform | unplanned (no release) | 4 | 10 | 10 | 6 | 30
+    16 All tracks |  | 12 | 39 | 57 | 36 | 144
+--- release 'Counts' lines:
+    azure-r1.md -> Counts: epics 2, features 5, stories 8, enablers 6, **total 21**. These equal the backlog section 3 row for `azure-r1`. Enablers match the canonical enabler allocation (C4): `EA-01`, `EA-02`, `EA-03`, `EA-05`, `EA-09`, `
+    azure-r2.md -> Counts: epics 1, features 5, stories 7, enablers 7, **total 20**. These equal the backlog section 3 row for `azure-r2`. Enablers match the canonical enabler allocation (C4) plus `EA-15`, added after the first review (A-5
+    azure-r3.md -> Counts: epics 1, features 4, stories 5, enablers 3, **total 13**. These equal the backlog section 3 row for `azure-r3`. Enablers match the canonical enabler allocation (C4) plus `EA-16`, added after the first review (A-5
+    dotnet-r1.md -> NO COUNTS LINE
+    dotnet-r2.md -> NO COUNTS LINE
+    dotnet-r3.md -> NO COUNTS LINE
+   computed azure-r1 {'epic': 2, 'feature': 5, 'story': 8, 'enabler': 6, 'total': 21}
+   computed azure-r2 {'epic': 1, 'feature': 5, 'story': 7, 'enabler': 7, 'total': 20}
+   computed azure-r3 {'epic': 1, 'feature': 4, 'story': 5, 'enabler': 3, 'total': 13}
+   computed dotnet-r1 {'epic': 1, 'feature': 5, 'story': 6, 'enabler': 11, 'total': 23}
+   computed dotnet-r2 {'epic': 1, 'feature': 5, 'story': 14, 'enabler': 1, 'total': 21}
+   computed dotnet-r3 {'epic': 1, 'feature': 4, 'story': 6, 'enabler': 2, 'total': 13}
+
+=== 2/3. RELEASE TABLES vs REGISTER; TAGS ===
+azure-r1.md: 21 item rows (section 3)
+azure-r2.md: 20 item rows (section 3)
+azure-r3.md: 13 item rows (section 3)
+dotnet-r1.md: 23 item rows (section 3)
+dotnet-r2.md: 21 item rows (section 3)
+dotnet-r3.md: 13 item rows (section 3)
+planned in register: 111 | in release files: 111 | unplanned in release files: []
+detail blocks: 144 | register without detail: [] | detail without register: []
+[Minor] backlog EN-13 (L831): enabler story text not in As a / I want / so that form
+[Minor] backlog EP-04 (L1439): enabler story text not in As a / I want / so that form
+
+=== 8. SERVES MAPPING ===
+  EA-15: backlog Serves=['FR-112', 'FR-116'] | PRD §9 Serves=['FR-106', 'FR-116'] (PRD rows: [500])  <-- MISMATCH
+[Major] PRD §9 vs backlog EA-15: Serves backlog ['FR-112', 'FR-116'] != PRD ['FR-106', 'FR-116']
+  EA-16: backlog Serves=['FR-106', 'FR-116'] | PRD §9 Serves=['FR-106', 'FR-116'] (PRD rows: [501])
+FR rows parsed: 57
+[Major] PRD §7 FR-112: row items cell lacks EA-15 (backlog says EA-15 serves FR-112)
+[Major] PRD §7 FR-201: row items cell lacks EN-13 (backlog says EN-13 serves FR-201)
+  note: PRD §7 FR-106 (L343) lists EA-15, backlog Serves for EA-15 = FR-112, FR-116
+
+=== 5/6. ID DEFINITIONS AND CONFLICTS ===
+  BRD: 9 cited-not-defined locally; register-of-record sentence=True; defined in backlog §7=1; not defined anywhere=['A-26', 'A-28', 'MVE-A-01', 'T-05', 'T-11', 'T-12', 'X-16', 'X-19']
+[Major] BRD: ids cited but defined nowhere: ['A-26', 'A-28', 'MVE-A-01', 'T-05', 'T-11', 'T-12', 'X-16', 'X-19']
+  PRD: 4 cited-not-defined locally; register-of-record sentence=False; defined in backlog §7=0; not defined anywhere=['A-26', 'A-28', 'X-16', 'X-19']
+[Major] PRD: ids cited but defined nowhere: ['A-26', 'A-28', 'X-16', 'X-19']
+  EXP: 36 cited-not-defined locally; register-of-record sentence=True; defined in backlog §7=19; not defined anywhere=['G-01', 'G-02', 'G-03', 'G-04', 'G-05', 'G-08', 'G-09', 'OQ-01', 'OQ-02', 'OQ-04', 'OQ-05', 'T-02', 'T-04', 'T-05', 'T-06', 'T-07', 'T-09']
+[Major] EXP: ids cited but defined nowhere: ['G-01', 'G-02', 'G-03', 'G-04', 'G-05', 'G-08', 'G-09', 'OQ-01', 'OQ-02', 'OQ-04', 'OQ-05', 'T-02', 'T-04', 'T-05', 'T-06', 'T-07', 'T-09']
+  BL: 9 cited-not-defined locally; register-of-record sentence=True; defined in backlog §7=0; not defined anywhere=['G-01', 'G-03', 'G-08', 'G-10', 'OQ-01', 'OQ-02', 'OQ-03', 'OQ-04', 'OQ-05']
+[Minor] BL: ids cited but defined nowhere: ['G-01', 'G-03', 'G-08', 'G-10', 'OQ-01', 'OQ-02', 'OQ-03', 'OQ-04', 'OQ-05']
+  TR: 76 cited-not-defined locally; register-of-record sentence=True; defined in backlog §7=73; not defined anywhere=['G-01', 'G-10', 'OQ-05']
+[Minor] TR: ids cited but defined nowhere: ['G-01', 'G-10', 'OQ-05']
+  REL:azure-r1.md: 6 cited-not-defined locally; register-of-record sentence=False; defined in backlog §7=4; not defined anywhere=['MVE-A-01', 'OQ-01']
+[Major] REL:azure-r1.md: ids cited but defined nowhere: ['MVE-A-01', 'OQ-01']
+  REL:azure-r2.md: 3 cited-not-defined locally; register-of-record sentence=False; defined in backlog §7=3; not defined anywhere=[]
+  REL:azure-r3.md: 1 cited-not-defined locally; register-of-record sentence=False; defined in backlog §7=1; not defined anywhere=[]
+  REL:dotnet-r1.md: 4 cited-not-defined locally; register-of-record sentence=False; defined in backlog §7=1; not defined anywhere=['G-03', 'G-08', 'G-10']
+[Major] REL:dotnet-r1.md: ids cited but defined nowhere: ['G-03', 'G-08', 'G-10']
+  REL:dotnet-r2.md: 5 cited-not-defined locally; register-of-record sentence=False; defined in backlog §7=1; not defined anywhere=['G-08', 'OQ-01', 'OQ-02', 'OQ-03']
+[Major] REL:dotnet-r2.md: ids cited but defined nowhere: ['G-08', 'OQ-01', 'OQ-02', 'OQ-03']
+  REL:dotnet-r3.md: 8 cited-not-defined locally; register-of-record sentence=False; defined in backlog §7=2; not defined anywhere=['G-01', 'G-05', 'G-08', 'G-10', 'OQ-02', 'OQ-03']
+[Major] REL:dotnet-r3.md: ids cited but defined nowhere: ['G-01', 'G-05', 'G-08', 'G-10', 'OQ-02', 'OQ-03']
+
+  -- definition text comparisons (text cell, normalised):
+  NUM/DATE/ID DIFF A-03 in REL:dotnet-r3.md L169: only-in-register=['Cancelled', 'Confirmed'] only-in-copy=[]
+  NUM/DATE/ID DIFF A-05 in REL:azure-r2.md L189: only-in-register=['95', 'CS-03', 'NFR-02'] only-in-copy=[]
+  NUM/DATE/ID DIFF A-05 in REL:azure-r3.md L177: only-in-register=['95', 'CS-03', 'NFR-02'] only-in-copy=[]
+  NUM/DATE/ID DIFF A-05 in REL:dotnet-r2.md L226: only-in-register=['Central', 'NFR-01'] only-in-copy=[]
+  NUM/DATE/ID DIFF A-06 in BRD L439: only-in-register=[] only-in-copy=['Could']
+  NUM/DATE/ID DIFF A-06 in PRD L674: only-in-register=[] only-in-copy=['Could']
+  NUM/DATE/ID DIFF A-06 in REL:dotnet-r1.md L181: only-in-register=['Prioritisation'] only-in-copy=[]
+  NUM/DATE/ID DIFF A-19 in REL:dotnet-r3.md L175: only-in-register=['dotnet-r2'] only-in-copy=[]
+  NUM/DATE/ID DIFF A-24 in EXP L342: only-in-register=[] only-in-copy=['Coordinated']
+  NUM/DATE/ID DIFF A-24 in REL:dotnet-r1.md L183: only-in-register=['Parity'] only-in-copy=[]
+  NUM/DATE/ID DIFF A-37 in REL:dotnet-r2.md L179: only-in-register=['azure-r2'] only-in-copy=['23']
+  note owner variants A-37: ['Ahmed Benali', 'STORY-235, EPIC-202']
+  NUM/DATE/ID DIFF A-41 in BRD L472: only-in-register=['6.3', 'PRD'] only-in-copy=['C2']
+  NUM/DATE/ID DIFF A-41 in PRD L707: only-in-register=['PRD'] only-in-copy=[]
+  NUM/DATE/ID DIFF A-49 in BRD L480: only-in-register=[] only-in-copy=['06', 'EN-14', 'FR-240']
+  NUM/DATE/ID DIFF A-49 in PRD L715: only-in-register=[] only-in-copy=['06', 'EN-14', 'FR-240']
+  NUM/DATE/ID DIFF A-50 in PRD L716: only-in-register=['PRD'] only-in-copy=[]
+  NUM/DATE/ID DIFF A-51 in BRD L482: only-in-register=[] only-in-copy=['Picking']
+  NUM/DATE/ID DIFF A-51 in PRD L717: only-in-register=[] only-in-copy=['10', '12', '5', '7', 'C', 'Picking']
+  NUM/DATE/ID DIFF A-54 in BRD L485: only-in-register=[] only-in-copy=['8', 'PRD']
+  NUM/DATE/ID DIFF A-54 in PRD L720: only-in-register=[] only-in-copy=['8']
+  NUM/DATE/ID DIFF MVE-O-04 in PRD L788: only-in-register=[] only-in-copy=['15', '24']
+  NUM/DATE/ID DIFF MVE-O-04 in EXP L386: only-in-register=[] only-in-copy=['01', '15', '24']
+  NUM/DATE/ID DIFF MVE-A-09 in EXP L363: only-in-register=[] only-in-copy=['3']
+  NUM/DATE/ID DIFF O-01 in EXP L369: only-in-register=[] only-in-copy=['01']
+  NUM/DATE/ID DIFF O-02 in EXP L370: only-in-register=[] only-in-copy=['02']
+  NUM/DATE/ID DIFF O-03 in EXP L371: only-in-register=[] only-in-copy=['03']
+  NUM/DATE/ID DIFF O-03 in REL:azure-r2.md L218: only-in-register=['azure-r1'] only-in-copy=[]
+  NUM/DATE/ID DIFF O-03 in REL:azure-r3.md L201: only-in-register=['azure-r1'] only-in-copy=[]
+  NUM/DATE/ID DIFF O-04 in EXP L372: only-in-register=[] only-in-copy=['04']
+  NUM/DATE/ID DIFF O-05 in EXP L373: only-in-register=[] only-in-copy=['05']
+  NUM/DATE/ID DIFF O-07 in EXP L374: only-in-register=[] only-in-copy=['08']
+  NUM/DATE/ID DIFF O-15 in REL:azure-r3.md L125: only-in-register=['01', '2027', '30', 'June'] only-in-copy=['2', '3', 'EA-02', 'OPEN', 'STORY-102']
+  note owner variants O-15: ['Ahmed Benali, Julien Moreau', 'EA-13, STORY-170, STORY-174']
+  NUM/DATE/ID DIFF O-23 in REL:dotnet-r2.md L178: only-in-register=['08', '2027'] only-in-copy=['C-05', 'OPEN', 'STORY-235']
+  note owner variants O-23: ['Ahmed Benali', 'STORY-235, EPIC-202']
+  NUM/DATE/ID DIFF O-25 in BRD L524: only-in-register=['6.3', 'PRD'] only-in-copy=['C2']
+  NUM/DATE/ID DIFF O-25 in PRD L773: only-in-register=['PRD'] only-in-copy=[]
+  NUM/DATE/ID DIFF O-25 in REL:azure-r1.md L221: only-in-register=['6.3', 'PRD'] only-in-copy=[]
+  NUM/DATE/ID DIFF O-25 in REL:azure-r2.md L227: only-in-register=['6.3', 'PRD'] only-in-copy=[]
+  NUM/DATE/ID DIFF O-25 in REL:azure-r3.md L206: only-in-register=['6.3', 'PRD'] only-in-copy=[]
+  NUM/DATE/ID DIFF O-25 in REL:dotnet-r1.md L202: only-in-register=['6.3', 'PRD'] only-in-copy=['C2']
+  NUM/DATE/ID DIFF O-25 in REL:dotnet-r2.md L262: only-in-register=['6.3', 'PRD'] only-in-copy=[]
+  NUM/DATE/ID DIFF O-25 in REL:dotnet-r3.md L201: only-in-register=['6.3', 'PRD'] only-in-copy=[]
+  NUM/DATE/ID DIFF O-26 in BRD L525: only-in-register=[] only-in-copy=['4.1']
+  NUM/DATE/ID DIFF O-26 in PRD L774: only-in-register=[] only-in-copy=['4.1', 'BRD']
+  NUM/DATE/ID DIFF O-26 in EXP L382: only-in-register=[] only-in-copy=['4.1', 'BRD', 'C9']
+  NUM/DATE/ID DIFF O-26 in REL:dotnet-r2.md L263: only-in-register=['01', '05', 'SM-01', 'SM-07'] only-in-copy=[]
+  NUM/DATE/ID DIFF O-26 in REL:dotnet-r3.md L202: only-in-register=['01', '05', 'SM-01', 'SM-07'] only-in-copy=[]
+  NUM/DATE/ID DIFF O-27 in BRD L526: only-in-register=['13', '20', '53', '6'] only-in-copy=[]
+  NUM/DATE/ID DIFF O-27 in PRD L775: only-in-register=['13', '20', '53', '6'] only-in-copy=[]
+  NUM/DATE/ID DIFF O-31 in BRD L530: only-in-register=[] only-in-copy=['Core']
+  NUM/DATE/ID DIFF O-31 in PRD L779: only-in-register=[] only-in-copy=['Core']
+  NUM/DATE/ID DIFF T-01 in BRD L414: only-in-register=['03'] only-in-copy=[]
+  NUM/DATE/ID DIFF T-01 in PRD L591: only-in-register=['03'] only-in-copy=[]
+  NUM/DATE/ID DIFF T-03 in BRD L416: only-in-register=['02', '12'] only-in-copy=['BA-02', 'C-08']
+  NUM/DATE/ID DIFF T-03 in PRD L593: only-in-register=['02', '12'] only-in-copy=['C-08', 'ES-25', 'Private']
+  NUM/DATE/ID DIFF T-08 in BRD L420: only-in-register=['23', '37'] only-in-copy=['30', 'June']
+  NUM/DATE/ID DIFF T-08 in PRD L598: only-in-register=['23', '37'] only-in-copy=['30', 'June']
+  NUM/DATE/ID DIFF T-15 in BRD L424: only-in-register=['43'] only-in-copy=[]
+  NUM/DATE/ID DIFF T-15 in PRD L605: only-in-register=['43'] only-in-copy=[]
+  NUM/DATE/ID DIFF T-17 in BRD L426: only-in-register=['05'] only-in-copy=[]
+  NUM/DATE/ID DIFF T-17 in PRD L607: only-in-register=['05'] only-in-copy=[]
+  NUM/DATE/ID DIFF X-01 in PRD L545: only-in-register=[] only-in-copy=['ES-17', 'OPEN', 'Pilot']
+  NUM/DATE/ID DIFF X-01 in REL:azure-r2.md L138: only-in-register=[] only-in-copy=['23', '37', 'ASSUMPTION', 'OPEN', 'azure-r2']
+  NUM/DATE/ID DIFF X-02 in BRD L383: only-in-register=['10.0'] only-in-copy=[]
+  NUM/DATE/ID DIFF X-02 in REL:azure-r1.md L132: only-in-register=['10.0'] only-in-copy=['ASSUMPTION']
+  NUM/DATE/ID DIFF X-02 in REL:azure-r2.md L129: only-in-register=['10.0'] only-in-copy=['2', '20', 'EA-10', 'EA-15', 'STORY-143']
+  NUM/DATE/ID DIFF X-02 in REL:dotnet-r1.md L129: only-in-register=['10.0'] only-in-copy=['EN-01', 'EN-03', 'STORY-205', 'azure-r1']
+  NUM/DATE/ID DIFF X-03 in REL:dotnet-r1.md L130: only-in-register=[] only-in-copy=['01', 'EN-04', 'EN-12', 'MVE-A-04']
+  NUM/DATE/ID DIFF X-04 in REL:azure-r1.md L142: only-in-register=['01'] only-in-copy=['24', 'C3', 'NFR-03', 'NFR-04', 'NFR-05', 'STORY-239', 'dotnet-r2']
+  NUM/DATE/ID DIFF X-05 in REL:azure-r2.md L139: only-in-register=[] only-in-copy=['27', 'ASSUMPTION', 'CSV', 'MVE-O-05', 'OPEN']
+  NUM/DATE/ID DIFF X-05 in REL:dotnet-r2.md L172: only-in-register=[] only-in-copy=['27', 'CSV']
+  NUM/DATE/ID DIFF X-06 in REL:dotnet-r2.md L173: only-in-register=[] only-in-copy=['03', '2', '4', 'MVE-02', 'Picking', 'STORY-233']
+  NUM/DATE/ID DIFF X-06 in REL:dotnet-r3.md L123: only-in-register=[] only-in-copy=['03', '2', 'STORY-262']
+  NUM/DATE/ID DIFF X-07 in REL:azure-r2.md L130: only-in-register=[] only-in-copy=['17', '20', 'ASSUMPTION', 'EN-06']
+  NUM/DATE/ID DIFF X-07 in REL:dotnet-r1.md L132: only-in-register=[] only-in-copy=['EN-06', 'azure-r3']
+  NUM/DATE/ID DIFF X-07 in REL:dotnet-r2.md L174: only-in-register=[] only-in-copy=['3', 'EN-06', 'STORY-234', 'azure-r3', 'dotnet-r1']
+  NUM/DATE/ID DIFF X-08 in REL:dotnet-r1.md L133: only-in-register=[] only-in-copy=['3', 'EN-05']
+  NUM/DATE/ID DIFF X-09 in PRD L553: only-in-register=[] only-in-copy=['15', 'OPEN']
+  NUM/DATE/ID DIFF X-09 in REL:azure-r2.md L131: only-in-register=[] only-in-copy=['1', '15', '2', 'ASSUMPTION', 'EA-07', 'OPEN', 'STORY-141']
+  NUM/DATE/ID DIFF X-09 in REL:dotnet-r3.md L124: only-in-register=[] only-in-copy=['1', '15', '3', 'EN-07', 'OPEN']
+  NUM/DATE/ID DIFF X-10 in PRD L554: only-in-register=[] only-in-copy=['51', 'CS-12']
+  NUM/DATE/ID DIFF X-10 in REL:azure-r2.md L132: only-in-register=[] only-in-copy=['17', '2', 'EA-12', 'STORY-144']
+  NUM/DATE/ID DIFF X-10 in REL:dotnet-r2.md L265: only-in-register=[] only-in-copy=['STORY-262', 'dotnet-r3']
+  NUM/DATE/ID DIFF X-10 in REL:dotnet-r3.md L125: only-in-register=[] only-in-copy=['3', 'EA-12', 'STORY-262']
+  NUM/DATE/ID DIFF X-11 in REL:azure-r1.md L134: only-in-register=[] only-in-copy=['19']
+  NUM/DATE/ID DIFF X-11 in REL:dotnet-r1.md L134: only-in-register=[] only-in-copy=['19', 'EN-09', 'OPEN']
+  NUM/DATE/ID DIFF X-12 in PRD L556: only-in-register=['C-04'] only-in-copy=['18', '55', '60', 'CPU', 'CS-03', 'CS-06']
+  NUM/DATE/ID DIFF X-12 in REL:dotnet-r2.md L175: only-in-register=['C-04'] only-in-copy=['08', '17', '2', 'CS-03', 'CS-05', 'OPEN', 'STORY-243', 'azure-r1']
+  NUM/DATE/ID DIFF X-13 in BRD L394: only-in-register=[] only-in-copy=['Customers']
+  NUM/DATE/ID DIFF X-13 in REL:dotnet-r2.md L176: only-in-register=[] only-in-copy=['1', 'STORY-239']
+  NUM/DATE/ID DIFF X-14 in REL:dotnet-r1.md L135: only-in-register=[] only-in-copy=['01', 'EN-13', 'ES-13', 'OPEN']
+  NUM/DATE/ID DIFF X-15 in REL:azure-r2.md L142: only-in-register=[] only-in-copy=['13', '31', 'ASSUMPTION']
+  NUM/DATE/ID DIFF X-15 in REL:dotnet-r2.md L177: only-in-register=['7'] only-in-copy=['13', '31', 'STORY-241']
+  NUM/DATE/ID DIFF X-20 in PRD L560: only-in-register=[] only-in-copy=['2.0', 'BA-03', 'ES-33', 'ES-37']
+  NUM/DATE/ID DIFF X-23 in BRD L400: only-in-register=['Connector'] only-in-copy=[]
+  NUM/DATE/ID DIFF X-23 in REL:dotnet-r3.md L128: only-in-register=['Connector'] only-in-copy=['4', 'EN-14', 'EPIC-204']
+  NUM/DATE/ID DIFF X-25 in BRD L402: only-in-register=['Platform', 'Power'] only-in-copy=['BR-17']
+  NUM/DATE/ID DIFF X-25 in PRD L565: only-in-register=['Platform', 'Power'] only-in-copy=['OPEN']
+  NUM/DATE/ID DIFF X-25 in REL:dotnet-r3.md L129: only-in-register=['Platform', 'Power'] only-in-copy=['18', '3', 'EN-14']
+  NUM/DATE/ID DIFF X-26 in BRD L403: only-in-register=['Customer'] only-in-copy=[]
+  copies whose numbers/dates/ids differ from register of record: 99
+  backlog §7 defines: 122 ids: ['A-01', 'A-02', 'A-03', 'A-04', 'A-05'] ...
+  TR: cites but no register row for ['A-49', 'A-51', 'A-53', 'A-54', 'A-55', 'A-56', 'A-57', 'A-58', 'A-59', 'O-26', 'O-27', 'O-28', 'O-29', 'O-30', 'O-31']
+
+=== 9. SOURCE IDS EXIST IN KNOWLEDGE-DOCS ===
+knowledge-docs defines: 124 ids; families: {'ES': 39, 'BR': 19, 'NFR': 9, 'CS': 28, 'OQ': 5, 'C': 8, 'SM': 7, 'P': 6, 'BA': 3}
+cited source ids: 121 | not found in knowledge-docs: []
+
+=== 10. CALENDAR ===
+  2027-06-06 weekday=Sunday
+  2027-06-13 weekday=Sunday
+  2027-06-20 weekday=Sunday
+  2027-06-27 weekday=Sunday
+  2027-06-30 weekday: Wednesday
+  2027-05-31 weekday: Monday
+
+FINDINGS: 14 {'Minor': 4, 'Major': 10}

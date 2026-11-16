@@ -1,0 +1,1084 @@
+============================== A. VERBATIM QUOTES: business-case vs BRD ==============================
+  TEXT DIFF C-02:
+    source: The Order Desk web server runs Windows Server 2012 R2, and its database runs SQL Server 2014. Both are past end of support; we pay for Extended Security Updates and want to stop.
+    brd   : The Order Desk web server runs Windows Server 2012 R2, and its database runs SQL Server 2014. Both are past end of support; we pay for Extended Security Updates (ESU) and want to stop.
+  MISSING in BRD sections 3/7/8/9: SM-01
+  MISSING in BRD sections 3/7/8/9: SM-02
+  MISSING in BRD sections 3/7/8/9: SM-03
+  MISSING in BRD sections 3/7/8/9: SM-04
+  MISSING in BRD sections 3/7/8/9: SM-05
+  MISSING in BRD sections 3/7/8/9: SM-06
+  MISSING in BRD sections 3/7/8/9: SM-07
+  verbatim mismatches: 8
+  BRD row SM-01 -> ['| SM-01 | Share of orders placed through the portal | 0 % | 35 %, 6 months after portal launch | BG-01 | BA-02 | "Portal launch" means general availability, not the 20-customer pilot (**ASSUMPTION:** A-04; **OPEN:** O-05) |']
+  BRD row SM-05 -> ['| SM-05 | Average time to resolve a delivery claim | 9 working days | 3 working days, 3 months after the claims launch | BG-03 | BA-03 | No claims launch date exists (A-25, O-07) |']
+  BRD row SM-07 -> ['| SM-07 | Production servers past end of support | 2 | 0 by 30 June 2027 | BG-02 | BA-01 | Matches the lease end date (C-01) |']
+
+============================== B. C1 RELEASE TABLE IDENTITY ==============================
+  BRD 10.2: 8 release-table rows
+  PRD 6.2: 14 release-table rows
+  BACKLOG 1.1: 17 release-table rows
+  DIFF BRD 10.2 vs PRD 6.2:
+    doc : | Azure (track-azure) | azure-r1 | Foundation, data platform decision and cost proof | 1 Dec 2026 to 29 Jan 2027 | EPIC-101, EPIC-102 | NFR-03 (Azure), NFR-05 (Azure); supports C-01, C-02, C-04, C-06 | Exchange redesign, hosting runtime, pilot environment, mon
+    prd : | Azure (track-azure) | BA-01 Platform and data-centre exit | BR-13; NFR-01, NFR-03, NFR-05, NFR-06; NFR-08 (retention side, A-43) | C-01 to C-04, C-06; SM-07 | azure-r1, azure-r2, azure-r3 |
+    doc : | Azure | azure-r2 | Pilot environment, exchange and storage, observability | 1 Feb to 31 Mar 2027 | EPIC-103 | NFR-01 (design and alerting), NFR-06 (design), NFR-08 (retention design); supports C-03, C-04 | Cutover rehearsal and runbooks, recovery proof, BR-1
+    prd : | .NET (track-dotnet) | BA-02 Ordering and customer self-service | BR-01 to BR-12; NFR-02, NFR-03 (portal side), NFR-04, NFR-05, NFR-07, NFR-08 | C-05; SM-01 to SM-04 | dotnet-r1, dotnet-r2, dotnet-r3 |
+    doc : | Azure | azure-r3 | Cutover and recovery proof | 1 Apr to 31 May 2027 | EPIC-104 | BR-13; NFR-01 (proof), NFR-06 (proof); supports SM-07, C-01, C-02 | Optimisation after the lease (unplanned items) |
+    prd : | Power Platform (track-power-platform) | BA-03 Delivery claims and credit notes | BR-14 to BR-19; NFR-03 (BA-03 side), NFR-04 (BA-03 side), NFR-09 | C-07, C-08; SM-05, SM-06 | none: unplanned |
+    doc : | .NET (track-dotnet) | dotnet-r1 | Modernised Order Desk with behavioural parity | 1 Dec 2026 to 26 Feb 2027 | EPIC-201 | NFR-04 (staff), NFR-05 (.NET), BR-10 (parity), BR-12 (parity) | Everything customer-facing, EN-11, EN-07, EN-14 |
+    prd : | Azure (track-azure) | azure-r1 | Foundation, data platform decision and cost proof | 1 Dec 2026 to 29 Jan 2027 | EPIC-101, EPIC-102 | NFR-03 (Azure), NFR-05 (Azure); supports C-01, C-02, C-04, C-06 | Exchange redesign, hosting runtime, pilot environment, mon
+    doc : | .NET | dotnet-r2 | Portal pilot (Must items) for 20 customers | 1 Mar to 30 Apr 2027 | EPIC-202 | BR-01, BR-02, BR-03, BR-04, BR-05, BR-06, BR-10 (portal value), BR-11 (French and English), BR-12 (customer prices); NFR-02, NFR-03 (.NET), NFR-04 (customers), 
+    prd : | Azure | azure-r2 | Pilot environment, exchange and storage, observability | 1 Feb to 31 Mar 2027 | EPIC-103 | NFR-01 (design and alerting), NFR-06 (design), NFR-08 (retention design); supports C-03, C-04 | Cutover rehearsal and runbooks, recovery proof, BR-1
+    doc : | .NET | dotnet-r3 | Complete portal and API contract (general availability, A-04) | 1 May to 30 Sep 2027 | EPIC-203 | BR-07, BR-08, BR-09, BR-11 (Dutch); SM-01 to SM-04 instrumentation | Order Desk API implementation (EPIC-204, unplanned until O-01), all BA-0
+    prd : | Azure | azure-r3 | Cutover and recovery proof | 1 Apr to 31 May 2027 | EPIC-104 | BR-13; NFR-01 (proof), NFR-06 (proof); supports SM-07, C-01, C-02 | Optimisation after the lease (unplanned items) |
+    doc : | Power Platform (track-power-platform) | none | No release: no team (G-08, O-07) | none | EPIC-301 to EPIC-304 (unplanned) | BR-14 to BR-19, NFR-03 (BA-03), NFR-04 (BA-03), NFR-09: documented, tagged by track only | The Q1 2027 claims pilot cannot be committe
+    prd : | .NET (track-dotnet) | dotnet-r1 | Modernised Order Desk with behavioural parity | 1 Dec 2026 to 26 Feb 2027 | EPIC-201 | NFR-04 (staff), NFR-05 (.NET), BR-10 (parity), BR-12 (parity) | Everything customer-facing, EN-11, EN-07, EN-14 |
+    doc : | Power Platform | Microsoft's low-code platform: Power Apps (apps), Power Automate (flows) and Dataverse. |
+    prd : | .NET | dotnet-r2 | Portal pilot (Must items) for 20 customers | 1 Mar to 30 Apr 2027 | EPIC-202 | BR-01, BR-02, BR-03, BR-04, BR-05, BR-06, BR-10 (portal value), BR-11 (French and English), BR-12 (customer prices); NFR-02, NFR-03 (.NET), NFR-04 (customers), 
+    row counts differ 8 14
+  PRD 6.2 identical to PRD 6.2
+  DIFF BACKLOG 1.1 vs PRD 6.2:
+    doc : | Azure (track-azure) | azure-r1 | Foundation, data platform decision and cost proof | 1 Dec 2026 to 29 Jan 2027 | EPIC-101, EPIC-102 | NFR-03 (Azure), NFR-05 (Azure); supports C-01, C-02, C-04, C-06 | Exchange redesign, hosting runtime, pilot environment, mon
+    prd : | Azure (track-azure) | BA-01 Platform and data-centre exit | BR-13; NFR-01, NFR-03, NFR-05, NFR-06; NFR-08 (retention side, A-43) | C-01 to C-04, C-06; SM-07 | azure-r1, azure-r2, azure-r3 |
+    doc : | Azure | azure-r2 | Pilot environment, exchange and storage, observability | 1 Feb to 31 Mar 2027 | EPIC-103 | NFR-01 (design and alerting), NFR-06 (design), NFR-08 (retention design); supports C-03, C-04 | Cutover rehearsal and runbooks, recovery proof, BR-1
+    prd : | .NET (track-dotnet) | BA-02 Ordering and customer self-service | BR-01 to BR-12; NFR-02, NFR-03 (portal side), NFR-04, NFR-05, NFR-07, NFR-08 | C-05; SM-01 to SM-04 | dotnet-r1, dotnet-r2, dotnet-r3 |
+    doc : | Azure | azure-r3 | Cutover and recovery proof | 1 Apr to 31 May 2027 | EPIC-104 | BR-13; NFR-01 (proof), NFR-06 (proof); supports SM-07, C-01, C-02 | Optimisation after the lease (unplanned items) |
+    prd : | Power Platform (track-power-platform) | BA-03 Delivery claims and credit notes | BR-14 to BR-19; NFR-03 (BA-03 side), NFR-04 (BA-03 side), NFR-09 | C-07, C-08; SM-05, SM-06 | none: unplanned |
+    doc : | .NET (track-dotnet) | dotnet-r1 | Modernised Order Desk with behavioural parity | 1 Dec 2026 to 26 Feb 2027 | EPIC-201 | NFR-04 (staff), NFR-05 (.NET), BR-10 (parity), BR-12 (parity) | Everything customer-facing, EN-11, EN-07, EN-14 |
+    prd : | Azure (track-azure) | azure-r1 | Foundation, data platform decision and cost proof | 1 Dec 2026 to 29 Jan 2027 | EPIC-101, EPIC-102 | NFR-03 (Azure), NFR-05 (Azure); supports C-01, C-02, C-04, C-06 | Exchange redesign, hosting runtime, pilot environment, mon
+    doc : | .NET | dotnet-r2 | Portal pilot (Must items) for 20 customers | 1 Mar to 30 Apr 2027 | EPIC-202 | BR-01, BR-02, BR-03, BR-04, BR-05, BR-06, BR-10 (portal value), BR-11 (French and English), BR-12 (customer prices); NFR-02, NFR-03 (.NET), NFR-04 (customers), 
+    prd : | Azure | azure-r2 | Pilot environment, exchange and storage, observability | 1 Feb to 31 Mar 2027 | EPIC-103 | NFR-01 (design and alerting), NFR-06 (design), NFR-08 (retention design); supports C-03, C-04 | Cutover rehearsal and runbooks, recovery proof, BR-1
+    doc : | .NET | dotnet-r3 | Complete portal and API contract (general availability, A-04) | 1 May to 30 Sep 2027 | EPIC-203 | BR-07, BR-08, BR-09, BR-11 (Dutch); SM-01 to SM-04 instrumentation | Order Desk API implementation (EPIC-204, unplanned until O-01), all BA-0
+    prd : | Azure | azure-r3 | Cutover and recovery proof | 1 Apr to 31 May 2027 | EPIC-104 | BR-13; NFR-01 (proof), NFR-06 (proof); supports SM-07, C-01, C-02 | Optimisation after the lease (unplanned items) |
+    doc : | Power Platform (track-power-platform) | none | No release: no team (G-08, O-07) | none | EPIC-301 to EPIC-304 (unplanned) | BR-14 to BR-19, NFR-03 (BA-03), NFR-04 (BA-03), NFR-09: documented, tagged by track only | The Q1 2027 claims pilot cannot be committe
+    prd : | .NET (track-dotnet) | dotnet-r1 | Modernised Order Desk with behavioural parity | 1 Dec 2026 to 26 Feb 2027 | EPIC-201 | NFR-04 (staff), NFR-05 (.NET), BR-10 (parity), BR-12 (parity) | Everything customer-facing, EN-11, EN-07, EN-14 |
+    doc : | Azure | azure-r1 | 2 | 5 | 8 | 6 | 21 |
+    prd : | .NET | dotnet-r2 | Portal pilot (Must items) for 20 customers | 1 Mar to 30 Apr 2027 | EPIC-202 | BR-01, BR-02, BR-03, BR-04, BR-05, BR-06, BR-10 (portal value), BR-11 (French and English), BR-12 (customer prices); NFR-02, NFR-03 (.NET), NFR-04 (customers), 
+    doc : | Azure | azure-r2 | 1 | 4 | 7 | 6 | 18 |
+    prd : | .NET | dotnet-r3 | Complete portal and API contract (general availability, A-04) | 1 May to 30 Sep 2027 | EPIC-203 | BR-07, BR-08, BR-09, BR-11 (Dutch); SM-01 to SM-04 instrumentation | Order Desk API implementation (EPIC-204, unplanned until O-01), all BA-0
+    doc : | Azure | azure-r3 | 1 | 3 | 5 | 2 | 11 |
+    prd : | Power Platform (track-power-platform) | none | No release: no team (G-08, O-07) | none | EPIC-301 to EPIC-304 (unplanned) | BR-14 to BR-19, NFR-03 (BA-03), NFR-04 (BA-03), NFR-09: documented, tagged by track only | The Q1 2027 claims pilot cannot be committe
+    doc : | Azure | total | 4 | 12 | 20 | 14 | 50 |
+    prd : | Azure | 3 | azure-r1 needs no .NET change and settles the data tier and cost early; azure-r2 lands the pilot environment before the Q2 2027 pilot (so dotnet-r2 can start after it, A-37); azure-r3 is dedicated to cutover and recovery proof before 30 June 2027
+    doc : | .NET | dotnet-r1 | 1 | 5 | 6 | 11 | 23 |
+    prd : | .NET | 3 | dotnet-r1 holds all enablers that every later story needs (CS-13 to CS-18) and has little customer value by design; dotnet-r2 is Must-only for the 20-customer pilot; dotnet-r3 holds Should and Could items after pilot feedback | 2 releases miss the
+    doc : | .NET | dotnet-r2 | 1 | 5 | 14 | 1 | 21 |
+    prd : | Power Platform | 0 | No team, API, environments or licence decision (G-08, CS-26, CS-27, O-02, O-07) | A placeholder release would invent a commitment (intake review amendment 2) |
+    doc : | .NET | dotnet-r3 | 1 | 4 | 6 | 2 | 13 |
+    prd : | Power Platform | Microsoft's low-code platform: Power Apps (apps), Power Automate (flows) and Dataverse. |
+    row counts differ 17 14
+  azure-r1.md: window=1 Dec 2026 to 29 Jan 2027; release=azure-r1
+  azure-r2.md: window=1 Feb to 31 Mar 2027; release=azure-r2
+  azure-r3.md: window=1 Apr to 31 May 2027; release=azure-r3
+  dotnet-r1.md: window=1 Dec 2026 to 26 Feb 2027; release=dotnet-r1
+  dotnet-r2.md: window=1 Mar to 30 Apr 2027; release=dotnet-r2
+  dotnet-r3.md: window=1 May to 30 Sep 2027; release=dotnet-r3
+
+============================== C. ID DEFINITIONS ACROSS DOCS ==============================
+  distinct ids defined in register rows: 175
+  cited but NOT in any register row: ['A-26', 'A-28', 'RG-02', 'RG-03', 'RG-04', 'X-16', 'X-19']
+  ids for release-local or new families present: ['A-D1-01', 'A-D1-02', 'A-D2-01', 'A-D2-02', 'A-D3-01', 'A-D3-02', 'AZ1-O1', 'AZ1-O2', 'AZ2-O1', 'AZ3-O1', 'MVE-A-01', 'MVE-A-02', 'MVE-A-03', 'MVE-A-04', 'MVE-A-05', 'MVE-A-06', 'MVE-A-07', 'MVE-A-08', 'MVE-A-09', 'O-D2-01', 'O-D2-02', 'O-D3-01', 'O-D3-02']
+  A-01 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL azure-r3.md', 'REL dotnet-r1.md', 'REL dotnet-r2.md', 'REL dotnet-r3.md']:
+     [BRD] Build starts December 2026 after approval; release approval dates are targets. | business-case header and section 8, T-16 | Marc Dubois
+     [PRD] Build starts December 2026 after approval; release approval dates are targets. | business-case header and section 8, T-16 | Marc Dubois
+     [BACKLOG] Build starts December 2026 after approval; release approval dates are targets. | Marc Dubois
+     [REL azure-r1.md] Build starts December 2026 after approval; release approval dates are targets. | Marc Dubois
+     [REL azure-r2.md] Build starts December 2026 after approval; release approval dates are targets. | Marc Dubois
+     [REL azure-r3.md] Build starts December 2026 after approval; release approval dates are targets. | Marc Dubois
+     [REL dotnet-r1.md] ASSUMPTION: | Build starts December 2026 after approval; windows are targets. | Marc Dubois
+     [REL dotnet-r2.md] ASSUMPTION: | Build starts December 2026 after approval; windows are targets. | Marc Dubois
+     [REL dotnet-r3.md] ASSUMPTION: | Build starts December 2026 after approval; windows are targets. | Marc Dubois
+  A-02 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL dotnet-r1.md']:
+     [BRD] Boundary: .NET owns Order Desk code changes. Azure owns hosting, infrastructure as code (IaC), disaster recovery, monitoring and the C-04 cost model. 
+     [PRD] Boundary: .NET owns Order Desk code changes. Azure owns hosting, infrastructure as code (IaC), disaster recovery, monitoring and the C-04 cost model. 
+     [BACKLOG] .NET owns Order Desk code changes. Azure owns hosting, IaC, disaster recovery, monitoring and the C-04 cost model. Shared items are split per ES-30. |
+     [REL azure-r1.md] .NET owns Order Desk code changes. Azure owns hosting, IaC, disaster recovery, monitoring and the C-04 cost model. | Ahmed Benali
+     [REL dotnet-r1.md] ASSUMPTION: | .NET owns Order Desk code changes; Azure owns hosting, IaC, DR, monitoring and the C-04 cost model. | Ahmed Benali
+  A-03 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL dotnet-r2.md', 'REL dotnet-r3.md']:
+     [BRD] BR-04: Received, Confirmed and Cancelled are current as of Order Desk. Picking and Shipped are current as of the last nightly run, shown with an "as o
+     [PRD] BR-04: Received, Confirmed and Cancelled are current as of Order Desk. Picking and Shipped are current as of the last nightly run, shown with an "as o
+     [EXP] BR-04: Received, Confirmed and Cancelled are current as of Order Desk. Picking and Shipped are current as of the last nightly run, shown with an "as o
+     [BACKLOG] BR-04: Received, Confirmed and Cancelled are current as of Order Desk. Picking and Shipped are current as of the last nightly run, shown with an "as o
+     [REL dotnet-r2.md] ASSUMPTION: | Received, Confirmed and Cancelled are current as of Order Desk; Picking and Shipped are current as of the last nightly run and shown wit
+     [REL dotnet-r3.md] ASSUMPTION: | Freshness rule for BR-04 and BR-09: Picking and Shipped are current as of the last nightly run and shown with an "as of" time. | Lena Va
+  A-04 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL dotnet-r3.md']:
+     [BRD] "Portal launch" in SM-01 to SM-04 means general availability, not the 20-customer pilot. | G-05, T-06 | Lena Varga
+     [PRD] "Portal launch" in SM-01 to SM-04 means general availability, not the 20-customer pilot. | G-05, T-06 | Lena Varga
+     [EXP] "Portal launch" in SM-01 to SM-04 means general availability, not the 20-customer pilot. | MVE-02 | Lena Varga
+     [BACKLOG] "Portal launch" in SM-01 to SM-04 means general availability, not the 20-customer pilot. | Lena Varga
+     [REL dotnet-r3.md] ASSUMPTION: | "Portal launch" in SM-01 to SM-04 means general availability, not the 20-customer pilot. | Lena Varga
+  A-05 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL azure-r3.md', 'REL dotnet-r2.md']:
+     [BRD] NFR-01 is measured by a synthetic probe at the hosting edge, in local Central European time with summer time. NFR-02 is measured server-side at the 95
+     [PRD] NFR-01 is measured by a synthetic probe at the hosting edge, in local Central European time with summer time. NFR-02 is measured on the server at the 
+     [BACKLOG] NFR-01 is measured by a synthetic probe at the hosting edge, in local Central European time with summer time. NFR-02 is measured on the server at the 
+     [REL azure-r2.md] NFR-01 is measured by a synthetic probe at the hosting edge, in local Central European time with summer time. | Ahmed Benali
+     [REL azure-r3.md] NFR-01 is measured by a synthetic probe at the hosting edge, in local Central European time with summer time. | Ahmed Benali
+     [REL dotnet-r2.md] ASSUMPTION: | NFR-02 is measured on the server at the 95th percentile with a load model from CS-03 and an agreed customer figure. | Ahmed Benali
+  A-06 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r1.md']:
+     [BRD] Prioritisation is MoSCoW (Must, Should, Could, Won't) from the business case, then date and dependency risk. NFRs are treated as Must. | G-06 | Lena V
+     [PRD] Prioritisation is MoSCoW (Must, Should, Could, Won't) from the business case, then date and dependency risk. NFRs are treated as Must. | G-06 | Lena V
+     [BACKLOG] Prioritisation is MoSCoW from the business case, then date and dependency risk. NFRs are Must. | Lena Varga
+     [REL dotnet-r1.md] ASSUMPTION: | MoSCoW from the business case, then date and dependency risk; NFRs are Must. | Lena Varga
+  A-07 defined in ['BRD', 'PRD']:
+     [BRD] New id families (FR, AC, goals, MVE, EN, EA, EP, X, T) coexist with source ids quoted verbatim. The mapping of P- and CS- ids to business areas is inf
+     [PRD] New id families (FR, AC, goals, MVE, EN, EA, EP, X, T) coexist with source ids quoted verbatim. The mapping of P- and CS- ids to business areas is inf
+  A-08 defined in ['BRD', 'PRD']:
+     [BRD] The backlog is tool-neutral until a tool and the ES-28 prefix are chosen. Tags follow ES-39. | G-06 | Lena Varga
+     [PRD] The backlog is tool-neutral until a tool and the ES-28 prefix are chosen. Tags follow ES-39. | G-06 | Lena Varga
+  A-09 defined in ['BRD', 'EXP', 'PRD']:
+     [BRD] Minimum viable experiments (MVEs) are local, prototype or paper-based. | ES-27, ES-37 | Lena Varga
+     [PRD] Minimum viable experiments (MVEs) are local, prototype or paper-based. | ES-27, ES-37 | Lena Varga
+     [EXP] MVEs are local, prototype or paper-based. | Section 1 | Lena Varga
+  A-10 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL dotnet-r1.md', 'REL dotnet-r2.md']:
+     [BRD] Customer sign-in is provider-neutral. A test identity is used in experiments and local builds. | OQ-01 | Ahmed Benali
+     [PRD] Customer sign-in is provider-neutral. A test identity is used in experiments and local builds. | OQ-01 | Ahmed Benali
+     [EXP] Customer sign-in is provider-neutral. A test identity is used in experiments and local builds. | MVE-02 | Ahmed Benali
+     [BACKLOG] Customer sign-in is provider-neutral. A test identity is used in experiments and local builds. | Ahmed Benali
+     [REL dotnet-r1.md] ASSUMPTION: | Customer and staff sign-in is provider-neutral; a test identity is used locally. | Ahmed Benali
+     [REL dotnet-r2.md] ASSUMPTION: | Customer sign-in is provider-neutral; a test identity is used in experiments and local builds. | Ahmed Benali
+  A-11 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r2.md', 'REL dotnet-r3.md']:
+     [BRD] Portal release 1 covers French and English. Dutch follows. | OQ-02 | Sofie Peeters, Lena Varga
+     [PRD] Portal release 1 covers French and English. Dutch follows. | OQ-02 | Sofie Peeters, Lena Varga
+     [BACKLOG] Portal release 1 covers French and English. Dutch follows. | Sofie Peeters, Lena Varga
+     [REL dotnet-r2.md] ASSUMPTION: | Portal release 1 covers French and English; Dutch follows. | Sofie Peeters, Lena Varga
+     [REL dotnet-r3.md] ASSUMPTION: | Portal release 1 covers French and English; Dutch follows. | Sofie Peeters, Lena Varga
+  A-12 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r3.md']:
+     [BRD] A customer administrator role exists. Who gets it is OPEN. | OQ-03 | Lena Varga
+     [PRD] A customer administrator role exists. Who gets it is OPEN:. | OQ-03 | Lena Varga
+     [BACKLOG] A customer administrator role exists. Who gets it is OPEN:. | Lena Varga
+     [REL dotnet-r3.md] ASSUMPTION: | A customer administrator role exists; who gets it is OPEN:. | Lena Varga
+  A-13 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] Claims acceptance criteria cover only claims above EUR 500 and no self-approval. The other path is OPEN. | OQ-04, BR-15 | Julien Moreau
+     [PRD] Claims acceptance criteria cover only claims above EUR 500 and no self-approval. The other path is OPEN:. | OQ-04, BR-15 | Julien Moreau
+     [BACKLOG] Claims acceptance criteria cover only claims above EUR 500 and no self-approval. The other path is OPEN:. | Julien Moreau
+  A-14 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] Spreadsheet migration is a separate unplanned item. | OQ-05, CS-24 | Lena Varga, Julien Moreau
+     [PRD] Spreadsheet migration is a separate unplanned item. | OQ-05, CS-24 | Lena Varga, Julien Moreau
+     [BACKLOG] Spreadsheet migration is a separate unplanned item. | Lena Varga, Julien Moreau
+  A-15 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL dotnet-r3.md']:
+     [BRD] The invoice number on an order is filled by the finance process, and the invoice folder year equals the invoice year. | G-09, CS-11 | Julien Moreau
+     [PRD] The invoice number on an order is filled by the finance process, and the invoice folder year equals the invoice year. | G-09, CS-11 | Julien Moreau
+     [BACKLOG] The invoice number on an order is filled by the finance process, and the invoice folder year equals the invoice year. | Julien Moreau
+     [REL azure-r2.md] The invoice number on an order is filled by the finance process, and the invoice folder year equals the invoice year. | Julien Moreau
+     [REL dotnet-r3.md] ASSUMPTION: | The invoice number is filled by the finance process, and the invoice folder year equals the invoice year. | Julien Moreau
+  A-16 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r2.md']:
+     [BRD] 24 months is a display window over the complete history held in the database. | G-09, BR-02 | Ahmed Benali
+     [PRD] 24 months is a display window over the complete history held in the database. | G-09, BR-02 | Ahmed Benali
+     [BACKLOG] 24 months is a display window over the complete history held in the database. | Ahmed Benali
+     [REL dotnet-r2.md] ASSUMPTION: | 24 months is a display window over the complete history in the database. | Ahmed Benali
+  A-17 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL dotnet-r2.md']:
+     [BRD] Pilot customer concurrency is small (20 customers). No customer load figure exists. | G-09, business-case section 8 | Ahmed Benali
+     [PRD] Pilot customer concurrency is small (20 customers). No customer load figure exists. | G-09, business-case section 8 | Ahmed Benali
+     [BACKLOG] Pilot customer concurrency is small (20 customers). No customer load figure exists. | Ahmed Benali
+     [REL azure-r2.md] Pilot customer concurrency is small (20 customers). No customer load figure exists. | Ahmed Benali
+     [REL dotnet-r2.md] ASSUMPTION: | Pilot customer concurrency is small (20 customers); no customer load figure exists. | Ahmed Benali
+  A-18 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL dotnet-r3.md']:
+     [BRD] The warehouse for each claim line can be derived from StockPilot or product data. It is not on order lines. | BR-17 | Pieter Janssens
+     [PRD] The warehouse for each claim line can be derived from StockPilot or product data. It is not on order lines. | BR-17 | Pieter Janssens
+     [EXP] The warehouse for each claim line can be derived from StockPilot or product data. It is not on order lines. | MVE-03 | Pieter Janssens
+     [BACKLOG] The warehouse for each claim line can be derived from StockPilot or product data. It is not on order lines. | Pieter Janssens
+     [REL dotnet-r3.md] ASSUMPTION: | The warehouse for each claim line can be derived from StockPilot or product data; it is not on order lines. | Pieter Janssens
+  A-19 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r2.md', 'REL dotnet-r3.md']:
+     [BRD] In dotnet-r2, staff onboard customer users until BR-08 is built. | BR-01, BR-08 | Lena Varga
+     [PRD] In dotnet-r2, staff onboard customer users until BR-08 is built. | BR-01, BR-08 | Lena Varga
+     [BACKLOG] In dotnet-r2, staff onboard customer users until BR-08 is built. | Lena Varga
+     [REL dotnet-r2.md] ASSUMPTION: | In dotnet-r2, staff onboard customer users until BR-08 is built. | Lena Varga
+     [REL dotnet-r3.md] ASSUMPTION: | Staff onboard customer users until BR-08 is built. | Lena Varga
+  A-20 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL azure-r1.md', 'REL azure-r3.md']:
+     [BRD] If .NET slips, Azure may rehost the unchanged app on a Windows virtual machine as a contingency. | O-03 | Ahmed Benali
+     [PRD] If .NET slips, Azure may rehost the unchanged app on a Windows virtual machine as a contingency. | O-03 | Ahmed Benali
+     [EXP] If .NET slips, Azure may rehost the unchanged app on a Windows virtual machine as a contingency. | MVE-01 | Ahmed Benali
+     [BACKLOG] If .NET slips, Azure may rehost the unchanged app on a Windows virtual machine as a contingency. | Ahmed Benali
+     [REL azure-r1.md] If .NET slips, Azure may rehost the unchanged app on a Windows virtual machine as a contingency. | Ahmed Benali
+     [REL azure-r3.md] If .NET slips, Azure may rehost the unchanged app on a Windows virtual machine as a contingency. | Ahmed Benali
+  A-21 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL azure-r1.md', 'REL azure-r3.md']:
+     [BRD] A managed database service (PaaS, platform as a service) is the preferred data-tier direction. A virtual machine is the fallback. | ES-21 | Ahmed Bena
+     [PRD] A managed database service (PaaS) is the preferred data-tier direction. A virtual machine is the fallback. | ES-21 | Ahmed Benali
+     [EXP] A managed database service (PaaS, platform as a service) is the preferred data-tier direction. A virtual machine is the fallback. | MVE-01 | Ahmed Ben
+     [BACKLOG] A managed database service (PaaS) is the preferred data-tier direction. A virtual machine is the fallback. | Ahmed Benali
+     [REL azure-r1.md] A managed database service (PaaS) is the preferred data-tier direction. A virtual machine is the fallback. | Ahmed Benali
+     [REL azure-r3.md] A managed database service (PaaS) is the preferred data-tier direction. A virtual machine is the fallback. | Ahmed Benali
+  A-22 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD']:
+     [BRD] Premium Power Platform licences are needed for custom connectors and may exceed EUR 17.31 per user per month. Prices are unverified. | C-08 | Ahmed Be
+     [PRD] Premium Power Platform licences are needed for custom connectors and may exceed EUR 17.31 per user per month. Prices are unverified. | C-08 | Ahmed Be
+     [EXP] Premium Power Platform licences are needed for custom connectors and may exceed EUR 17.31 per user per month. Prices are unverified. | MVE-03 | Ahmed 
+     [BACKLOG] Premium Power Platform licences are needed for custom connectors and may exceed EUR 17.31 per user per month. Prices are unverified. | Ahmed Benali
+  A-23 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD']:
+     [BRD] Dataverse use also needs a premium licence outside the Teams environment. | ES-34 | Ahmed Benali
+     [PRD] Dataverse use also needs a premium licence outside the Teams environment. | ES-34 | Ahmed Benali
+     [EXP] Dataverse use also needs a premium licence outside the Teams environment. | MVE-03 | Ahmed Benali
+     [BACKLOG] Dataverse use also needs a premium licence outside the Teams environment. | Ahmed Benali
+  A-24 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL dotnet-r1.md']:
+     [BRD] Azure runs in UTC by default. Order Desk stores local time. Parity needs explicit handling. | Order Desk source code (research finding, not in knowled
+     [PRD] Azure runs in UTC by default. Order Desk stores local time. Parity needs explicit handling. | Order Desk source code (research finding, not in knowled
+     [EXP] Azure runs in UTC by default. Order Desk stores local time. Parity needs explicit handling. | MVE-01 | Ahmed Benali
+     [BACKLOG] Azure runs in UTC by default. Order Desk stores local time. Parity needs explicit handling. (From the code, not in knowledge-docs.) | Ahmed Benali
+     [REL dotnet-r1.md] ASSUMPTION: | Azure runs in UTC by default; Order Desk stores local time; parity needs explicit handling (from the code, not knowledge-docs). | Ahmed 
+  A-25 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD']:
+     [BRD] The Q1 2027 claims pilot cannot be committed while BA-03 has no team. | G-08 | Lena Varga, Marc Dubois
+     [PRD] The Q1 2027 claims pilot cannot be committed while BA-03 has no team. | G-08 | Lena Varga, Marc Dubois
+     [EXP] The Q1 2027 claims pilot cannot be committed while BA-03 has no team. | MVE-03 | Lena Varga, Marc Dubois
+     [BACKLOG] The Q1 2027 claims pilot cannot be committed while BA-03 has no team. | Lena Varga, Marc Dubois
+  A-27 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL azure-r2.md', 'REL dotnet-r2.md']:
+     [BRD] The StockPilot CSV contract and file pick-up stay as they are. | C-03, CS-10 | Ahmed Benali
+     [PRD] The StockPilot CSV contract and file pick-up stay as they are. | C-03, CS-10 | Ahmed Benali
+     [EXP] The StockPilot CSV contract and file pick-up stay as they are. | MVE-01 | Ahmed Benali
+     [BACKLOG] The StockPilot CSV contract and file pick-up stay as they are. | Ahmed Benali
+     [REL azure-r2.md] The StockPilot CSV contract and file pick-up stay as they are. | Ahmed Benali
+     [REL dotnet-r2.md] ASSUMPTION: | The StockPilot CSV contract and file pick-up stay as they are. | Ahmed Benali
+  A-29 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL dotnet-r3.md']:
+     [BRD] The unauthenticated on-premises e-mail relay is not usable after the lease. A replacement mail path is needed. | CS-12 | Ahmed Benali
+     [PRD] The unauthenticated on-premises e-mail relay is not usable after the lease. A replacement mail path is needed. | CS-12 | Ahmed Benali
+     [BACKLOG] The unauthenticated on-premises e-mail relay is not usable after the lease. A replacement mail path is needed. | Ahmed Benali
+     [REL azure-r2.md] The unauthenticated on-premises e-mail relay is not usable after the lease. A replacement mail path is needed. | Ahmed Benali
+     [REL dotnet-r3.md] ASSUMPTION: | The unauthenticated on-premises e-mail relay is not usable after the lease; a replacement mail path is needed. | Ahmed Benali
+  A-30 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md']:
+     [BRD] SQL Server Agent is not available on Azure SQL Database (general knowledge, not fetched). | F3 (research) | Ahmed Benali
+     [PRD] SQL Server Agent is not available on Azure SQL Database (general knowledge, not fetched). | research F3 | Ahmed Benali
+     [EXP] SQL Server Agent is not available on Azure SQL Database (general knowledge, not fetched). | MVE-01 | Ahmed Benali
+     [BACKLOG] SQL Server Agent is not available on Azure SQL Database (general knowledge, not fetched). | Ahmed Benali
+     [REL azure-r1.md] SQL Server Agent is not available on Azure SQL Database (general knowledge, not fetched). | Ahmed Benali
+     [REL azure-r2.md] SQL Server Agent is not available on Azure SQL Database (general knowledge, not fetched). | Ahmed Benali
+  A-31 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL azure-r2.md', 'REL dotnet-r2.md']:
+     [BRD] Backup and long-term retention can cover the 7-year audit retention (feature limits not verified). | NFR-08, NFR-09, X-15 | Ahmed Benali
+     [PRD] Backup and long-term retention can cover the 7-year audit retention (feature limits not verified). | NFR-08, NFR-09, X-15 | Ahmed Benali
+     [EXP] Backup and long-term retention can cover the 7-year audit retention (feature limits not verified). | MVE-01 | Ahmed Benali
+     [BACKLOG] Backup and long-term retention can cover the 7-year audit retention (feature limits not verified). | Ahmed Benali
+     [REL azure-r2.md] Backup and long-term retention can cover the 7-year audit retention (feature limits not verified). | Ahmed Benali
+     [REL dotnet-r2.md] ASSUMPTION: | Backup and long-term retention can cover the 7-year audit retention. | Ahmed Benali
+  A-32 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL azure-r1.md']:
+     [BRD] Managed Instance is the most expensive compatible managed tier. No prices are in the inputs. | MVE-01 | Ahmed Benali
+     [PRD] Managed Instance is the most expensive compatible managed tier. No prices are in the inputs. | MVE-01 | Ahmed Benali
+     [EXP] Managed Instance is the most expensive compatible managed tier. No prices are in the inputs. | MVE-01 | Ahmed Benali
+     [BACKLOG] Managed Instance is the most expensive compatible managed tier. No prices are in the inputs. | Ahmed Benali
+     [REL azure-r1.md] Managed Instance is the most expensive compatible managed tier. No prices are in the inputs. | Ahmed Benali
+  A-33 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL azure-r3.md']:
+     [BRD] A log-based restore from existing backups can fit the Sunday window for a database of about 48 GB plus growth. | CS-07, CS-21 | Ahmed Benali
+     [PRD] A log-based restore from existing backups can fit the Sunday window for a database of about 48 GB plus growth. | CS-07, CS-21 | Ahmed Benali
+     [EXP] A log-based restore from existing backups can fit the Sunday window for a database of about 48 GB plus growth. | Section 4 | Ahmed Benali
+     [BACKLOG] A log-based restore from existing backups can fit the Sunday window for a database of about 48 GB plus growth. | Ahmed Benali
+     [REL azure-r1.md] A log-based restore from existing backups can fit the Sunday window for a database of about 48 GB plus growth. | Ahmed Benali
+     [REL azure-r2.md] A log-based restore from existing backups can fit the Sunday window for a database of about 48 GB plus growth. | Ahmed Benali
+     [REL azure-r3.md] A log-based restore from existing backups can fit the Sunday window for a database of about 48 GB plus growth. | Ahmed Benali
+  A-34 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD']:
+     [BRD] Claim capture with photos and two-step approval is feasible with standard Power Apps and Power Automate features. | BR-14, BR-15 | Ahmed Benali
+     [PRD] Claim capture with photos and two-step approval is feasible with standard Power Apps and Power Automate features. | BR-14, BR-15 | Ahmed Benali
+     [EXP] Claim capture with photos and two-step approval is feasible with standard Power Apps and Power Automate features. | MVE-03 | Ahmed Benali
+     [BACKLOG] Claim capture with photos and two-step approval is feasible with standard Power Apps and Power Automate features. | Ahmed Benali
+  A-35 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL azure-r3.md', 'REL dotnet-r2.md', 'REL dotnet-r3.md']:
+     [BRD] MVE success thresholds are starting points. | MVE design | Lena Varga
+     [PRD] MVE success thresholds are starting points. Lena Varga sets the final numbers. | MVE design | Lena Varga
+     [EXP] MVE success thresholds are starting points. Lena Varga sets the final numbers. | All | Lena Varga
+     [BACKLOG] MVE success thresholds are starting points. Lena Varga sets the final numbers. | Lena Varga
+     [REL azure-r1.md] MVE success thresholds are starting points. Lena Varga sets the final numbers. | Lena Varga
+     [REL azure-r2.md] MVE success thresholds are starting points. Lena Varga sets the final numbers. | Lena Varga
+     [REL azure-r3.md] MVE success thresholds are starting points. Lena Varga sets the final numbers. | Lena Varga
+     [REL dotnet-r2.md] ASSUMPTION: | MVE success thresholds are starting points; Lena Varga sets the final numbers. | Lena Varga
+     [REL dotnet-r3.md] ASSUMPTION: | MVE thresholds are starting points; Lena Varga sets the final numbers. | Lena Varga
+  A-36 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] BA-03 priority bands P1 to P3 are not release tags. | ES-31 | Lena Varga
+     [PRD] BA-03 priority bands P1 to P3 are not release tags. | ES-31 | Lena Varga
+     [BACKLOG] BA-03 priority bands P1 to P3 are not release tags. | Lena Varga
+  A-37 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL dotnet-r2.md']:
+     [BRD] The pilot reads the Azure-hosted database after azure-r2, not the on-premises one. | T-08 | Ahmed Benali
+     [PRD] The pilot reads the Azure-hosted database after azure-r2, not the on-premises one. | T-08 | Ahmed Benali
+     [BACKLOG] The pilot reads the Azure-hosted database after azure-r2, not the on-premises one. | Ahmed Benali
+     [REL azure-r2.md] The pilot reads the Azure-hosted database after azure-r2, not the on-premises one. | Ahmed Benali
+     [REL dotnet-r2.md] ASSUMPTION: The pilot reads the Azure-hosted database after azure-r2, not the on-premises one. | Consumer-side | .NET needs Azure | Ahmed Benali | If 
+     [REL dotnet-r2.md] ASSUMPTION: | The pilot reads the Azure-hosted database after azure-r2. | Ahmed Benali
+  A-38 defined in ['BRD', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL azure-r3.md']:
+     [BRD] The release approver per track is the product owner (Lena Varga), with Marc Dubois as escalation. | G-11 | Marc Dubois
+     [PRD] The release approver per track is the product owner (Lena Varga), with Marc Dubois as escalation. | G-11 | Marc Dubois
+     [REL azure-r1.md] The release approver per track is the product owner (Lena Varga), with Marc Dubois as escalation. | Marc Dubois
+     [REL azure-r2.md] The release approver per track is the product owner (Lena Varga), with Marc Dubois as escalation. | Marc Dubois
+     [REL azure-r3.md] The release approver per track is the product owner (Lena Varga), with Marc Dubois as escalation. | Marc Dubois
+  A-39 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL azure-r3.md', 'REL dotnet-r1.md']:
+     [BRD] Documents only: no deployment, no commit and no Git tags in this run. Tags and the commit follow approval. | ES-27, ES-31, ES-37 | Marc Dubois
+     [PRD] Documents only: no deployment, no commit and no Git tags in this run. Tags and the commit follow approval. | ES-27, ES-31, ES-37 | Marc Dubois
+     [BACKLOG] Documents only: no deployment, no commit and no Git tags in this run. Tags and the commit follow approval. | Marc Dubois
+     [REL azure-r1.md] Documents only: no deployment, no commit and no Git tags in this run. Tags and the commit follow approval. | Marc Dubois
+     [REL azure-r2.md] Documents only: no deployment, no commit and no Git tags in this run. Tags and the commit follow approval. | Marc Dubois
+     [REL azure-r3.md] Documents only: no deployment, no commit and no Git tags in this run. Tags and the commit follow approval. | Marc Dubois
+     [REL dotnet-r1.md] ASSUMPTION: | Documents only: no deployment, no commit, no Git tags until approval. | Marc Dubois
+  A-40 defined in ['BRD', 'PRD']:
+     [BRD] Enabler id families EN-, EA-, EP- and hundreds blocks per track for EPIC-, FEAT-, STORY- and FR-. | G-07 | Lena Varga
+     [PRD] Enabler id families EN-, EA-, EP- and hundreds blocks per track for EPIC-, FEAT-, STORY- and FR-. | G-07 | Lena Varga
+  A-41 defined in ['BRD', 'PRD']:
+     [BRD] Release counts Azure 3, .NET 3, Power Platform 0 hold, with the three placement changes recorded in the plan (C2). | plan C2 | Lena Varga, Marc Dubois
+     [PRD] Release counts Azure 3, .NET 3, Power Platform 0 hold, with the three placement changes in section 6.3. | plan C2 | Lena Varga, Marc Dubois
+  A-42 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL azure-r3.md', 'REL dotnet-r1.md']:
+     [BRD] A target window is the period by which release content is complete and ready to approve. Targets, not commitments. | plan C1 | Marc Dubois
+     [PRD] A target window is the period by which release content is complete and ready to approve. Targets, not commitments. | plan C1 | Marc Dubois
+     [BACKLOG] A target window is the period by which release content is complete and ready to approve. Targets, not commitments. | Marc Dubois
+     [REL azure-r1.md] A target window is the period by which release content is complete and ready to approve. Targets, not commitments. | Marc Dubois
+     [REL azure-r2.md] A target window is the period by which release content is complete and ready to approve. Targets, not commitments. | Marc Dubois
+     [REL azure-r3.md] A target window is the period by which release content is complete and ready to approve. Targets, not commitments. | Marc Dubois
+     [REL dotnet-r1.md] ASSUMPTION: | A target window is the period by which content is complete and ready to approve. | Marc Dubois
+  A-43 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL azure-r3.md']:
+     [BRD] Cross-cutting NFRs are split per track and, where design and proof differ, per release. The first recovery test plan is EA-14. | G-03, plan C3 | Ahmed
+     [PRD] Cross-cutting NFRs are split per track and, where design and proof differ, per release. The first recovery test plan is EA-14. | G-03, plan C3 | Ahmed
+     [BACKLOG] Cross-cutting NFRs are split per track and, where design and proof differ, per release. The first recovery test plan is EA-14. | Ahmed Benali
+     [REL azure-r2.md] Cross-cutting NFRs are split per track and, where design and proof differ, per release. The first recovery test plan is EA-14. | Ahmed Benali
+     [REL azure-r3.md] Cross-cutting NFRs are split per track and, where design and proof differ, per release. The first recovery test plan is EA-14. | Ahmed Benali
+  A-44 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] BA-03 is in scope for BR-14 to BR-19, NFR-09 and the BA-03 side of NFR-03 and NFR-04. No placeholder release. | intake review amendments 1 to 3 | Lena
+     [PRD] BA-03 is in scope for BR-14 to BR-19, NFR-09 and the BA-03 side of NFR-03 and NFR-04. No placeholder release. | intake review amendments 1 to 3 | Lena
+     [BACKLOG] BA-03 is in scope for BR-14 to BR-19, NFR-09 and the BA-03 side of NFR-03 and NFR-04. No placeholder release. | Lena Varga
+  A-45 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL azure-r3.md', 'REL dotnet-r1.md']:
+     [BRD] Cross-track needs are OPEN rows in the release files of the needing track and never a wait. | ES-31, G-03 | Ahmed Benali
+     [PRD] Cross-track needs are OPEN: rows in the release files of the needing track and never a wait. | ES-31, G-03 | Ahmed Benali
+     [BACKLOG] Cross-track needs are OPEN: rows in the release files of the needing track and never a wait. | Ahmed Benali
+     [REL azure-r1.md] Cross-track needs are OPEN: rows in the release files of the needing track and never a wait. | Ahmed Benali
+     [REL azure-r2.md] Cross-track needs are OPEN: rows in the release files of the needing track and never a wait. | Ahmed Benali
+     [REL azure-r3.md] Cross-track needs are OPEN: rows in the release files of the needing track and never a wait. | Ahmed Benali
+     [REL dotnet-r1.md] ASSUMPTION: | Cross-track needs are OPEN: rows and never a wait. | Ahmed Benali
+  A-46 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL dotnet-r1.md']:
+     [BRD] Backlog rank per track: enablers before the features that need them, then Must, Should, Could, then date risk. | G-06 | Lena Varga
+     [PRD] Backlog rank per track: enablers before the features that need them, then Must, Should, Could, then date risk. | G-06 | Lena Varga
+     [BACKLOG] Backlog rank per track: enablers before the features that need them, then Must, Should, Could, then date risk. | Lena Varga
+     [REL azure-r1.md] Backlog rank: enablers before the stories that need them, then Must, Should, Could, then date risk. | Lena Varga
+     [REL dotnet-r1.md] ASSUMPTION: | Rank: enablers before the features that need them, then Must, Should, Could. | Lena Varga
+  A-47 defined in ['BRD', 'PRD']:
+     [BRD] BRD and PRD carry the ids BRD-NW-001 and PRD-NW-001 with status: draft. Lena Varga owns the BRD. Marc Dubois and Ahmed Benali are the proposed reviewe
+     [PRD] BRD and PRD carry the ids BRD-NW-001 and PRD-NW-001 with status: draft. Lena Varga owns them. Marc Dubois and Ahmed Benali are the proposed reviewers.
+  A-48 defined in ['BRD', 'PRD']:
+     [BRD] In an unattended run the interactive builders take the plan's answers. Leftovers become OPEN items. | plan | Lena Varga
+     [PRD] In an unattended run the interactive builders take the plan's answers. Leftovers become OPEN: items. | plan | Lena Varga
+  A-49 defined in ['BACKLOG', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL azure-r3.md', 'REL dotnet-r1.md']:
+     [PRD] New. An enabler takes the highest priority of the requirements it serves in its own track. An enabler that protects an NFR- is Must (A-06). An enabler
+     [BACKLOG] An enabler takes the highest priority of the requirements it serves in its own track. An enabler that protects an NFR- is Must. An enabler that serves
+     [REL azure-r1.md] An enabler that protects an NFR- is Must; an enabler that serves only another track's requirements is Should. | Lena Varga
+     [REL azure-r2.md] An enabler takes the highest priority of the requirements it serves in its own track. | Lena Varga
+     [REL azure-r3.md] An enabler that protects an NFR- is Must (EA-14 protects NFR-06). | Lena Varga
+     [REL dotnet-r1.md] ASSUMPTION: | An enabler takes the highest priority of the requirements it serves in its own track. | Lena Varga
+  A-51 defined in ['BACKLOG', 'PRD', 'REL azure-r2.md', 'REL dotnet-r1.md', 'REL dotnet-r2.md']:
+     [PRD] New. Facts the research read from the Order Desk code and database scripts are not stated in knowledge-docs: (a) the current code does not check that 
+     [BACKLOG] Facts the research read from the Order Desk code and database scripts are not stated in knowledge-docs: the code has no company check on an order, no 
+     [REL azure-r2.md] Facts read from the Order Desk code and scripts are not stated in knowledge-docs. | Ahmed Benali
+     [REL dotnet-r1.md] ASSUMPTION: | Facts read from the Order Desk code and database scripts (for example the channel is taken from the form) are not in knowledge-docs. | A
+     [REL dotnet-r2.md] ASSUMPTION: | Facts read from the Order Desk code (no company check on an order, no role check on a status change, the channel is taken from the form,
+  A-52 defined in ['BACKLOG', 'PRD', 'REL dotnet-r3.md']:
+     [PRD] New. FR-234 (instrumentation for SM-01 to SM-04) is Should, because the business case gives the measures no priority and names no measurement source. 
+     [BACKLOG] FR-234 (instrumentation for SM-01 to SM-04) is Should, because the business case gives the measures no priority and names no measurement source. | Len
+     [REL dotnet-r3.md] ASSUMPTION: | FR-234 (instrumentation for SM-01 to SM-04) is Should, because the business case gives the measures no priority and names no source. | L
+  A-53 defined in ['BACKLOG', 'PRD', 'REL azure-r3.md']:
+     [PRD] New. Release approval of azure-r3 covers the reviewed rehearsal plan, the cutover and rollback runbooks, the recovery test plan and the decommission p
+     [BACKLOG] Release approval of azure-r3 covers the reviewed rehearsal plan, runbooks, recovery test plan and decommission plan. Rehearsals, the live cutover and 
+     [REL azure-r3.md] Release approval of azure-r3 covers the reviewed rehearsal plan, runbooks, recovery test plan and decommission plan. Rehearsals, the live cutover and 
+  A-54 defined in ['BACKLOG', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL dotnet-r1.md', 'REL dotnet-r2.md']:
+     [PRD] New. The measurement rules for NFR-03 to NFR-09 in section 8 are the author's proposals, because the business case defines none. | section 8, G-05 | A
+     [BACKLOG] The measurement rules for NFR-03 to NFR-09 are the author's proposals, because the business case defines none. | Ahmed Benali, Lena Varga
+     [REL azure-r1.md] Measurement rules for NFR-03 to NFR-09 are the author's proposals, because the business case defines none. | Ahmed Benali, Lena Varga
+     [REL azure-r2.md] Measurement rules for NFR-03 to NFR-09 are the author's proposals. | Ahmed Benali, Lena Varga
+     [REL dotnet-r1.md] ASSUMPTION: | The measurement rules for NFR-03 to NFR-09 are the author's proposals. | Ahmed Benali, Lena Varga
+     [REL dotnet-r2.md] ASSUMPTION: | The measurement rules for NFR-03 to NFR-09 are the author's proposals. | Ahmed Benali, Lena Varga
+  BG-01 defined in ['BRD', 'EXP', 'PRD']:
+     [BRD] Customers serve themselves: they see, reorder and follow their orders without phoning the Order Desk. | BA-02 | P-02, P-03, P-04, P-05 | SM-01, SM-02,
+     [PRD] Customers serve themselves: they see, reorder and follow their orders without phoning the Order Desk. | BA-02 | .NET | SM-01, SM-02, SM-03, SM-04 | FR
+     [EXP] Customers serve themselves | MVE-02
+  BG-02 defined in ['BRD', 'EXP', 'PRD']:
+     [BRD] Order Desk runs in Azure before 30 June 2027, with no production server past end of support. | BA-01 | the lease and out-of-support servers (C-01, C-0
+     [PRD] Order Desk runs in Azure before 30 June 2027, with no production server past end of support. | BA-01 | Azure | SM-07 | FR-101, FR-102, FR-105, FR-106,
+     [EXP] Order Desk runs in Azure before 30 June 2027 | MVE-01
+  BG-03 defined in ['BRD', 'EXP', 'PRD']:
+     [BRD] Delivery claims are faster and traceable: no claim is lost or recorded twice. | BA-03 | P-06 | SM-05, SM-06 | Lena Varga | Must
+     [PRD] Delivery claims are faster and traceable: no claim is lost or recorded twice. | BA-03 | Power Platform | SM-05, SM-06 | FR-310 to FR-312, FR-314, FR-3
+     [EXP] Delivery claims are faster and traceable | MVE-03
+  BG-04 defined in ['BRD', 'EXP', 'PRD']:
+     [BRD] Run cost stays inside the two caps: Azure platform at most EUR 1,500 per month (C-04) and claims solution at most EUR 900 per month (C-08). | BA-01, B
+     [PRD] Run cost stays inside the two caps: Azure platform at most EUR 1,500 per month (C-04) and claims solution at most EUR 900 per month (C-08). | BA-01, B
+     [EXP] Run cost stays inside the caps C-04 and C-08 | MVE-01, MVE-03
+  BG-05 defined in ['BRD', 'EXP', 'PRD']:
+     [BRD] Customer data stays protected and every order change and claim decision leaves an audit trail. | all areas | none stated | NFR-03, NFR-04, NFR-05, NFR
+     [PRD] Customer data stays protected and every order change and claim decision leaves an audit trail. | all areas | all | NFR-03, NFR-04, NFR-05, NFR-08, NFR
+     [EXP] Customer data protected, audit trail kept | MVE-01 (linked), MVE-02 (linked), MVE-03 (linked)
+  G-01 defined in ['BRD', 'PRD']:
+     [BRD] The Order Desk API has no owner (CS-27, ES-36, C-05). | O-01, X-20 | Ahmed Benali | Open
+     [PRD] The Order Desk API has no owner. | O-01, X-20, FR-235, FR-240 | Ahmed Benali | Open
+  G-02 defined in ['BRD', 'PRD']:
+     [BRD] Power Platform licensing and feasibility conflict (C-07, C-08, ES-36, CS-25, CS-27). | O-02, A-22, A-23, T-02 | Ahmed Benali | Open
+     [PRD] Power Platform licensing and feasibility conflict. | O-02, A-22, A-23, T-02, section 11.2 | Ahmed Benali | Open
+  G-03 defined in ['BRD', 'PRD']:
+     [BRD] The Azure and .NET boundary is unclear. | A-02, A-43, O-03, T-04, X-02, X-04 | Ahmed Benali | Open, default boundary assumed
+     [PRD] The Azure and .NET boundary is unclear. | A-02, A-43, O-03, T-04, X-02, X-04 | Ahmed Benali | Open, default boundary assumed
+  G-04 defined in ['BRD', 'PRD']:
+     [BRD] BR-04 ("always up to date") conflicts with the nightly update (CS-10). BR-09 has the same issue. | A-03, O-04, T-01 | Lena Varga | Open, assumption ap
+     [PRD] BR-04 ("always up to date") conflicts with the nightly update; BR-09 has the same issue. | A-03, O-04, T-01, FR-213, FR-232 | Lena Varga | Open, assum
+  G-05 defined in ['BRD', 'PRD']:
+     [BRD] Weak testability: NFR-01 and NFR-02 have no measurement point or load; C-04 says both "target" and "at most"; SM-01 to SM-04 say "portal launch"; CET 
+     [PRD] Weak testability: no measurement point or load for NFR-01 and NFR-02; "target" and "at most" in C-04; "portal launch"; CET and CEST mixed. | A-04, A-0
+  G-06 defined in ['BRD', 'PRD']:
+     [BRD] No defined MVE or PRD structure, no prioritisation beyond MoSCoW, no release count, no backlog tool, no ES-28 prefix. | A-06, A-08, A-09, O-06 | Lena 
+     [PRD] No defined MVE or PRD structure, no prioritisation beyond MoSCoW, no release count, no backlog tool, no ES-28 prefix. | A-06, A-08, A-09, O-06 | Lena 
+  G-07 defined in ['BRD', 'PRD']:
+     [BRD] The identifier scheme has no FR, AC or goal ids. | A-07, A-40, DD-01 to DD-03 | Lena Varga | Closed in this BRD by assumption; confirm A-07
+     [PRD] The identifier scheme has no FR, AC or goal ids. | A-07, A-40, DD-01 to DD-03 | Lena Varga | Closed by assumption; confirm A-07
+  G-08 defined in ['BRD', 'PRD']:
+     [BRD] BA-03 has no team or release; the Q1 2027 claims pilot cannot be committed. | A-25, O-07 | Lena Varga, Marc Dubois | Open
+     [PRD] BA-03 has no team or release; the Q1 2027 claims pilot cannot be committed. | A-25, O-07, section 5.2 | Lena Varga, Marc Dubois | Open
+  G-09 defined in ['BRD', 'PRD']:
+     [BRD] Missing data facts: order-to-invoice mapping, 24-month retention, customer concurrency, warehouse per order line. | A-15, A-16, A-17, A-18, O-08 | Ahm
+     [PRD] Missing data facts: order-to-invoice mapping, 24-month retention, customer concurrency, warehouse per order line. | A-15, A-16, A-17, A-18, O-08 | Ahm
+  G-10 defined in ['BRD', 'PRD']:
+     [BRD] Enabler work has no BR- or NFR- to cite (build pipeline CS-19, tests CS-18, logging CS-15). | Cited by CS-, ES- and C- ids in the backlog; the BRD add
+     [PRD] Enabler work has no BR- or NFR- to cite. | Section 9 cites CS-, ES- and C- ids; the traceability table lists enablers separately. | Lena Varga | Carri
+  G-11 defined in ['BRD', 'PRD']:
+     [BRD] The release approver per track is not named (ES-31). | A-38, O-09 | Marc Dubois | Open
+     [PRD] The release approver per track is not named (ES-31). | A-38, O-09 | Marc Dubois | Open
+  MVE-O-01 defined in ['EXP', 'PRD', 'REL azure-r1.md']:
+     [PRD] Which IT team member runs MVE-01 with the adviser. | Ahmed Benali
+     [EXP] Which person from the IT team runs MVE-01 with the adviser. | Ahmed Benali
+     [REL azure-r1.md] Name the engineer who runs MVE-01. | Ahmed Benali
+  MVE-01 defined in ['EXP', 'PRD']:
+     [PRD] track-azure (BA-01) | A managed data tier can host NorthwindOrders, keep the StockPilot exchange with the file contract unchanged and stay inside the 
+     [EXP] BA-01 Platform and data-centre exit | track-azure | A PaaS data tier can host NorthwindOrders, keep the nightly StockPilot exchange (file contract unc
+     [EXP] EPIC-102 (data-tier decision EA-05, cost model EA-09, azure-r1); EPIC-103 (exchange redesign EA-06, backup design EA-08, azure-r2); the plan for EPIC-
+  MVE-A-01 defined in ['EXP', 'PRD']:
+     [PRD] The effort (about 4 person-days each) and elapsed times are planning estimates; the inputs give no sizing basis. | Ahmed Benali (MVE-01, MVE-03), Lena
+     [EXP] The effort (about 4 person-days each) and the elapsed times in this document are planning estimates; the inputs give no sizing basis. | All | Ahmed Be
+  MVE-02 defined in ['EXP', 'PRD']:
+     [PRD] track-dotnet (BA-02) | Customers reorder unaided and trust a status that is refreshed once a night. | EPIC-202, instrumentation in EPIC-203 | R1 at le
+     [EXP] BA-02 Ordering and customer self-service | track-dotnet | Customers will reorder unaided and will trust an order status that is refreshed only once a 
+     [EXP] EPIC-202 (portal pilot stories for BR-04, BR-05, BR-10, BR-12, dotnet-r2); EPIC-203 instrumentation for SM-01 to SM-04. It does not gate EPIC-201, who
+  MVE-A-02 defined in ['EXP', 'PRD']:
+     [PRD] Public price lists are an adequate basis for indicative monthly figures; each price is date-stamped. | Ahmed Benali
+     [EXP] Public price lists (Azure pricing calculator, Microsoft licensing guide) are an adequate basis for indicative monthly figures; prices change, so each 
+  MVE-O-02 defined in ['EXP', 'PRD']:
+     [PRD] Who facilitates the MVE-02 sessions, in which languages, and which 5 to 8 customers take part. | Lena Varga, Sofie Peeters
+     [EXP] Who facilitates the MVE-02 sessions, and in which languages (French, Dutch, English); which 5 to 8 customers take part. The wider question of who spea
+  MVE-A-03 defined in ['BACKLOG', 'EXP', 'PRD']:
+     [PRD] Growth stays linear: the database reaches about 56 GB and invoices about 136 GB by 30 June 2027. | Ahmed Benali
+     [EXP] Growth stays linear: the database reaches about 56 GB and invoices about 136 GB by 30 June 2027 (48 GB plus 8 months at 1 GB; 120 GB plus 8 months at 
+     [BACKLOG] Growth stays linear (database about 56 GB and invoices about 136 GB by 30 June 2027). | Ahmed Benali
+  MVE-03 defined in ['EXP', 'PRD']:
+     [PRD] track-power-platform (BA-03) | A claims solution can meet the connector rule (ES-36) and the cap C-08 for about 52 users, and hand credit-note request
+     [EXP] BA-03 Delivery claims and credit notes | track-power-platform | A claims solution can meet the custom-connector rule and the EUR 900 cap for about 52 
+     [EXP] EPIC-301 (EP-03, EP-04, EP-05, EP-06), then EPIC-302, EPIC-303, EPIC-304. All are unplanned and keep only the track-power-platform tag.
+  MVE-O-03 defined in ['EXP', 'PRD']:
+     [PRD] Who runs MVE-03, given that BA-03 has no team (related to O-07, G-08). | Ahmed Benali, Lena Varga
+     [EXP] Who runs MVE-03, given that BA-03 has no team (related to O-07, G-08). | Ahmed Benali, Lena Varga
+  MVE-A-04 defined in ['BACKLOG', 'EXP', 'PRD']:
+     [PRD] A local SQL Server (Developer edition or container) is available to run the database scripts. | Ahmed Benali
+     [EXP] A local SQL Server (Developer edition or container) is available to the experimenter to run the database scripts. | MVE-01 | Ahmed Benali
+     [BACKLOG] A local SQL Server (Developer edition or container) is available to run the database scripts. | Ahmed Benali
+  MVE-O-04 defined in ['BACKLOG', 'EXP', 'PRD']:
+     [PRD] How a CSV made in the cloud reaches the finance import share before 18:00, and who runs and pays for it (related to O-15, X-24). | Julien Moreau, Ahme
+     [EXP] How a CSV made in the cloud reaches NWFS01finance-import before 18:00: a gateway, a file-sync agent on the Lyon network, or a finance-side pick-up; an
+     [BACKLOG] How a CSV made in the cloud reaches the finance import share before 18:00, and who runs and pays for it. | Julien Moreau, Ahmed Benali
+  MVE-A-05 defined in ['EXP', 'PRD']:
+     [PRD] Stated intent overstates real behaviour, and 5 to 8 participants give a signal and not proof. | Lena Varga
+     [EXP] Stated intent overstates real behaviour, and 5 to 8 participants give a signal and not statistical proof; the R2 threshold of 60 % is set above the 39
+  MVE-O-05 defined in ['BACKLOG', 'EXP', 'PRD', 'REL azure-r2.md']:
+     [PRD] Where the SQL Server Agent job and the Windows scheduled task for the Antwerp transfer are defined; they are not in the repository. | Ahmed Benali
+     [EXP] Where are the SQL Server Agent job "NW - StockPilot nightly" and the Windows scheduled task that copies files to the Antwerp SFTP server defined? They
+     [BACKLOG] Where the SQL Server Agent job and the Windows scheduled task for the Antwerp transfer are defined. | Ahmed Benali
+     [REL azure-r2.md] Where are the SQL Server Agent job and the Windows scheduled task for the Antwerp transfer defined? | Ahmed Benali
+  MVE-O-06 defined in ['EXP', 'PRD']:
+     [PRD] Start dates for the three experiments, so results arrive before the gated epics are committed. | Lena Varga, Marc Dubois
+     [EXP] Start dates for the three experiments, so results arrive before the gated epics are committed. | Lena Varga, Marc Dubois
+  MVE-A-06 defined in ['EXP', 'PRD']:
+     [PRD] The experiment checks are leading indicators. Passing one does not show that an SM- or BG- is met. | Lena Varga
+     [EXP] The checks in this document (M1a to M1c, R1 to R3, P3a to P3d) are leading indicators. Passing one does not show that a success measure (SM-nn) or goa
+  MVE-A-07 defined in ['EXP', 'PRD']:
+     [PRD] Backup frequency and point-in-time restore for each Azure SQL option come from public documentation and are not verified here. | Ahmed Benali
+     [EXP] Backup frequency and point-in-time restore for each Azure SQL option come from public Microsoft documentation and are not verified here. | MVE-01 | Ah
+  MVE-A-08 defined in ['BACKLOG', 'EXP', 'PRD']:
+     [PRD] The licence class of each Power Platform capability is read from Microsoft's primary licensing documentation at experiment time. | Ahmed Benali
+     [EXP] The licence class of each Power Platform capability is read from Microsoft's primary licensing documentation at experiment time; until then, every cla
+     [BACKLOG] The licence class of each Power Platform capability is read from primary Microsoft documentation at experiment time. | Ahmed Benali
+  MVE-A-09 defined in ['BACKLOG', 'EXP', 'PRD']:
+     [PRD] Whether a flow can run under a shared or service identity without a premium licence for every user is unknown. | Ahmed Benali
+     [EXP] Whether a flow can run under a shared or service identity without a premium licence for every user is unknown; option D3 depends on it. | MVE-03 | Ahm
+     [BACKLOG] Whether a flow can run under a shared or service identity without a premium licence for every user is unknown. | Ahmed Benali
+  O-01 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL dotnet-r1.md', 'REL dotnet-r3.md']:
+     [BRD] Who owns the Order Desk API (an enabler under track-dotnet, or another owner)? | G-01, CS-27 | Ahmed Benali
+     [PRD] Who owns the Order Desk API (an enabler under track-dotnet, or another owner)? | G-01, CS-27 | Ahmed Benali
+     [EXP] Who owns the Order Desk API (an enabler under track-dotnet, or another owner)? (G-01) | Ahmed Benali
+     [BACKLOG] Who owns the Order Desk API (an enabler under track-dotnet, or another owner)? | Ahmed Benali
+     [REL dotnet-r1.md] OPEN: | Who owns the Order Desk API? Only the API part of EN-13 depends on it. | Ahmed Benali
+     [REL dotnet-r3.md] OPEN: | Who owns the Order Desk API (an enabler under track-dotnet, or another owner)? | Ahmed Benali
+  O-02 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD']:
+     [BRD] Does BA-03 need a premium licence, a data gateway or a custom connector inside C-07 and C-08? Is Dataverse used? | G-02 | Ahmed Benali
+     [PRD] Does BA-03 need a premium licence, a data gateway or a custom connector inside C-07 and C-08? Is Dataverse used? | G-02 | Ahmed Benali
+     [EXP] Does BA-03 need a premium licence, a data gateway or a custom connector inside C-07 and C-08? Is Dataverse used? (G-02) | Ahmed Benali
+     [BACKLOG] Does BA-03 need a premium licence, a data gateway or a custom connector inside C-07 and C-08? Is Dataverse used? | Ahmed Benali
+  O-03 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL azure-r3.md', 'REL dotnet-r1.md']:
+     [BRD] Does azure-r1 rehost .NET Framework 4.8 or wait for net10.0? Is staff Entra sign-in in BA-01? | G-03 | Ahmed Benali
+     [PRD] Does azure-r1 rehost .NET Framework 4.8 or wait for net10.0? Is staff Entra sign-in in BA-01? | G-03 | Ahmed Benali
+     [EXP] Does azure-r1 rehost .NET Framework 4.8 or wait for net10.0? Is staff Entra sign-in in BA-01? (G-03) | Ahmed Benali
+     [BACKLOG] Does azure-r1 rehost .NET Framework 4.8 or wait for net10.0? Is staff Entra sign-in in BA-01? | Ahmed Benali
+     [REL azure-r1.md] Does azure-r1 rehost .NET Framework 4.8 or wait for net10.0? Is staff Entra sign-in in BA-01? | Ahmed Benali
+     [REL azure-r2.md] Rehost .NET Framework 4.8 or wait for net10.0; is staff Entra sign-in in BA-01? | Ahmed Benali
+     [REL azure-r3.md] Rehost .NET Framework 4.8 or wait for net10.0; is staff Entra sign-in in BA-01? | Ahmed Benali
+     [REL dotnet-r1.md] OPEN: | Rehost .NET Framework 4.8 or wait for net10.0 in azure-r1; is staff Entra sign-in in BA-01? | Ahmed Benali
+  O-04 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL dotnet-r2.md']:
+     [BRD] What status freshness is acceptable, given the nightly batch? | G-04 | Lena Varga
+     [PRD] What status freshness is acceptable, given the nightly batch? | G-04 | Lena Varga
+     [EXP] What status freshness is acceptable, given the nightly batch? (G-04) | Lena Varga
+     [BACKLOG] What status freshness is acceptable, given the nightly batch? | Lena Varga
+     [REL dotnet-r2.md] OPEN: | What status freshness is acceptable, given the nightly batch? | Lena Varga
+  O-05 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL dotnet-r3.md']:
+     [BRD] Does "portal launch" mean the pilot or general availability? | G-05 | Lena Varga
+     [PRD] Does "portal launch" mean the pilot or general availability? | G-05 | Lena Varga
+     [EXP] Does "portal launch" mean the pilot or general availability? (G-05) | Lena Varga
+     [BACKLOG] Does "portal launch" mean the pilot or general availability? | Lena Varga
+     [REL dotnet-r3.md] OPEN: | Does "portal launch" mean the pilot or general availability? | Lena Varga
+  O-06 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL dotnet-r1.md', 'REL dotnet-r3.md']:
+     [BRD] Which backlog tool and which ES-28 prefix? | G-06 | Lena Varga
+     [PRD] Which backlog tool and which ES-28 prefix? | G-06 | Lena Varga
+     [BACKLOG] Which backlog tool and which ES-28 prefix? Also: item types and fields in the tool are not validated. | Lena Varga
+     [REL azure-r1.md] Which backlog tool and which ES-28 prefix? Item types and fields in the tool are not validated. | Lena Varga
+     [REL dotnet-r1.md] OPEN: | Which backlog tool and which ES-28 prefix; item types and fields in a tool are not validated. | Lena Varga
+     [REL dotnet-r3.md] OPEN: | Which backlog tool and which ES-28 prefix; item types and fields in a tool are not validated. | Lena Varga
+  O-07 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD']:
+     [BRD] Who is the BA-03 team, what are their skills, and what is the intended date (or is BA-03 unplanned)? | G-08 | Lena Varga, Marc Dubois
+     [PRD] Who is the BA-03 team, what are their skills, and what is the intended date (or is BA-03 unplanned)? | G-08 | Lena Varga, Marc Dubois
+     [EXP] Who is the BA-03 team, what are their skills, and what is the intended date (or is BA-03 unplanned)? (G-08) | Lena Varga, Marc Dubois
+     [BACKLOG] Who is the BA-03 team, what are their skills, and what is the intended date (or is BA-03 unplanned)? | Lena Varga, Marc Dubois
+  O-08 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r2.md']:
+     [BRD] Order-to-invoice mapping, order retention, customer concurrency, and warehouse per order line. | G-09 | Ahmed Benali
+     [PRD] Order-to-invoice mapping, order retention, customer concurrency, and warehouse per order line. | G-09 | Ahmed Benali
+     [BACKLOG] Order-to-invoice mapping, order retention, customer concurrency, and warehouse per order line. | Ahmed Benali
+     [REL dotnet-r2.md] OPEN: | Order-to-invoice mapping, order retention, customer concurrency, warehouse per order line. | Ahmed Benali
+  O-09 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL azure-r3.md', 'REL dotnet-r1.md', 'REL dotnet-r2.md', 'REL dotnet-r3.md']:
+     [BRD] Who is the named release approver for each track? | G-11 | Marc Dubois
+     [PRD] Who is the named release approver for each track? | G-11 | Marc Dubois
+     [BACKLOG] Who is the named release approver for each track? | Marc Dubois
+     [REL azure-r1.md] Who is the named release approver for the Azure track? | Marc Dubois
+     [REL azure-r2.md] Who is the named release approver for the Azure track? | Marc Dubois
+     [REL azure-r3.md] Who is the named release approver for the Azure track? | Marc Dubois
+     [REL dotnet-r1.md] OPEN: | Who is the named release approver for the .NET track? | Marc Dubois
+     [REL dotnet-r2.md] OPEN: | Named release approver for the .NET track. | Marc Dubois
+     [REL dotnet-r3.md] OPEN: | Named release approver for the .NET track. | Marc Dubois
+  O-10 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r2.md']:
+     [BRD] Which identity provider do customer users use (OQ-01)? | business case | Ahmed Benali
+     [PRD] Which identity provider do customer users use (OQ-01)? | business case | Ahmed Benali
+     [BACKLOG] Which identity provider do customer users use (OQ-01)? | Ahmed Benali
+     [REL dotnet-r2.md] OPEN: | Which identity provider do customer users use (OQ-01)? | Ahmed Benali
+  O-11 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r2.md', 'REL dotnet-r3.md']:
+     [BRD] Must Dutch be in the first release (OQ-02)? | business case | Sofie Peeters, Lena Varga
+     [PRD] Must Dutch be in the first release (OQ-02)? | business case | Sofie Peeters, Lena Varga
+     [BACKLOG] Must Dutch be in the first release (OQ-02)? | Sofie Peeters, Lena Varga
+     [REL dotnet-r2.md] OPEN: | Must Dutch be in the first release (OQ-02)? | Sofie Peeters, Lena Varga
+     [REL dotnet-r3.md] OPEN: | Must Dutch be in the first release (OQ-02)? | Sofie Peeters, Lena Varga
+  O-12 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r3.md']:
+     [BRD] Do customer administrators exist for every customer or only for large ones (OQ-03)? | business case | Lena Varga
+     [PRD] Do customer administrators exist for every customer or only for large ones (OQ-03)? | business case | Lena Varga
+     [BACKLOG] Do customer administrators exist for every customer or only for large ones (OQ-03)? | Lena Varga
+     [REL dotnet-r3.md] OPEN: | Do customer administrators exist for every customer or only for large ones (OQ-03)? | Lena Varga
+  O-13 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] Who approves claims of EUR 500 or less (OQ-04)? | business case | Julien Moreau, Lena Varga
+     [PRD] Who approves claims of EUR 500 or less (OQ-04)? | business case | Julien Moreau, Lena Varga
+     [BACKLOG] Who approves claims of EUR 500 or less (OQ-04)? | Julien Moreau, Lena Varga
+  O-14 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] Must the claims already in the spreadsheet be moved to the new solution (OQ-05)? | business case | Lena Varga, Julien Moreau
+     [PRD] Must the claims already in the spreadsheet be moved to the new solution (OQ-05)? | business case | Lena Varga, Julien Moreau
+     [BACKLOG] Must the claims already in the spreadsheet be moved to the new solution (OQ-05)? | Lena Varga, Julien Moreau
+  O-15 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL azure-r3.md', 'REL dotnet-r3.md']:
+     [BRD] Where do the finance system, the NWFS01 shares (claims.xlsx, finance-import, invoices), the domain controllers and the Antwerp file-transfer (SFTP) ro
+     [PRD] Where do the finance system, the NWFS01 shares (claims.xlsx, finance-import, invoices), the domain controllers and the Antwerp file-transfer (SFTP) ro
+     [EXP] Where do the finance system, the NWFS01 shares (claims.xlsx, finance-import, invoices), the domain controllers and the Antwerp file-transfer (SFTP) ro
+     [BACKLOG] Where do the finance system, the NWFS01 shares, the domain controllers and the Antwerp SFTP route live after 30 June 2027 (RG-01)? | Ahmed Benali, Jul
+     [REL azure-r1.md] Where do the finance system, the NWFS01 shares, the domain controllers and the Antwerp SFTP route live after 30 June 2027 (RG-01)? | Ahmed Benali, Jul
+     [REL azure-r2.md] Where do the finance system, the NWFS01 shares, the domain controllers and the Antwerp SFTP route live after 30 June 2027? | Ahmed Benali, Julien More
+     [REL azure-r3.md] Where do the finance system, the NWFS01 shares, the domain controllers and the Antwerp SFTP route live after 30 June 2027 (RG-01)? | Both (an unanswer
+     [REL azure-r3.md] Where do the finance system, the NWFS01 shares, the domain controllers and the Antwerp SFTP route live after 30 June 2027? | Ahmed Benali, Julien More
+     [REL dotnet-r3.md] OPEN: | Where do the finance system, the NWFS01 shares, the domain controllers and the Antwerp SFTP route live after 30 June 2027? | Ahmed Benali, Jul
+  O-16 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL azure-r2.md', 'REL dotnet-r2.md']:
+     [BRD] How does an order get the status Delivered, and can StockPilot's file pick-up run more than nightly without changing StockPilot (RG-02)? | CS-10, C-03
+     [PRD] How does an order get the status Delivered, and can StockPilot's file pick-up run more than nightly without changing StockPilot (RG-02)? | CS-10, C-03
+     [EXP] How does an order get the status Delivered, and can StockPilot's file pick-up run more than nightly without changing StockPilot (RG-02)? | Ahmed Benal
+     [BACKLOG] How does an order get the status Delivered, and can StockPilot's file pick-up run more than nightly without changing StockPilot (RG-02)? | Ahmed Benal
+     [REL azure-r2.md] How does an order get the status Delivered, and can StockPilot's file pick-up run more than nightly without changing StockPilot? | Ahmed Benali, Piete
+     [REL dotnet-r2.md] OPEN: | How an order gets Delivered; can StockPilot's pick-up run more than nightly without changing StockPilot? | Ahmed Benali, Pieter Janssens
+  O-17 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL dotnet-r3.md']:
+     [BRD] What sends order confirmations today (RG-03)? | CS-12 | Ahmed Benali
+     [PRD] What sends order confirmations today (RG-03)? | CS-12 | Ahmed Benali
+     [BACKLOG] What sends order confirmations today (RG-03)? | Ahmed Benali
+     [REL azure-r2.md] What sends order confirmations today? | Ahmed Benali
+     [REL dotnet-r3.md] OPEN: | What sends order confirmations today? | Ahmed Benali
+  O-18 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r2.md', 'REL dotnet-r3.md']:
+     [BRD] Where do the customer e-mail address and language preference live? | BR-09, BR-11, BR-19 | Lena Varga
+     [PRD] Where do the customer e-mail address and language preference live? | BR-09, BR-11, BR-19 | Lena Varga
+     [BACKLOG] Where do the customer e-mail address and language preference live? | Lena Varga
+     [REL dotnet-r2.md] OPEN: | Where do the customer e-mail address and language preference live? | Lena Varga
+     [REL dotnet-r3.md] OPEN: | Where do the customer e-mail address and language preference live? | Lena Varga
+  O-19 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL dotnet-r1.md']:
+     [BRD] Which build and deployment pipeline tool (RG-04)? | CS-19 | Ahmed Benali
+     [PRD] Which build and deployment pipeline tool (RG-04)? | CS-19 | Ahmed Benali
+     [BACKLOG] Which build and deployment pipeline tool (RG-04)? | Ahmed Benali
+     [REL azure-r1.md] Which build and deployment pipeline tool (RG-04)? | Ahmed Benali
+     [REL dotnet-r1.md] OPEN: | Which build and deployment pipeline tool (EN-09)? | Ahmed Benali
+  O-20 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r1.md']:
+     [BRD] Decision record on the portal and API project shape (ES-13). | ES-13 | Ahmed Benali
+     [PRD] Decision record on the portal and API project shape (ES-13). | ES-13 | Ahmed Benali
+     [BACKLOG] Decision record on the portal and API project shape (ES-13). | Ahmed Benali
+     [REL dotnet-r1.md] OPEN: | Decision record on the portal and API project shape (EN-13, ES-13). | Ahmed Benali
+  O-21 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL azure-r3.md', 'REL dotnet-r1.md', 'REL dotnet-r2.md', 'REL dotnet-r3.md']:
+     [BRD] Approval and funding to build (the status says "not yet approved for build"). | business-case header | Marc Dubois
+     [PRD] Approval and funding to build (the status says "not yet approved for build"). | business-case header | Marc Dubois
+     [EXP] Approval and funding to build (the status says "not yet approved for build"). | Marc Dubois
+     [BACKLOG] Approval and funding to build (the business case says "not yet approved for build"). | Marc Dubois
+     [REL azure-r1.md] Approval and funding to build. | Marc Dubois
+     [REL azure-r2.md] Approval and funding to build. | Marc Dubois
+     [REL azure-r3.md] Approval and funding to build. | Marc Dubois
+     [REL dotnet-r1.md] OPEN: | Approval and funding to build. | Marc Dubois
+     [REL dotnet-r2.md] OPEN: | Approval and funding to build. | Marc Dubois
+     [REL dotnet-r3.md] OPEN: | Approval and funding to build. | Marc Dubois
+  O-22 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] Which tool for the claims dashboard (BR-18) within C-08? | BR-18, C-08 | Lena Varga
+     [PRD] Which tool for the claims dashboard (BR-18) within C-08? | BR-18, C-08 | Lena Varga
+     [BACKLOG] Which tool for the claims dashboard (BR-18) within C-08? | Lena Varga
+  O-23 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL dotnet-r2.md']:
+     [BRD] Which database does the Q2 2027 portal pilot read (T-08)? | C-05, business-case section 8 | Ahmed Benali
+     [PRD] Which database does the Q2 2027 portal pilot read (T-08)? | C-05, business-case section 8 | Ahmed Benali
+     [BACKLOG] Which database does the Q2 2027 portal pilot read (T-08)? | Ahmed Benali
+     [REL azure-r2.md] Which database does the Q2 2027 portal pilot read (T-08)? | Ahmed Benali
+     [REL dotnet-r2.md] Which database does the Q2 2027 portal pilot read (T-08)? | Consumer-side | .NET needs Azure | Ahmed Benali | The portal reads and writes orders only 
+     [REL dotnet-r2.md] OPEN: | Which database does the Q2 2027 portal pilot read (T-08)? | Ahmed Benali
+  O-24 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL dotnet-r2.md']:
+     [BRD] What does the customer identity service cost, and does it count toward C-04? | OQ-01, C-04 | Ahmed Benali
+     [PRD] What does the customer identity service cost, and does it count toward C-04? | OQ-01, C-04 | Ahmed Benali
+     [BACKLOG] What does the customer identity service cost, and does it count toward C-04? | Ahmed Benali
+     [REL azure-r1.md] What does the customer identity service cost, and does it count toward C-04? | Ahmed Benali
+     [REL azure-r2.md] What does the customer identity service cost, and does it count toward C-04? | Ahmed Benali
+     [REL dotnet-r2.md] OPEN: | What does the customer identity service cost, and does it count toward C-04? | Ahmed Benali
+  O-25 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL azure-r3.md', 'REL dotnet-r1.md', 'REL dotnet-r2.md', 'REL dotnet-r3.md']:
+     [BRD] Confirm the release counts, windows and the three placement changes in the plan (C2). | plan C2 | Lena Varga, Marc Dubois
+     [PRD] Confirm the release counts, windows and the three placement changes in section 6.3. | plan C2 | Lena Varga, Marc Dubois
+     [BACKLOG] Confirm the release counts, windows and the three placement changes (PRD section 6.3). | Lena Varga, Marc Dubois
+     [REL azure-r1.md] Confirm the release counts, windows and the three placement changes. | Lena Varga, Marc Dubois
+     [REL azure-r2.md] Confirm the release counts, windows and placements. | Lena Varga, Marc Dubois
+     [REL azure-r3.md] Confirm the release counts, windows and placements. | Lena Varga, Marc Dubois
+     [REL dotnet-r1.md] OPEN: | Confirm release counts, windows and the three placement changes (C2). | Lena Varga, Marc Dubois
+     [REL dotnet-r2.md] OPEN: | Confirm release counts, windows and placement changes. | Lena Varga, Marc Dubois
+     [REL dotnet-r3.md] OPEN: | Confirm release counts, windows and placement changes. | Lena Varga, Marc Dubois
+  O-26 defined in ['BACKLOG', 'BRD', 'EXP', 'PRD', 'REL dotnet-r2.md', 'REL dotnet-r3.md']:
+     [BRD] Name a measurement source and an owner for each goal and success measure (BG-01 to BG-05, SM-01 to SM-07); confirm the proposed goal owners in section
+     [PRD] Name a measurement source and an owner for each goal and success measure (BG-01 to BG-05, SM-01 to SM-07); confirm the proposed goal owners in BRD sec
+     [EXP] Name a measurement source and an owner for each goal and success measure (BG-01 to BG-05, SM-01 to SM-07); confirm the proposed goal owners in BRD sec
+     [BACKLOG] Name a measurement source and an owner for each goal and success measure (BG-01 to BG-05, SM-01 to SM-07). | Lena Varga
+     [REL dotnet-r2.md] OPEN: | Name a measurement source and an owner for each goal and success measure. | Lena Varga
+     [REL dotnet-r3.md] OPEN: | Name a measurement source and an owner for each goal and success measure. | Lena Varga
+  O-27 defined in ['BACKLOG', 'PRD', 'REL azure-r3.md']:
+     [PRD] New. The azure-r3 target window ends on 31 May 2027, but the rehearsal and live Sundays (6, 13, 20 and 27 June 2027, computed from CS-21) fall after i
+     [BACKLOG] The azure-r3 window ends 31 May 2027 but the rehearsal and live Sundays (6, 13, 20, 27 June 2027) fall after it. Confirm that release approval covers 
+     [REL azure-r3.md] The azure-r3 window ends 31 May 2027 but the rehearsal and live Sundays (6, 13, 20, 27 June 2027) fall after it. Confirm approval covers the plans and
+  O-28 defined in ['BACKLOG', 'REL dotnet-r2.md']:
+     [BACKLOG] New. What happens to a line of a copied order whose product is no longer available (STORY-234)? Not stated in the sources. | Lena Varga
+     [REL dotnet-r2.md] OPEN: | What happens to a line of a copied order whose product is no longer available (STORY-234)? | Lena Varga
+  OQ-01 defined in ['BRD', 'PRD']:
+     [BRD] Which identity provider should customer users use? Options discussed include Microsoft Entra External ID and invitations into our tenant. No decision 
+     [PRD] Which identity provider should customer users use? | O-10 | A-10 | Ahmed Benali
+  OQ-02 defined in ['BRD', 'PRD']:
+     [BRD] Must Dutch (BR-11) be in the first release, or can it follow? | O-11 | A-11 | Sofie Peeters, Lena Varga
+     [PRD] Must Dutch (BR-11) be in the first release, or can it follow? | O-11 | A-11 | Sofie Peeters, Lena Varga
+  OQ-03 defined in ['BRD', 'PRD']:
+     [BRD] Do customer administrators (BR-08) exist for every customer, or only for large ones? | O-12 | A-12 | Lena Varga
+     [PRD] Do customer administrators (BR-08) exist for every customer, or only for large ones? | O-12 | A-12 | Lena Varga
+  OQ-04 defined in ['BRD', 'PRD']:
+     [BRD] Who approves claims of EUR 500 or less (BR-15)? | O-13 | A-13 | Julien Moreau, Lena Varga
+     [PRD] Who approves claims of EUR 500 or less (BR-15)? | O-13 | A-13 | Julien Moreau, Lena Varga
+  OQ-05 defined in ['BRD', 'PRD']:
+     [BRD] Must the claims already in the spreadsheet be moved to the new solution? | O-14 | A-14 | Lena Varga, Julien Moreau
+     [PRD] Must the claims already in the spreadsheet be moved to the new solution? | O-14 | A-14 | Lena Varga, Julien Moreau
+  T-01 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r2.md']:
+     [BRD] BR-04 says status is "always up to date", but Picking and Shipped change once a night and StockPilot is unchanged. | BR-04, BR-09, CS-10, C-03 | A-03,
+     [PRD] BR-04 says status is "always up to date". Picking and Shipped change once a night, Picking really means "exported to StockPilot", Delivered is set by 
+     [BACKLOG] BR-04 says "always up to date" but Picking and Shipped change once a night (handled by A-03). | Lena Varga
+     [REL dotnet-r2.md] Tension | BR-04 says "always up to date" but Picking and Shipped change once a night (handled by A-03). | Lena Varga
+  T-02 defined in ['BRD', 'PRD']:
+     [BRD] C-07 allows standard connectors only, ES-36 needs a custom connector (a premium feature), and CS-26 shows no governed environments. BA-03 as written i
+     [PRD] C-07 allows standard connectors only; ES-36 needs a custom connector (a premium feature); ES-34 tables imply Dataverse; ES-35 needs environments that 
+  T-03 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] C-04 is a shared cap held only by BA-01, but the portal (BA-02) uses it too. C-08 is a separate cap. | C-04, C-08, ES-25 | A-02 (Azure owns the cost m
+     [PRD] C-04 is a shared cap held only by BA-01, but the portal and any API host use it. C-08 is a separate cap. Private endpoints add cost (ES-25). | C-04, C
+     [BACKLOG] C-04 is a shared cap held only by BA-01 (handled by A-02, X-12). | Ahmed Benali
+  T-04 defined in ['BRD', 'PRD']:
+     [BRD] "A track never waits" versus an app that needs code changes to run in Azure. | ES-31, CS-13 to CS-17, G-03 | azure-r1 and azure-r2 do not depend on .N
+     [PRD] "A track never waits" versus an application that needs code changes to run in Azure. | ES-31, CS-13 to CS-17, G-03 | azure-r1 and azure-r2 do not depe
+  T-06 defined in ['BRD', 'PRD']:
+     [BRD] SM-01 asks 35 % six months after "portal launch", but the first portal release is a 20-customer pilot. | SM-01, business-case section 8 | A-04, O-05
+     [PRD] SM-01 asks 35 % six months after "portal launch", but the first portal release is a 20-customer pilot (1.7 % of customers). | SM-01, business-case sec
+  T-07 defined in ['BRD', 'PRD']:
+     [BRD] The Q1 2027 claims pilot has no team, API, environments or licence decision. | business-case section 8, G-08, CS-26, CS-27 | A-25, O-07
+     [PRD] The Q1 2027 claims pilot has no team, API, environments or licence decision. | business-case section 8, G-08, CS-26, CS-27 | A-25, O-07.
+  T-08 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r2.md']:
+     [BRD] The Q2 2027 portal pilot and C-05 (single order source) versus a database migration before 30 June 2027. | C-05, C-01, section 8 | A-37, O-23
+     [PRD] The Q2 2027 portal pilot and C-05 (single order source) versus a database migration before 30 June 2027. | C-05, C-01, business-case section 8 | A-37,
+     [BACKLOG] The Q2 2027 portal pilot and C-05 versus the database migration (A-37, O-23). | Ahmed Benali
+     [REL dotnet-r2.md] Tension | The Q2 2027 portal pilot and C-05 versus the database migration (A-37, O-23). | Ahmed Benali
+  T-09 defined in ['BRD', 'PRD']:
+     [BRD] C-06 names .NET and SQL skills only; C-07 makes Power Platform the approved platform. | C-06, C-07, ES-22 | O-07
+     [PRD] C-06 names .NET and SQL skills only; C-07 makes Power Platform the approved platform. Azure and Bicep skills are not stated. | C-06, C-07, ES-22 | O-0
+  T-10 defined in ['BACKLOG', 'PRD', 'REL dotnet-r1.md']:
+     [PRD] ES-13 (one solution, three projects) and ES-19 (modernise in place) versus a portal, an API and a re-platform of the web layer. | ES-13, ES-19, ES-14 
+     [BACKLOG] ES-13 (one solution) and ES-19 versus a portal, an API and a re-platform (EN-13). | Ahmed Benali
+     [REL dotnet-r1.md] Tension | ES-13 and ES-19 versus a portal, an API and a re-platform (EN-13). | Ahmed Benali
+  T-13 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r2.md']:
+     [BRD] NFR-08 asks for who, what, when and channel, but the current audit rows may not record all of these. | NFR-08 | Acceptance criteria in the backlog; re
+     [PRD] NFR-08 asks for who, what, when and channel, but the audit rows may not record all of these, and the shipment import writes audit rows for unchanged o
+     [BACKLOG] NFR-08 asks for who, what, when and channel but today's audit rows may not record all (listed, not fixed silently). | Ahmed Benali
+     [REL dotnet-r2.md] Tension | NFR-08 asks for who, what, when and channel but today's audit rows may not record all. | Ahmed Benali
+  T-14 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] NFR-06 RPO of 1 hour is met by 15-minute log backups on paper, but recovery has never been tested. | NFR-06, CS-07, CS-23 | azure-r3 recovery proof
+     [PRD] NFR-06 RPO of 1 hour is met by 15-minute log backups on paper, but recovery has never been tested. | NFR-06, CS-07, CS-23 | FR-118 and EA-14 in azure-
+     [BACKLOG] The RPO of 1 hour is met on paper by 15-minute log backups but recovery was never tested (EA-14). | Ahmed Benali
+  T-15 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r2.md']:
+     [BRD] NFR-03 and NFR-04 apply "wherever relevant", but BA-02 does not list NFR-03 and BA-01 does not list NFR-04. | business-case section 4, G-03 | Split pe
+     [PRD] NFR-03 and NFR-04 apply "wherever relevant", but BA-02 does not list NFR-03 and BA-01 does not list NFR-04. | business-case section 4, G-03 | Split pe
+     [BACKLOG] NFR-03 and NFR-04 apply "wherever relevant" but BA-02 does not list NFR-03 and BA-01 does not list NFR-04 (split per track, A-43). | Ahmed Benali
+     [REL dotnet-r2.md] Tension | NFR-03 and NFR-04 apply "wherever relevant" but BA-02 does not list NFR-03 and BA-01 does not list NFR-04 (split per track, A-43). | Ahmed B
+  T-16 defined in ['BRD', 'PRD']:
+     [BRD] Business case "not yet approved for build" versus a December 2026 start. | business-case header, section 8 | A-01, O-21
+     [PRD] The business case is "not yet approved for build", but the plan starts in December 2026. | business-case header, section 8 | A-01, O-21.
+  T-17 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] NFR-01 uses CET only, but business hours cross the summer time change. | NFR-01, G-05 | A-05
+     [PRD] NFR-01 uses CET only, but business hours cross the summer-time change. | NFR-01, G-05 | A-05 (local Central European time with summer time).
+     [BACKLOG] NFR-01 uses CET only but business hours cross the summer-time change (A-05). | Ahmed Benali
+  X-01 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL dotnet-r1.md', 'REL dotnet-r2.md']:
+     [BRD] A hosting target and a pilot test environment for the modernised app | .NET from Azure | Ahmed Benali | (source: C-01, ES-23)
+     [PRD] A hosting target for the modernised application and a pilot test environment | .NET needs Azure | Azure | (source: C-01, ES-23, business-case section 
+     [BACKLOG] Hosting target and pilot test environment for the modernised application | .NET needs Azure | Ahmed Benali
+     [REL azure-r2.md] Hosting target and pilot test environment for the modernised application (.NET needs Azure) | Ahmed Benali | Azure provides the tst definition. .NET b
+     [REL dotnet-r1.md] Hosting target and pilot test environment for the modernised application | Consumer-side | .NET needs Azure | Ahmed Benali | Build and test locally wi
+     [REL dotnet-r2.md] Hosting target and pilot test environment for the modernised application | Consumer-side | .NET needs Azure | Ahmed Benali | Build and test locally wi
+  X-02 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL azure-r2.md', 'REL dotnet-r1.md']:
+     [BRD] An app that follows a documented configuration and identity contract (no secrets) | Azure from .NET | Ahmed Benali | (source: CS-13, CS-17, NFR-05)
+     [PRD] A net10.0 application that follows a documented configuration and identity contract (environment variables, managed identity, no secrets) | Azure need
+     [BACKLOG] A net10.0 application that follows a documented configuration and identity contract | Azure needs .NET | Ahmed Benali
+     [REL azure-r1.md] A net10.0 application that follows a documented configuration and identity contract | Azure needs .NET | Ahmed Benali | Stub: Azure writes infrastruct
+     [REL azure-r2.md] A net10.0 application that follows a documented configuration and identity contract | Azure needs .NET | Ahmed Benali | Stub: the tst definition does 
+     [REL dotnet-r1.md] A net10.0 application that follows a documented configuration and identity contract | Supplier-side | Azure needs .NET | Ahmed Benali | EN-01, EN-03 a
+  X-03 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL dotnet-r1.md']:
+     [BRD] Database sign-in moves from Windows sign-in to a managed identity | .NET and Azure | Ahmed Benali | (source: CS-13, ES-25, NFR-05)
+     [PRD] Database sign-in moves from Windows-integrated sign-in (CS-13) to Entra or a managed identity | Both | Both | (source: CS-13, ES-25, NFR-05) | Azure p
+     [BACKLOG] Database sign-in moves from Windows-integrated to Entra or a managed identity | Both | Ahmed Benali
+     [REL azure-r1.md] Database sign-in moves from Windows-integrated sign-in to Entra or a managed identity | Both | Ahmed Benali | Stub: Azure designs the managed identity
+     [REL dotnet-r1.md] Database sign-in moves from Windows-integrated to Entra ID or a managed identity | Consumer-side and supplier-side | Both | Ahmed Benali | Remove Inte
+  X-04 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md']:
+     [BRD] Staff sign-in moves to Microsoft Entra ID (customer sign-in per OQ-01) | .NET from Azure or IT | Ahmed Benali | (source: CS-04, NFR-04, OQ-01, G-03)
+     [PRD] Staff sign-in moves from Windows Integrated Authentication to Entra ID, and customer sign-in follows OQ-01 | .NET needs Azure or IT | Azure or IT | (s
+     [BACKLOG] Staff sign-in moves to Entra ID; customer sign-in follows OQ-01 (the Azure side stays OPEN) | .NET needs Azure or IT | Ahmed Benali
+     [REL azure-r1.md] Staff sign-in moves to Entra ID; customer sign-in follows OQ-01 (O-10). The Azure side stays OPEN: | Ahmed Benali | NFR-04 is split by track (C3). Azu
+  X-05 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL dotnet-r2.md']:
+     [BRD] StockPilot exchange redesigned for a managed database, file contract unchanged | .NET from Azure | Ahmed Benali | (source: CS-10, C-03)
+     [PRD] StockPilot exchange redesign for a managed data tier; file contract fixed (C-03) | .NET needs Azure | Azure | (source: CS-10, C-03) | Azure owns it en
+     [BACKLOG] StockPilot exchange redesign for a managed data tier; file contract fixed | .NET needs Azure | Ahmed Benali
+     [REL azure-r2.md] StockPilot exchange redesign for a managed data tier; file contract fixed (.NET needs Azure) | Ahmed Benali | Azure owns the exchange end to end; .NET
+     [REL dotnet-r2.md] StockPilot exchange redesign for a managed data tier; the file contract is fixed | Consumer-side | .NET needs Azure | Ahmed Benali | The StockPilot CS
+  X-06 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r2.md', 'REL dotnet-r3.md']:
+     [BRD] Order status freshness shown in the portal is bounded by the exchange cadence | .NET from Azure and StockPilot | Lena Varga | (source: BR-04, CS-10, C
+     [PRD] Status freshness shown in the portal (BR-04) is bounded by the exchange cadence | .NET needs Azure and StockPilot | Azure, StockPilot (unchanged) | (s
+     [BACKLOG] Status freshness is bounded by the exchange cadence | .NET needs Azure and StockPilot | Lena Varga
+     [REL dotnet-r2.md] Status freshness is bounded by the exchange cadence | Consumer-side | .NET needs Azure and StockPilot | Lena Varga | Show Picking and Shipped with the
+     [REL dotnet-r3.md] Status freshness is bounded by the exchange cadence | Consumer-side | .NET needs Azure and StockPilot | Lena Varga | The shipping e-mail arrives after
+  X-07 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL azure-r3.md', 'REL dotnet-r1.md', 'REL dotnet-r2.md']:
+     [BRD] The order in progress is held in memory on the web server; scale-out needs a change | Azure from .NET | Ahmed Benali | (source: CS-16)
+     [PRD] The in-process session draft (CS-16) must become stateless or distributed before scale-out or slot swaps | Azure needs .NET | .NET | (source: CS-16) |
+     [BACKLOG] The in-process session draft must be stateless before scale-out | Azure needs .NET | Ahmed Benali
+     [REL azure-r2.md] The in-process session order draft must be stateless before scale-out | Azure needs .NET | Ahmed Benali | Deferral and assumption: the pilot environme
+     [REL azure-r3.md] The in-process session order draft must be stateless before scale-out (single instance) | Azure needs .NET | Ahmed Benali | Deferral and assumption: t
+     [REL dotnet-r1.md] The in-process session draft must be stateless before scale-out | Supplier-side | Azure needs .NET | Ahmed Benali | EN-06 supplies it; Azure starts wi
+     [REL dotnet-r2.md] The in-process session draft must be stateless before scale-out | Supplier-side | Azure needs .NET | Ahmed Benali | EN-06 (dotnet-r1) supplies it, and
+  X-08 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL dotnet-r1.md']:
+     [BRD] Logging moves to Azure monitoring and replaces the Windows Event Log | .NET from Azure | Ahmed Benali | (source: CS-15, CS-22, ES-26)
+     [PRD] Logging moves to Application Insights and Log Analytics (ES-26) and replaces the Event Log and ping checks | .NET needs Azure | Azure | (source: CS-15
+     [BACKLOG] Logging moves to Application Insights and Log Analytics | .NET needs Azure | Ahmed Benali
+     [REL azure-r2.md] Logging moves to Application Insights and Log Analytics (.NET needs Azure) | Ahmed Benali | .NET logs through the standard logger to the console meanw
+     [REL dotnet-r1.md] Logging moves to Application Insights and Log Analytics | Consumer-side | .NET needs Azure | Ahmed Benali | Log through ILogger<T> to the console (EN-
+  X-09 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL dotnet-r3.md']:
+     [BRD] Invoice files move from a network share to Azure storage | .NET and Azure | Julien Moreau, Ahmed Benali | (source: CS-08, CS-11, CS-14)
+     [PRD] Invoice files move from a network path (CS-14) to Azure storage; the finance system keeps writing PDFs (CS-11) | Both | Both | (source: CS-08, CS-11, 
+     [BACKLOG] Invoice files move from a network path to Azure storage | Both | Julien Moreau, Ahmed Benali
+     [REL azure-r2.md] Invoice files move from a network path to Azure storage | Both | Julien Moreau, Ahmed Benali | Assumption: the finance system stays the writer (EA-07/
+     [REL dotnet-r3.md] Invoice files move from a network path to Azure storage | Consumer-side and supplier-side | Both | Julien Moreau, Ahmed Benali | EN-07 puts the invoic
+  X-10 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL dotnet-r3.md']:
+     [BRD] Outbound e-mail: the current relay is not usable after the lease | .NET and Azure | Ahmed Benali | (source: CS-12, BR-09)
+     [PRD] Outbound mail: the unauthenticated on-premises relay (CS-12) is not available after the lease; no send code exists today (A-51) | Both | Both | (sourc
+     [BACKLOG] Outbound mail replaces the on-premises relay | Both | Ahmed Benali
+     [REL azure-r2.md] Outbound mail replaces the on-premises relay | Both | Ahmed Benali | Stub: the .NET track uses a mail abstraction and a local mail catcher meanwhile. 
+     [REL dotnet-r3.md] Outbound mail replaces the on-premises relay | Consumer-side and supplier-side | Both | Ahmed Benali | A mail abstraction and a local mail catcher mea
+  X-11 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL dotnet-r1.md']:
+     [BRD] Build, test and deployment pipelines | .NET and Azure | Ahmed Benali | (source: CS-18, CS-19, ES-22)
+     [PRD] Build and test pipeline (.NET) and deployment pipeline and infrastructure code (Azure) | Both | Both | (source: CS-18, CS-19, ES-22, ES-27) | Each tra
+     [BACKLOG] Build and test pipeline (.NET) and deployment pipeline (Azure) | Both | Ahmed Benali
+     [REL azure-r1.md] Build and test pipeline (.NET) and deployment pipeline (Azure) | Both | Ahmed Benali | Assumption: each track keeps its own pipeline. The Azure pipeli
+     [REL dotnet-r1.md] Build and test pipeline (.NET) and deployment pipeline (Azure) | Consumer-side and supplier-side | Both | Ahmed Benali | The .NET team writes its own 
+  X-12 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL dotnet-r2.md']:
+     [BRD] The shared monthly cap C-04 covers Order Desk and the portal | Azure from .NET sizing | Ahmed Benali | (source: C-04, NFR-02, G-05)
+     [PRD] The shared monthly cap C-04 covers Order Desk and the portal in production and one test environment | Azure needs .NET sizing inputs | .NET | (source:
+     [BACKLOG] The shared monthly cap C-04 covers Order Desk and the portal | Azure needs .NET sizing inputs | Ahmed Benali
+     [REL azure-r1.md] The shared monthly cap C-04 covers Order Desk and the portal | Azure needs .NET sizing inputs | Ahmed Benali | Assumption: Azure sizes from today's lo
+     [REL dotnet-r2.md] The shared monthly cap C-04 covers Order Desk and the portal | Supplier-side | Azure needs .NET sizing inputs | Ahmed Benali | STORY-243/AC2 uses toda
+  X-13 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r2.md']:
+     [BRD] Customers reach the portal from the internet while data services stay private | .NET from Azure | Ahmed Benali | (source: ES-25, BR-01, NFR-03)
+     [PRD] An internet-facing entry for customers while data services use private endpoints (ES-25) | .NET needs Azure | Azure | (source: ES-25, BR-01, NFR-03) |
+     [BACKLOG] An internet-facing entry for customers while data services use private endpoints | .NET needs Azure | Ahmed Benali
+     [REL dotnet-r2.md] An internet-facing entry for customers while data services use private endpoints | Consumer-side | .NET needs Azure | Ahmed Benali | Azure designs the
+  X-14 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r1.md', 'REL dotnet-r1.md']:
+     [BRD] One solution and three projects (ES-13); any new project needs a decision record | .NET and Azure | Ahmed Benali | (source: ES-13)
+     [PRD] One solution and three projects (ES-13) versus a portal area and an API: a decision record is needed for any new project | Both | .NET (decision), Azu
+     [BACKLOG] One solution and three projects versus a portal area and an API: a decision record is needed | Both | Ahmed Benali
+     [REL azure-r1.md] One solution and three projects versus a portal area and an API: a decision record is needed (T-10, EN-13) | Both | Ahmed Benali | Assumption: the Azu
+     [REL dotnet-r1.md] One solution and three projects versus a portal area and an API: a decision record is needed | Consumer-side and supplier-side | Both | Ahmed Benali |
+  X-15 defined in ['BACKLOG', 'BRD', 'PRD', 'REL azure-r2.md', 'REL dotnet-r2.md']:
+     [BRD] Keeping the 7-year order audit trail once the database is in Azure | .NET from Azure | Ahmed Benali | (source: NFR-08, CS-07)
+     [PRD] Keeping the 7-year audit trail once the database is in Azure (backup and long-term retention settings) | .NET needs Azure | Azure | (source: NFR-08, C
+     [BACKLOG] Keeping the 7-year audit trail once the database is in Azure | .NET needs Azure | Ahmed Benali
+     [REL azure-r2.md] Keeping the 7-year audit trail once the database is in Azure (.NET needs Azure) | Ahmed Benali | .NET defines the audit content (T-13); Azure sets the
+     [REL dotnet-r2.md] Keeping the 7-year audit trail once the database is in Azure | Consumer-side | .NET needs Azure | Ahmed Benali | Record who, what, when and channel of
+  X-20 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] An Order Desk API so claims can read order lines | Power Platform from .NET | Ahmed Benali | (source: CS-27, ES-36, G-01)
+     [PRD] An Order Desk API (read orders and lines) for the custom connector | Power Platform needs .NET (assumed) | .NET | (source: CS-27, ES-36, G-01) | BA-03
+     [BACKLOG] An Order Desk API (read orders and lines) for the custom connector | Power Platform needs .NET | Ahmed Benali
+  X-21 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] An order data contract for claims (order number, lines, quantities, prices, customer, warehouse) | Power Platform from .NET | Lena Varga, Pieter Janss
+     [PRD] An order data contract for claims: order number, lines, quantities, prices, customer, warehouse | Power Platform needs .NET | .NET | (source: BR-14, B
+     [BACKLOG] An order data contract for claims: order number, lines, quantities, prices, customer, warehouse | Power Platform needs .NET | Lena Varga, Pieter Janss
+  X-22 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] The API endpoint must be reachable from Power Platform while data services stay private | Power Platform from Azure | Ahmed Benali | (source: ES-25, E
+     [PRD] The API endpoint must be reachable from Power Platform while data services stay private (ES-25) | Power Platform needs Azure | Azure | (source: ES-25,
+     [BACKLOG] The API endpoint must be reachable from Power Platform while data services stay private | Power Platform needs Azure | Ahmed Benali
+  X-23 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r3.md']:
+     [BRD] Sign-in for the connector (Entra app registration) | Power Platform from Azure or IT | Ahmed Benali | (source: ES-36, NFR-04, CS-28)
+     [PRD] Connector sign-in (Entra app registration, OAuth) | Power Platform needs Azure or IT | Azure or IT | (source: ES-36, NFR-04, CS-28) | The stub uses a 
+     [BACKLOG] Connector sign-in (Entra app registration, OAuth) | Power Platform needs Azure or IT | Ahmed Benali
+     [REL dotnet-r3.md] Connector sign-in (Entra app registration, OAuth) | Neither a need of dotnet-r3 nor a wait: a placeholder only | Power Platform needs Azure or IT | Ah
+  X-24 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] Finance CSV drop before 18:00, and where the share lives after the lease | Power Platform from Azure | Julien Moreau, Ahmed Benali | (source: CS-25, C
+     [PRD] Finance CSV drop to the finance import share before 18:00 (CS-25), and where the share lives after the lease | Power Platform needs Azure | Azure (sto
+     [BACKLOG] Finance CSV drop before 18:00, and where the share lives after the lease | Power Platform needs Azure | Julien Moreau, Ahmed Benali
+  X-25 defined in ['BACKLOG', 'BRD', 'PRD', 'REL dotnet-r3.md']:
+     [BRD] The warehouse for each order line (for BR-17) | Power Platform from .NET and StockPilot data | Pieter Janssens | (source: BR-17)
+     [PRD] Warehouse for each order line, for BR-17 | Power Platform needs .NET and StockPilot data | .NET | (source: BR-17, A-18) | The supervisor view is desig
+     [BACKLOG] Warehouse for each order line, for BR-17 | Power Platform needs .NET and StockPilot data | Pieter Janssens
+     [REL dotnet-r3.md] Warehouse for each order line, for BR-17 | Supplier-side (field in the contract) | Power Platform needs .NET and StockPilot data | Pieter Janssens | E
+  X-26 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] The customer e-mail address (for BR-19 and BR-09) | Power Platform and .NET | Lena Varga | (source: BR-09, BR-19)
+     [PRD] Customer e-mail address, for BR-19 and the portal's BR-09 | Both | .NET | (source: BR-09, BR-19) | BR-19 is Could; listed as OPEN: (O-18). | Lena Varg
+     [BACKLOG] Customer e-mail address, for BR-19 and the portal's BR-09 | Both | Lena Varga
+  X-27 defined in ['BACKLOG', 'BRD', 'PRD']:
+     [BRD] Governed environments, DLP and licensing in the Microsoft 365 tenant | Power Platform from IT | Ahmed Benali | (source: CS-26, ES-35, C-07, C-08)
+     [PRD] Environments, DLP and licensing: no Azure involvement; administration of the Microsoft 365 tenant | Power Platform | IT | (source: CS-26, ES-35, C-07,
+     [BACKLOG] Environments, DLP and licensing: administration of the Microsoft 365 tenant | Power Platform needs IT | Ahmed Benali
+
+  ids the plan promised (C9): A-01..A-48 and O-01..O-25; checking presence in register rows:
+  absent from every register: []
+
+============================== D. OWNERS ON A-/O-/X- REGISTER ROWS ==============================
+
+============================== E. SOURCE IDS CITED THAT DO NOT EXIST ==============================
+  source-family ids cited but not in knowledge-docs: []
+  ES ids cited but not defined in engineering-standards: []
+  CS ids cited but not defined in current-state: []
+  CS ids in current-state not cited anywhere: []
+  BR ids cited: 19 | BR not cited: []
+
+============================== F. PLAN-LOCAL IDs (PFR/PNFR/RC) AND OTHER FAMILIES ==============================
+  PFR: 0 distinct ids cited; e.g. [] ...
+  PNFR: 1 distinct ids cited; e.g. ['PNFR-05'] ...
+  RC: 2 distinct ids cited; e.g. ['RC-03', 'RC-05'] ...
+  BG: 5 distinct ids cited; e.g. ['BG-01', 'BG-02', 'BG-03', 'BG-04', 'BG-05'] ...
+  G: 11 distinct ids cited; e.g. ['G-01', 'G-02', 'G-03', 'G-04', 'G-05', 'G-06'] ...
+  OQ: 5 distinct ids cited; e.g. ['OQ-01', 'OQ-02', 'OQ-03', 'OQ-04', 'OQ-05'] ...
+  RG: 4 distinct ids cited; e.g. ['RG-01', 'RG-02', 'RG-03', 'RG-04'] ...
+  T: 17 distinct ids cited; e.g. ['T-01', 'T-02', 'T-03', 'T-04', 'T-05', 'T-06'] ...
+  X: 25 distinct ids cited; e.g. ['X-01', 'X-02', 'X-03', 'X-04', 'X-05', 'X-06'] ...
+
+============================== G. CLAIM WORDING (deployment, tenant, tags, commits) ==============================
+  [BRD:41] | Status | **Draft for review.** Not approved. Never `approved` until the owner and sponsor sign (A-47). |
+  [BRD:45] | Business sources | `knowledge-docs/business-case.md` (version 2.0, status "Approved for discovery. Not yet approved for build."), `knowledge-docs/current-state.md`, `knowledge-docs/engineering-standards.md` |
+  [BRD:48] | Implementation or deployment | None. Nothing is built, deployed or changed in any tenant (ES-27, ES-37, A-39). |
+  [BRD:70] | DD-06 | In this unattended run the questions a guided session would ask are answered by the approved plan. Questions the plan did not answer became **OPEN:** items. | A-48 | Lena Varga |
+  [BRD:85] - The Power Platform track has **no release and no team** now. Its business areas are fully documented and in scope, but the **Q1 2027 claims pilot cannot be committed** (A-25). **OPEN:** O-07 asks Lena Varga and Marc Dubois for a
+  [BRD:89] The business case is "approved for discovery, not yet approved for build". The release dates in this BRD are targets only (A-01, A-42). **OPEN:** O-21 asks Marc Dubois for the approval and funding to build.
+  [BRD:286] | BR-15 | Claims above **EUR 500** are approved by Finance. Nobody can approve a claim they recorded. | Must | BA-03 | Power Platform | (source: BR-15, P-06, OQ-04) | A-13, O-13 |
+  [BRD:287] | BR-16 | An approved claim reaches the finance system as a credit-note request without being re-keyed. | Must | BA-03 | Power Platform | (source: BR-16, CS-25) | O-15, X-24 |
+  [BRD:290] | BR-19 | The customer receives an e-mail when their claim is approved or rejected. | Could | BA-03 | Power Platform | (source: BR-19) | O-18, X-26 |
+  [BRD:326] | C-07 | Power Platform is our approved platform for internal back-office applications. Staff hold Microsoft 365 E3 licences, which include Power Apps and Power Automate for Microsoft 365 with standard connectors only. | BA-03 | (
+  [BRD:337] - A release is numbered `<track>-r<n>` (for example `azure-r1`). The planned Git tag is `product/<track>-r<n>`. **No tag exists yet.** Tags are created only after the product owner approves a release (ES-31, A-39).
+  [BRD:352] | Power Platform (`track-power-platform`) | none | No release: no team (G-08, O-07) | none | `EPIC-301` to `EPIC-304` (unplanned) | BR-14 to BR-19, NFR-03 (BA-03), NFR-04 (BA-03), NFR-09: documented, tagged by track only | The Q1 
+  [BRD:367] - **OPEN:** The Q1 2027 claims pilot has no team, no Order Desk API, no governed environments and no licence decision. It cannot be committed while BA-03 has no release (G-08, T-07, A-25). Owners: Lena Varga and Marc Dubois (O-07)
+  [BRD:370] - The business case says "not yet approved for build", while the plan starts in December 2026 (T-16). **ASSUMPTION:** A-01. **OPEN:** O-21, owner Marc Dubois.
+  [BRD:419] | T-09 | C-06 names .NET and SQL skills only; C-07 makes Power Platform the approved platform. | C-06, C-07, ES-22 | O-07 |
+  [BRD:423] | T-16 | Business case "not yet approved for build" versus a December 2026 start. | business-case header, section 8 | A-01, O-21 |
+  [BRD:456] | A-25 | The Q1 2027 claims pilot cannot be committed while BA-03 has no team. | G-08 | Lena Varga, Marc Dubois |
+  [BRD:507] | O-21 | Approval and funding to build (the status says "not yet approved for build"). | business-case header | Marc Dubois |
+  [BRD:539] | G-08 | BA-03 has no team or release; the Q1 2027 claims pilot cannot be committed. | A-25, O-07 | Lena Varga, Marc Dubois | Open |
+  [PRD:43] | Status | **Draft for review.** Not approved. Never `approved` until the owner and sponsor sign (A-47). |
+  [PRD:50] | Implementation or deployment | None. Nothing is built, deployed or changed in any tenant (ES-27, ES-37, A-39). |
+  [PRD:77] | DD-08 | In this unattended run the questions a guided session would ask are answered by the approved plan. Questions the plan did not answer became **OPEN:** items. | A-48 | Lena Varga |
+  [PRD:90] - **BA-03 is in scope but unplanned.** Its requirements are documented and tagged `track-power-platform` only. The Q1 2027 claims pilot of the business case **cannot be committed** (A-25). **OPEN:** O-07 asks Lena Varga and Marc D
+  [PRD:92] - **Experiments.** Three experiments test the riskiest assumption of each business area before the epics they gate are committed. Their results are **pending** (section 12).
+  [PRD:93] - **Approval to build is not given.** The business case says "Approved for discovery. Not yet approved for build". **OPEN:** O-21, owner Marc Dubois.
+  [PRD:191] - Every cross-track need of BA-03 is **OPEN:** `X-20` to `X-27` (section 10). The Q1 2027 claims pilot cannot be committed until O-07 and O-01 are answered (G-08, A-25, T-07).
+  [PRD:218] - A release is named `<track>-r<n>`. The planned Git tag is `product/<track>-r<n>`. **No tag exists yet.** Tags are created only after the product owner approves a release (ES-31, A-39).
+  [PRD:235] | Power Platform (`track-power-platform`) | none | No release: no team (G-08, O-07) | none | `EPIC-301` to `EPIC-304` (unplanned) | BR-14 to BR-19, NFR-03 (BA-03), NFR-04 (BA-03), NFR-09: documented, tagged by track only | The Q1 
+  [PRD:279] Epics and features sit entirely inside one release (or entirely unplanned). Ids are reserved even if not all are used and are never reused. The "Gate" column is the experiment whose decision is taken before the epic is committed (
+  [PRD:302] - **OPEN:** The claims pilot with the Lyon Order Desk team in Q1 2027 cannot be committed. BA-03 has no team, no Order Desk API, no governed environments and no licence decision (G-08, T-07, A-25). Owners: Lena Varga and Marc Dubo
+  [PRD:307] - The business case says "not yet approved for build", while the plan starts in December 2026 (T-16). **ASSUMPTION:** A-01. **OPEN:** O-21, owner Marc Dubois.
+  [PRD:311] | Release | Release file (planned, not created) | Planned Git tag (not yet created) | Approver |
+  [PRD:328] The "Goal" column names the business goal (section 4.1). "Links" lists the enablers, dependencies, assumptions and open items that affect the requirement. A "Gate" is the experiment decision taken before the requirement's epic is 
+  [PRD:404] | FR-222 | Every portal screen in the pilot is checked against WCAG 2.2 level AA. Failures are fixed or listed before the release is approved. | (source: NFR-07) | Must | BG-01 | `track-dotnet` `dotnet-r2` | `EPIC-202` | A-54 |
+  [PRD:433] | FR-311 | Claims above EUR 500 are approved by Finance. Nobody can approve a claim they recorded, whatever their role. The path for claims of EUR 500 or less is **OPEN:** and not covered here. | (source: BR-15, P-06, OQ-04) | Mus
+  [PRD:434] | FR-312 | An approved claim reaches the finance system as a credit-note request without being re-keyed. Today the finance system has no API and imports a CSV file placed in a share before 18:00 on working days. | (source: BR-16, 
+  [PRD:439] | FR-330 | The customer receives an e-mail when their claim is approved or rejected. | (source: BR-19) | Could (P3) | BG-03 | `track-power-platform` unplanned | `EPIC-304` | **Gate:** MVE-03; X-26; O-18 |
+  [PRD:473] | C-07 | Power Platform is the approved platform; Microsoft 365 E3 gives standard connectors only | BA-03: `EP-04`, `FR-301` to `FR-330`; T-02; O-02 |
+  [PRD:597] | T-09 | C-06 names .NET and SQL skills only; C-07 makes Power Platform the approved platform. Azure and Bicep skills are not stated. | C-06, C-07, ES-22 | O-07. |
+  [PRD:604] | T-16 | The business case is "not yet approved for build", but the plan starts in December 2026. | business-case header, section 8 | A-01, O-21. |
+  [PRD:613] | C1: no release now | BA-03 items carry only `track-power-platform`; nothing is planned (selected for planning, intake review amendment 2). | ES-31 | The Q1 2027 claims pilot cannot be committed (A-25). | No pilot until O-07 is a
+  [PRD:622] Three experiments test the riskiest assumption of each business area before the epics they gate are committed. They run locally; nothing is deployed and no tenant is touched (ES-27, ES-37, A-09). **No experiment has been run. Ever
+  [PRD:633] - **MVE-02.** Go: `FR-213` and `FR-214` are committed as written. Adjust: acceptance wording of `FR-213` changes or the `SM-02` target goes back to Lena Varga (O-04, O-16). Stop (both checks fail): `FR-210` to `FR-218` and `FR-230
+  [PRD:656] | R-13 | Medium | No named release approver per track, so Git tags cannot be created (G-11). | section 6.7 | Releases cannot be tagged | O-09 | Marc Dubois |
+  [PRD:691] | A-25 | The Q1 2027 claims pilot cannot be committed while BA-03 has no team. | G-08 | Lena Varga, Marc Dubois |
+  [PRD:762] | O-21 | Approval and funding to build (the status says "not yet approved for build"). | business-case header | Marc Dubois |
+  [PRD:779] | MVE-O-06 | Start dates for the three experiments, so results arrive before the gated epics are committed. | Lena Varga, Marc Dubois |
+  [PRD:804] | G-08 | BA-03 has no team or release; the Q1 2027 claims pilot cannot be committed. | A-25, O-07, section 5.2 | Lena Varga, Marc Dubois | Open |
+  [PRD:899] | Gate | An experiment decision taken before an epic is committed. It is not a wait for another track (section 6.5). |
+  [PRD:929] | `knowledge-docs/business-case.md` (version 2.0, status "Approved for discovery. Not yet approved for build.") | Problems `P-01` to `P-06`, `BR-01` to `BR-19`, `NFR-01` to `NFR-09`, `C-01` to `C-08`, `SM-01` to `SM-07`, business 
+  [EXP:15] | Status | **Draft for review.** Not approved. No experiment has been run; every result field is empty. |
+  [EXP:19] | Business case status | "Approved for discovery. Not yet approved for build" (source: business-case header). Experiments are discovery work, so they fit that status. Approval to build is still **OPEN:** O-21. |
+  [EXP:20] | Release | None of the three experiments belongs to a release. They run before the epics they gate are committed (ES-31 does not apply). |
+  [EXP:30] **How they are run (local only).** Nothing is deployed to Azure and nothing is created or changed in a Power Platform tenant or environment (source: ES-27, ES-37). The methods are: reading and running the existing scripts on a loc
+  [EXP:51] | MVE | Gates (decision is taken before these are committed) |
+  [EXP:104] | Method | Local analysis and desk research. Nothing is deployed (source: ES-27). |
+  [EXP:106] | Data | `database/001-schema.sql`, `002-sample-data.sql`, `003-stockpilot-exchange.sql`; `src/Northwind.OrderDesk.Core/Data/SqlOrderDeskStore.cs` (two `GETDATE()` and one `GETUTCDATE()` use); current-state facts CS-03, CS-06, CS-
+  [EXP:210] | **Go** | R1 and R2 pass. | Build the portal pilot as planned. | `EPIC-202` stories for `BR-04` and `BR-05` are committed as written, with the "as of" wording (A-03); `dotnet-r2` scope stays as in the Canonical Contract. |
+  [EXP:211] | **Adjust** | R1 passes and R2 fails, or R1 fails and R2 passes, or R3 median is far below 35 %. | Change the design or the promise, then retest if cheap. For a failed R2: ask whether StockPilot's pick-up can run more than nightl
+  [EXP:275] | Method | Desk research and paper design. No tenant, environment, connector or app is created, imported or changed (source: ES-37). |
+  [EXP:319] | Deploy a trial Azure SQL Managed Instance or database to measure cost and speed | Forbidden: nothing is deployed from this workshop. A calculator and documentation give the answer needed for a go, adjust or stop decision. | ES-2
+  [EXP:343] | A-25 | The Q1 2027 claims pilot cannot be committed while BA-03 has no team. | MVE-03 | Lena Varga, Marc Dubois |
+  [EXP:376] | O-21 | Approval and funding to build (the status says "not yet approved for build"). | Marc Dubois |
+  [EXP:383] | MVE-O-06 | Start dates for the three experiments, so results arrive before the gated epics are committed. | Lena Varga, Marc Dubois |
+  [EXP:409] * No file in `src/`, `database/` or `knowledge-docs/` is changed by this document or by the experiments. Throwaway scripts and prototypes are not committed.
+  [EXP:412] * No Git tag and no commit result from this document; planned tags such as `product/azure-r1` do not exist (source: ES-31).
+  [BACKLOG:23] > This is a document, a file-based backlog. **Nothing has been published to Azure DevOps, GitHub or Jira** (O-06 names no tool). Nothing is built, deployed or changed in any tenant (ES-27, ES-37).
+  [BACKLOG:34] * **Experiment gates.** A *gate* is a minimum viable experiment (MVE, the smallest test that can prove an assumption wrong) whose decision (go, adjust or stop) is taken **before** the gated item is committed (source: `docs/product
+  [BACKLOG:35] * **Status of every item** is *Draft for review*. Nothing here is approved or committed (O-21).
+  [BACKLOG:51] | Power Platform (`track-power-platform`) | none | No release: no team (G-08, O-07) | none | `EPIC-301` to `EPIC-304` (unplanned) | BR-14 to BR-19, NFR-03 (BA-03), NFR-04 (BA-03), NFR-09: documented, tagged by track only | The Q1 
+  [BACKLOG:243] | STORY-322 | story | Send an approved claim to Finance as a credit-note request | `track-power-platform` | unplanned | Must (P1) | 12 |
+  [BACKLOG:253] | STORY-370 | story | E-mail the customer when a claim is approved or rejected | `track-power-platform` | unplanned | Could (P3) | 16 |
+  [BACKLOG:329] * `STORY-101/AC3` Given a reviewer finds a name that breaks the rule or a resource without the four tags, When the review ends, Then `azure-r1` cannot be approved until it is fixed.
+  [BACKLOG:339] * `STORY-104/AC2` Given a resource defined outside the EU, When the list is reviewed, Then the design is rejected and the resource is moved to an EU region before `azure-r1` is approved.
+  [BACKLOG:347] * **Story:** As the IT manager, I want a deployment pipeline design in which every infrastructure definition is validated locally and reviewed before a release is approved, so that nothing unchecked reaches a subscription later.
+  [BACKLOG:404] * `STORY-103/AC3` Given the scan finds a secret, When the release is considered for approval, Then it is not approved until the secret is removed.
+  [BACKLOG:536] * `STORY-140/AC1` Given the order database is in Azure, When the nightly job runs at 02:00, Then confirmed orders are exported with the same file format to the same pick-up point and shipment updates are imported; StockPilot is no
+  [BACKLOG:700] * `STORY-171/AC3` Given a step has no rollback path, When the plan is reviewed, Then the release is not approved.
+  [BACKLOG:727] * `STORY-172/AC3` Given the release is approved, When the test is carried out, Then it is a real-world operation after approval and not claimed in this release (A-53, ES-27).
+  [BACKLOG:852] * `STORY-201/AC4` Given a screen behaves differently from today, When the checklist is reviewed, Then the difference is a defect and the release is not approved until it is fixed or accepted by the product owner.
+  [BACKLOG:917] * `STORY-202/AC3` Given any price differs, even by one cent, When the comparison is run, Then it is a defect and the release is not approved until it is fixed.
+  [BACKLOG:982] * `STORY-205/AC3` Given the scan finds a secret, When the release is considered for approval, Then it is not approved until the secret is removed.
+  [BACKLOG:1148] * `STORY-237/AC2` Given a pilot screen has a text without a translation, When the screens are reviewed, Then it is listed and fixed before the release is approved.
+  [BACKLOG:1187] * `STORY-243/AC3` Given the 95th percentile is 2 seconds or more, When the result is reported, Then `NFR-02` is recorded as not met and the cause is listed; the release is not approved on this criterion.
+  [BACKLOG:1270] * `STORY-263/AC3` Given a screen has text without a Dutch translation, When the screens are reviewed, Then it is listed and fixed before the release is approved.
+  [BACKLOG:1340] Every BA-03 item carries **only** `track-power-platform`; the release is `unplanned`; there is no placeholder release and no release file (ES-31, A-44). The priority band P1 to P3 is shown next to the priority and is **not** a rel
+  [BACKLOG:1366] * `EP-01/AC4` Given the design is reviewed, When it is accepted, Then it is "design validated locally"; no environment or policy is created in any tenant (ES-37).
+  [BACKLOG:1423] * **Story:** As a Power Platform maker, I want the CSV file format and the drop location for credit-note requests designed, so that Finance receives approved claims without re-keying although the finance system has no API.
+  [BACKLOG:1426] * `EP-05/AC2` Given a request is approved after 18:00 or on a non-working day, When the design is read, Then it is included in the file of the next working day.
+  [BACKLOG:1464] * **Goal:** Staff record a claim in under 2 minutes, Finance approves claims above EUR 500 with no self-approval, an approved claim reaches the finance system without re-keying, and every decision is kept 7 years. Moving the sprea
+  [BACKLOG:1495] * **Story:** As a Finance staff member, I want claims above EUR 500 to be approved by Finance and nobody to be able to approve a claim they recorded, so that no claim is approved by the person who raised it.
+  [BACKLOG:1497] * `STORY-321/AC1` Given a claim whose value is above EUR 500 (for example EUR 501), When a Finance user who did not record it approves it, Then the claim is approved and the decision is recorded.
+  [BACKLOG:1500] * `STORY-321/AC4` Given a claim above EUR 500 that no one has approved, When it is read, Then it is shown as waiting for approval and no credit-note request exists for it.
+  [BACKLOG:1509] * `STORY-323/AC1` Given a claim is approved or rejected, When the audit record is read, Then it shows who decided, what was decided, when and the amount.
+  [BACKLOG:1520] ###### STORY-322 Send an approved claim to Finance as a credit-note request
+  [BACKLOG:1524] * **Story:** As a Finance staff member, I want an approved claim to reach the finance system as a credit-note request without re-keying, so that I stop keying requests from e-mails.
+  [BACKLOG:1526] * `STORY-322/AC1` Given a claim is approved, When the daily file is made, Then the credit-note request is in a CSV file placed in the finance import location before 18:00 on a working day (CS-25) and nobody re-keys it.
+  [BACKLOG:1527] * `STORY-322/AC2` Given a claim is approved after 18:00 or on a non-working day, When the files are made, Then it is in the file of the next working day.
+  [BACKLOG:1528] * `STORY-322/AC3` Given the file cannot be placed, When the hand-off runs, Then the claim stays "approved, not sent" and is visible to Finance; it is not lost.
+  [BACKLOG:1529] * `STORY-322/AC4` Given a claim that is rejected or not yet approved, When the files are made, Then it is not in any file.
+  [BACKLOG:1588] * `STORY-351/AC3` Given time to resolve is measured from the claim being recorded to it being approved or rejected (**ASSUMPTION:** A-57), When a claim is still open, Then it is counted as open and is not given a resolve time.
+  [BACKLOG:1599] * **Goal:** The customer is told by e-mail when a claim is approved or rejected.
+  [BACKLOG:1607] ###### STORY-370 E-mail the customer when a claim is approved or rejected
+  [BACKLOG:1611] * **Story:** As a customer user whose delivery claim has been decided, I want an e-mail when it is approved or rejected, so that I do not have to phone to find out.
+  [BACKLOG:1613] * `STORY-370/AC1` Given a claim is approved, When the decision is recorded, Then an e-mail saying approved is sent to the customer.
+  [BACKLOG:1624] | EPIC-301 to EPIC-304 with FEAT-301 to FEAT-310, `EP-01` to `EP-06`, STORY-301, STORY-302, STORY-320 to STORY-324, STORY-350, STORY-351, STORY-370 (BA-03, 30 items) | `track-power-platform` | The business area has no team, no Ord
+  [BACKLOG:1783] | STORY-322 | STORY-322 Send an approved claim to Finance as a credit-note request | `track-power-platform` | none |
+  [BACKLOG:1793] | STORY-370 | STORY-370 E-mail the customer when a claim is approved or rejected | `track-power-platform` | none |
+  [BACKLOG:1826] | A-25 | The Q1 2027 claims pilot cannot be committed while BA-03 has no team. | Lena Varga, Marc Dubois |
+  [BACKLOG:1850] | **A-57** | **New.** For the claims dashboard, "time to resolve" runs from the claim being recorded to it being approved or rejected. The business case does not define it. | Lena Varga |
+  [BACKLOG:1878] | O-21 | Approval and funding to build (the business case says "not yet approved for build"). | Marc Dubois |
+  [TRACE:21] > Built from the item register of [backlog.md](backlog.md) (`BACKLOG-NW-001`), so the two documents cannot drift. Nothing is published to a tracker and nothing is built or deployed (ES-27, ES-37).
+  [TRACE:30] * **Status** values: *Covered* (a planned story covers it); *Covered, unplanned* (a story covers it but belongs to no release, BA-03 or the API implementation); *Covered, OPEN remains* (covered, with an **OPEN:** item that can cha
+  [TRACE:200] | C-07 | Power Platform approved; standard connectors only | `EP-04`, STORY-301 | unplanned |
+  [TRACE:225] | unplanned, `track-power-platform` | BR-14 to BR-19, NFR-03 (BA-03), NFR-04 (BA-03), NFR-09: documented, tagged by track only | STORY-320 (BR-14), STORY-321 (BR-15), STORY-322 (BR-16), STORY-350 (BR-17), STORY-351 (BR-18), STORY-
+  [REL azure-r1.md:22] > Status: **Draft for review.** Release status: **Proposed, awaiting product-owner approval.** Nothing here is approved. **Nothing is deployed to Azure, and no Git tag or commit has been made** (ES-27, A-39).
+  [REL azure-r1.md:30] | Planned Git tag | `product/azure-r1`. **To be created on approval; not created.** |
+  [REL azure-r1.md:58] **MVE gate.** MVE-01 asks: *can a platform-as-a-service (PaaS, managed) data tier carry `NorthwindOrders` and the nightly StockPilot exchange inside the cost cap?* Its decision (go, adjust or stop) is taken **before** a gated item
+  [REL azure-r1.md:95] | **Not yet decided** | `EA-05` and `EA-09` stay uncommitted (`EA-05/AC2`). The release cannot be approved with those items complete until the result is recorded. |
+  [REL azure-r1.md:151] | EC-1 | Approval and funding to build. The business case says the work is "not yet approved for build". **OPEN:** O-21, owner Marc Dubois. | Open |
+  [REL azure-r1.md:172] | XC-7 | The MVE-01 result (go, adjust or stop) is recorded before `EA-05` and `EA-09` are committed, with the check against `M1a`, `M1b` and `M1c`. | `EA-05/AC1`, `EA-05/AC2`, `EA-05/AC3` |
+  [REL azure-r1.md:177] | XC-12 | No document or file in the release claims that anything was deployed, applied or created in a tenant or subscription, and holds no secret. | ES-27, ES-17 |
+  [REL azure-r1.md:228] Nothing has been published to any tracker (O-06 names no tool; `tracker_published: false`). When the backlog is published, the track tag and the release tag travel with every item in section 3 so that the release stays identifiabl
+  [REL azure-r1.md:240] | Release | Theme | Window | Items | Git tag (planned text, not created) |
+  [REL azure-r1.md:250] Nothing in this procedure is carried out by this document. Nothing is deployed to Azure (ES-27).
+  [REL azure-r1.md:265] | Planned Git tag | `product/azure-r1` — **to be created after approval; not created** |
+  [REL azure-r1.md:267] | Decision | ☐ Approved  ☐ Approved with changes  ☐ Not approved |
+  [REL azure-r1.md:269] | Commit id that holds the release | _(blank until approved and committed)_ |
+  [REL azure-r1.md:270] | Git tag created on | _(blank, not created)_ |
+  [REL azure-r2.md:22] > Status: **Draft for review.** Release status: **Proposed, awaiting product-owner approval.** Nothing here is approved. **Nothing is deployed to Azure, and no Git tag or commit has been made** (ES-27, A-39).
+  [REL azure-r2.md:30] | Planned Git tag | `product/azure-r2`. **To be created on approval; not created.** |
+  [REL azure-r2.md:58] **MVE gate.** MVE-01 asks: *can a platform-as-a-service (PaaS, managed) data tier carry `NorthwindOrders` and the nightly StockPilot exchange inside the cost cap?* Its decision (go, adjust or stop) is taken **before** a gated item
+  [REL azure-r2.md:85] MVE-01 is owned by Ahmed Benali (IT Manager). Thresholds are **ASSUMPTION:** A-35 (owner Lena Varga). The decision is taken in `azure-r1` time, before `azure-r2` content for `EA-06` and `EA-08` is committed.
+  [REL azure-r2.md:91] | **Stop** | Planning of `azure-r2` scope on the current cap stops: `EA-06`, `EA-08` and `EA-10` are paused (source: `docs/product/experiments.md` section 3.1.5). `EA-04`, `EA-07` and `EA-12` do not depend on the data tier. Marc D
+  [REL azure-r2.md:149] | EC-2 | MVE-01 decision (go, adjust or stop) is recorded before `EA-06` and `EA-08` are committed. Result pending. | Not run |
+  [REL azure-r2.md:150] | EC-3 | Azure-track inputs from `azure-r1` are available: the validated foundation (`EA-01`, as the base for `EA-04`, `EA-07`, `EA-10`) and the data-tier record (`EA-05`, which `EA-06` and `EA-08` depend on). This is one team's o
+  [REL azure-r2.md:171] | XC-11 | No document or file in the release claims that anything was deployed, applied or created in a tenant or subscription, and none holds a secret. | ES-27, ES-17 |
+  [REL azure-r2.md:226] Nothing has been published to any tracker (O-06 names no tool; `tracker_published: false`). When the backlog is published, the track tag and the release tag travel with every item in section 3 so that the release stays identifiabl
+  [REL azure-r2.md:238] | Release | Theme | Window | Items | Git tag (planned text, not created) |
+  [REL azure-r2.md:246] Nothing in this procedure is carried out by this document. Nothing is deployed to Azure (ES-27).
+  [REL azure-r2.md:261] | Planned Git tag | `product/azure-r2` — **to be created after approval; not created** |
+  [REL azure-r2.md:263] | Decision | ☐ Approved  ☐ Approved with changes  ☐ Not approved |
+  [REL azure-r2.md:265] | Commit id that holds the release | _(blank until approved and committed)_ |
+  [REL azure-r2.md:266] | Git tag created on | _(blank, not created)_ |
+  [REL azure-r3.md:22] > Status: **Draft for review.** Release status: **Proposed, awaiting product-owner approval.** Nothing here is approved. **Nothing is deployed to Azure, and no Git tag or commit has been made** (ES-27, A-39).
+  [REL azure-r3.md:30] | Planned Git tag | `product/azure-r3`. **To be created on approval; not created.** |
+  [REL azure-r3.md:88] | **Stop** | Planning on the current cap stops (source: `docs/product/experiments.md` section 3.1.5). `EA-13` and `EA-14` cannot be finished without a chosen data tier. Marc Dubois decides whether to relax C-04 or reduce scope (**
+  [REL azure-r3.md:155] | XC-10 | No document or file in the release claims that a rehearsal, cutover, restore or retirement has been done, or that anything was deployed, applied or created in a tenant or subscription, and none holds a secret. | ES-27, E
+  [REL azure-r3.md:200] Nothing has been published to any tracker (O-06 names no tool; `tracker_published: false`). When the backlog is published, the track tag and the release tag travel with every item in section 3 so that the release stays identifiabl
+  [REL azure-r3.md:212] | Release | Theme | Window | Items | Git tag (planned text, not created) |
+  [REL azure-r3.md:220] Nothing in this procedure is carried out by this document. Nothing is deployed to Azure (ES-27). Approval of this release does not perform the rehearsals, the cutover or the recovery test (A-53).
+  [REL azure-r3.md:235] | Planned Git tag | `product/azure-r3` — **to be created after approval; not created** |
+  [REL azure-r3.md:237] | Decision | ☐ Approved  ☐ Approved with changes  ☐ Not approved |
+  [REL azure-r3.md:239] | Commit id that holds the release | _(blank until approved and committed)_ |
+  [REL azure-r3.md:240] | Git tag created on | _(blank, not created)_ |
+  [REL dotnet-r1.md:28] > This is a document. Nothing was built, deployed or published to a tracker to write it, and **no Git tag or commit exists for this release** (A-39, ES-27).
+  [REL dotnet-r1.md:37] | Planned Git tag | `product/dotnet-r1` — **to be created on approval; not created** |
+  [REL dotnet-r1.md:145] | EN-C1 | Approval and funding to build is given. | **OPEN:** O-21, owner Marc Dubois. The business case says "approved for discovery, not for build". | Not met; the window is a target (A-01). |
+  [REL dotnet-r1.md:161] | EX-5 | **Unchanged staff screens.** Each existing staff screen shows the same fields and behaves as before, shown by a regression checklist. A difference is a defect and the release is not approved until it is fixed or the produ
+  [REL dotnet-r1.md:205] Nothing below has happened. The Git tag does not exist, and no commit was made for this release (A-39).
+  [REL dotnet-r1.md:208] 2. **Approve.** Only a human approver may approve. The approver's name and the approval date are written in the block below. This file changes from `Proposed` to `Approved` only at that point.
+  [REL dotnet-r1.md:209] 3. **Commit.** After approval, and only then, a human-initiated, gated step commits the approved release files together with the items they list.
+  [REL dotnet-r1.md:210] 4. **Tag.** After the commit exists, a human-initiated, gated step creates the Git tag `product/dotnet-r1` on that commit (ES-31). Pushing the tag is a separate decision.
+  [REL dotnet-r1.md:211] 5. **Check.** `git tag -l 'product/dotnet-r1'` then lists the tag. Until step 4, the same command returns nothing.
+  [REL dotnet-r1.md:218] | Planned Git tag | `product/dotnet-r1` — **to be created after approval; not created** |
+  [REL dotnet-r1.md:219] | Commit holding the approved release | (blank; not committed) |
+  [REL dotnet-r1.md:223] When the backlog is published to a tool, the track and release tags travel with every item of this release so the release stays identifiable. Nothing is published, no tool was contacted, and **OPEN:** O-06 (owner Lena Varga) says 
+  [REL dotnet-r2.md:29] > This is a document. Nothing was built, deployed or published to a tracker to write it, and **no Git tag or commit exists for this release** (A-39, ES-27).
+  [REL dotnet-r2.md:38] | Planned Git tag | `product/dotnet-r2` — **to be created on approval; not created** |
+  [REL dotnet-r2.md:62] MVE-02 asks: *will customers reorder unaided and trust a night-old status?* It is a moderated test of a clickable prototype with 5 to 8 customers (source: experiments.md section 3.2). **It has not been run. The result is pending, 
+  [REL dotnet-r2.md:74] | **Go** (R1 and R2 pass) | Build the portal pilot as planned. The stories for `BR-04` and `BR-05` are committed as written, with the "as of" wording (A-03). The scope of `dotnet-r2` stays as in this file. |
+  [REL dotnet-r2.md:75] | **Adjust** (one of R1 and R2 fails, or the R3 median is far below 35 %) | Change the design or the promise, then retest if cheap. A failed R2: ask whether StockPilot's pick-up can run more than nightly without changing StockPilo
+  [REL dotnet-r2.md:189] | EN-C3 | A **recorded MVE-02 decision** (Go, Adjust or Stop) exists **before** the gated items are committed: `EN-11` (channel part), `STORY-233`, `STORY-234`, `STORY-236`, `STORY-238`. An Adjust or Stop changes the scope of this
+  [REL dotnet-r2.md:210] | EX-12 | **Performance (`NFR-02`).** Measured on the server, the 95th percentile is under 2 seconds for 95 % of requests on the order list and order detail pages, using about 60 concurrent staff users at peak (CS-03), the agreed 
+  [REL dotnet-r2.md:261] Nothing below has happened. The Git tag does not exist, and no commit was made for this release (A-39).
+  [REL dotnet-r2.md:264] 2. **Approve.** Only a human approver may approve. The approver's name and the approval date are written in the block below. This file changes from `Proposed` to `Approved` only at that point.
+  [REL dotnet-r2.md:265] 3. **Commit.** After approval, and only then, a human-initiated, gated step commits the approved release files together with the items they list.
+  [REL dotnet-r2.md:266] 4. **Tag.** After the commit exists, a human-initiated, gated step creates the Git tag `product/dotnet-r2` on that commit (ES-31). Pushing the tag is a separate decision.
+  [REL dotnet-r2.md:267] 5. **Check.** `git tag -l 'product/dotnet-r2'` then lists the tag. Until step 4, the same command returns nothing.
+  [REL dotnet-r2.md:274] | Planned Git tag | `product/dotnet-r2` — **to be created after approval; not created** |
+  [REL dotnet-r2.md:275] | Commit holding the approved release | (blank; not committed) |
+  [REL dotnet-r2.md:279] When the backlog is published to a tool, the track and release tags travel with every item of this release so the release stays identifiable. Nothing is published, no tool was contacted, and **OPEN:** O-06 (owner Lena Varga) says 
+  [REL dotnet-r3.md:29] > This is a document. Nothing was built, deployed or published to a tracker to write it, and **no Git tag or commit exists for this release** (A-39, ES-27).
+  [REL dotnet-r3.md:38] | Planned Git tag | `product/dotnet-r3` — **to be created on approval; not created** |
+  [REL dotnet-r3.md:64] | **Stop** (both R1 and R2 fail) | Item-level effect: `STORY-264` (instrumentation of `SM-01` to `SM-04`) is **not committed**, because the portal measures have nothing to measure until the reason for the failure is understood. Th
+  [REL dotnet-r3.md:109] | All BA-03 items: `EPIC-301` to `EPIC-304`, their features and stories, and enablers `EP-01` to `EP-06` (30 items) | Unplanned, `track-power-platform`; **no release exists** | No team, API, governed environments or licence decisi
+  [REL dotnet-r3.md:178] | A-D3-01 | **ASSUMPTION:** (release-local, to be registered by the coordinator) | Pilot feedback from `dotnet-r2` reaches the product owner before `dotnet-r3` items are committed. The backlog places the items after pilot feedback
+  [REL dotnet-r3.md:197] Nothing below has happened. The Git tag does not exist, and no commit was made for this release (A-39).
+  [REL dotnet-r3.md:200] 2. **Approve.** Only a human approver may approve. The approver's name and the approval date are written in the block below. This file changes from `Proposed` to `Approved` only at that point.
+  [REL dotnet-r3.md:201] 3. **Commit.** After approval, and only then, a human-initiated, gated step commits the approved release files together with the items they list.
+  [REL dotnet-r3.md:202] 4. **Tag.** After the commit exists, a human-initiated, gated step creates the Git tag `product/dotnet-r3` on that commit (ES-31). Pushing the tag is a separate decision.
+  [REL dotnet-r3.md:203] 5. **Check.** `git tag -l 'product/dotnet-r3'` then lists the tag. Until step 4, the same command returns nothing.
+  [REL dotnet-r3.md:210] | Planned Git tag | `product/dotnet-r3` — **to be created after approval; not created** |
+  [REL dotnet-r3.md:211] | Commit holding the approved release | (blank; not committed) |
+  [REL dotnet-r3.md:215] When the backlog is published to a tool, the track and release tags travel with every item of this release so the release stays identifiable. Nothing is published, no tool was contacted, and **OPEN:** O-06 (owner Lena Varga) says 
