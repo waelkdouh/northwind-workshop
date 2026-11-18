@@ -1,0 +1,11 @@
+{
+  "release": "dotnet-r3",
+  "organization": "waelconsulting",
+  "project": "northwind-workshop",
+  "EPIC-203": 99,
+  "FEAT-211": 103, "FEAT-212": 102, "FEAT-213": 100, "FEAT-214": 101,
+  "EN-07": 105, "STORY-260": 111,
+  "STORY-261": 106, "STORY-262": 104,
+  "STORY-263": 109, "STORY-264": 110,
+  "EN-14": 108, "STORY-265": 107
+}

@@ -365,3 +365,171 @@ Each entry records a request this agent handled, the findings or outcome it retu
   "basis": "tier-default"
 }
 ```
+
+### 2026-11-18T02:39:24Z Coordinator hand-off, turn 16
+
+* Turn: 16
+* Request: Coordinator hand-off recorded deterministically through scripts/Write-SquadHandoff.ps1.
+* Deliverable: `state.json`, `consumption.md`, `history/Functional Planner.md`
+* Outcome: Recorded 1 dispatch entry and advanced state.
+
+#### Consumption — Orchestration
+
+```json
+{
+  "model": "unknown",
+  "model_source": "unresolved",
+  "priced_as": "Claude Sonnet 4.6",
+  "model_tier": "default",
+  "internal_turns": 4,
+  "input_tokens": 15600,
+  "cached_tokens": 62400,
+  "cache_write_tokens": 24000,
+  "output_tokens": 3200,
+  "basis": "tier-default"
+}
+```
+
+### 2026-11-18T02:54:19Z Coordinator hand-off, turn 17
+
+* Turn: 17
+* Request: Coordinator hand-off recorded deterministically through scripts/Write-SquadHandoff.ps1.
+* Deliverable: `state.json`, `consumption.md`, `history/Squad Backlog Executor.md`
+* Outcome: Recorded 1 dispatch entry and advanced state.
+
+#### Consumption — Orchestration
+
+```json
+{
+  "model": "unknown",
+  "model_source": "unresolved",
+  "priced_as": "Claude Sonnet 4.6",
+  "model_tier": "default",
+  "internal_turns": 4,
+  "input_tokens": 15600,
+  "cached_tokens": 62400,
+  "cache_write_tokens": 24000,
+  "output_tokens": 3200,
+  "basis": "tier-default"
+}
+```
+
+### 2026-11-18T02:59:09Z Coordinator hand-off, turn 18
+
+* Turn: 18
+* Request: Coordinator hand-off recorded deterministically through scripts/Write-SquadHandoff.ps1.
+* Deliverable: `state.json`, `consumption.md`, `history/Squad Backlog Executor.md`
+* Outcome: Recorded 1 dispatch entry and advanced state.
+
+#### Consumption — Orchestration
+
+```json
+{
+  "model": "unknown",
+  "model_source": "unresolved",
+  "priced_as": "Claude Sonnet 4.6",
+  "model_tier": "default",
+  "internal_turns": 4,
+  "input_tokens": 15600,
+  "cached_tokens": 62400,
+  "cache_write_tokens": 24000,
+  "output_tokens": 3200,
+  "basis": "tier-default"
+}
+```
+
+### 2026-11-18T03:02:17Z Coordinator hand-off, turn 19
+
+* Turn: 19
+* Request: Coordinator hand-off recorded deterministically through scripts/Write-SquadHandoff.ps1.
+* Deliverable: `state.json`, `consumption.md`, `history/Squad Backlog Executor.md`
+* Outcome: Recorded 1 dispatch entry and advanced state.
+
+#### Consumption — Orchestration
+
+```json
+{
+  "model": "unknown",
+  "model_source": "unresolved",
+  "priced_as": "Claude Sonnet 4.6",
+  "model_tier": "default",
+  "internal_turns": 4,
+  "input_tokens": 15600,
+  "cached_tokens": 62400,
+  "cache_write_tokens": 24000,
+  "output_tokens": 3200,
+  "basis": "tier-default"
+}
+```
+
+### 2026-11-18T03:07:00Z Coordinator hand-off, turn 20
+
+* Turn: 20
+* Request: Coordinator hand-off recorded deterministically through scripts/Write-SquadHandoff.ps1.
+* Deliverable: `state.json`, `consumption.md`, `history/Squad Backlog Executor.md`
+* Outcome: Recorded 1 dispatch entry and advanced state.
+
+#### Consumption — Orchestration
+
+```json
+{
+  "model": "unknown",
+  "model_source": "unresolved",
+  "priced_as": "Claude Sonnet 4.6",
+  "model_tier": "default",
+  "internal_turns": 4,
+  "input_tokens": 15600,
+  "cached_tokens": 62400,
+  "cache_write_tokens": 24000,
+  "output_tokens": 3200,
+  "basis": "tier-default"
+}
+```
+
+### 2026-11-18T03:11:43Z Coordinator hand-off, turn 21
+
+* Turn: 21
+* Request: Coordinator hand-off recorded deterministically through scripts/Write-SquadHandoff.ps1.
+* Deliverable: `state.json`, `consumption.md`, `history/Squad Backlog Executor.md`
+* Outcome: Recorded 1 dispatch entry and advanced state.
+
+#### Consumption — Orchestration
+
+```json
+{
+  "model": "unknown",
+  "model_source": "unresolved",
+  "priced_as": "Claude Sonnet 4.6",
+  "model_tier": "default",
+  "internal_turns": 4,
+  "input_tokens": 15600,
+  "cached_tokens": 62400,
+  "cache_write_tokens": 24000,
+  "output_tokens": 3200,
+  "basis": "tier-default"
+}
+```
+
+### 2026-11-18T03:15:11Z Coordinator hand-off, turn 22
+
+* Turn: 22
+* Request: Coordinator hand-off recorded deterministically through scripts/Write-SquadHandoff.ps1.
+* Deliverable: `state.json`, `consumption.md`, `history/Squad Backlog Executor.md`
+* Outcome: Recorded 1 dispatch entry and advanced state.
+
+#### Consumption — Orchestration
+
+```json
+{
+  "model": "unknown",
+  "model_source": "unresolved",
+  "priced_as": "Claude Sonnet 4.6",
+  "model_tier": "default",
+  "internal_turns": 4,
+  "input_tokens": 15600,
+  "cached_tokens": 62400,
+  "cache_write_tokens": 24000,
+  "output_tokens": 3200,
+  "basis": "tier-default"
+}
+```

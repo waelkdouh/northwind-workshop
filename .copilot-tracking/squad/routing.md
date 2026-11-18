@@ -22,3 +22,4 @@ description: "Squad routing: request patterns mapped to roles, autonomy tiers, a
 | document, write up, summarize for stakeholders, readme | technical-writer           | confirm       | no                |
 | data profile, data dictionary, EDA, exploratory analysis, notebook, dashboard, dataset, Power BI, DAX, semantic model, star schema, report design, Fabric, Lakehouse, OneLake | data-scientist | confirm | no |
 | validate, cross-check, pre-implementation review, council, design review, go/no-go, implement-and-cost, implement-and-risk | architect, security, cost-manager, product-owner, rai (optional) | confirm | yes |
+| create work items in ADO, push backlog to Azure DevOps, create Jira issues, apply the handoff, execute handoff, sync work items to the tracker | backlog-executor | confirm | no |

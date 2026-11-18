@@ -2,7 +2,7 @@
 description: "Squad consumption ledger: members, models, estimated tokens, cost, and AI credits"
 ---
 
-# Squad Consumption Ledger (Run: run-01)
+# Squad Consumption Ledger (Run: run-ado-publish-01)
 
 ## Attribution
 
@@ -16,6 +16,7 @@ description: "Squad consumption ledger: members, models, estimated tokens, cost,
 | product-owner |  | Functional Planner | claude-sonnet-5.5 | host-reported | native credits | default |
 | experimenter |  | Experiment Designer | claude-sonnet-5.5 | host-reported | native credits | default |
 | intake-validator |  | BRD Quality Reviewer | claude-sonnet-5.5 | host-reported | native credits | default |
+| backlog-executor |  | Squad Backlog Executor | claude-sonnet-5.5 | host-reported | native credits | default |
 | orchestration |  | Coordinator+Scribe | claude-sonnet-5.5 | host-reported | native credits | mixed |
 
 ## Usage & Cost
@@ -27,11 +28,12 @@ description: "Squad consumption ledger: members, models, estimated tokens, cost,
 | tester | 96 | 198 | 17,852,814 | 670,414 | 273,498 | 1.8531 | 185.31 | exact-native |
 | analyst | 14 | 32 | 1,585,168 | 142,951 | 40,618 | 0.9221 | 92.21 | exact-native |
 | analyst | 102 | 212 | 22,134,773 | 889,807 | 193,887 | 6.3773 | 637.73 | exact-native |
-| product-owner | 191 | 400 | 39,508,410 | 1,455,670 | 409,146 | 11.6823 | 1168.23 | exact-native |
+| product-owner | 217 | 458 | 42,425,058 | 1,623,613 | 468,019 | 12.9826 | 1298.26 | exact-native |
 | experimenter | 21 | 46 | 2,708,702 | 166,596 | 56,197 | 1.2494 | 124.94 | exact-native |
 | intake-validator | 5 | 12 | 92,781 | 33,270 | 19,390 | 0.2864 | 28.64 | exact-native |
-| orchestration | 79 | 166 | 10,704,208 | 1,424,138 | 61,687 | 5.2480 | 524.80 | exact-native |
-| **Total** | **534** | **1,126** | **97,199,859** | **5,113,861** | **1,180,628** | **29.9696** | **2996.96** | **exact-native** |
+| backlog-executor | 107 | 226 | 14,572,200 | 1,675,754 | 270,521 | 8.3523 | 835.23 | exact-native |
+| orchestration | 144 | 310 | 19,827,853 | 2,041,046 | 102,520 | 8.1112 | 811.12 | exact-native |
+| **Total** | **732** | **1,554** | **123,812,352** | **7,574,466** | **1,550,855** | **42.4855** | **4248.55** | **exact-native** |
 
 ### Derivation
 
@@ -39,23 +41,25 @@ description: "Squad consumption ledger: members, models, estimated tokens, cost,
 BRD Builder.md — 1 block(s) — identities: 5ecac769
 BRD Quality Reviewer.md — 1 block(s) — identities: 9f4fbbb4
 Experiment Designer.md — 1 block(s) — identities: 632a1fc9
-Functional Planner.md — 5 block(s) — identities: 40f320b2,e71a6f24,fa5bd952,1a82c8fe,52ba32dd
+Functional Planner.md — 6 block(s) — identities: 40f320b2,e71a6f24,fa5bd952,1a82c8fe,52ba32dd,b39ba880
 PRD Builder.md — 2 block(s) — identities: 0c6a9778,96aeecf5
+Squad Backlog Executor.md — 6 block(s) — identities: 4838b26a,bfa55b05,07c52c7b,32216dfc,60727f0a,97728045
 Squad Lead.md — 1 block(s) — identities: a3fe076e
 Squad Researcher.md — 1 block(s) — identities: f0a8d5c3
 Squad Reviewer.md — 2 block(s) — identities: a5f100fc,2330e5e8
-Squad Scribe.md — 15 block(s) — identities: 5695bf00,9fe78ae7,cad0fee0,12dbd414,6ca2c06a,69f5d967,53612311,547e9950,7ba42eff,93002d50,eb329bc8,ff2c01c7,78dad352,a45f7fc2,26bfdafc
-Native usage snapshots — sessions: 2; records: 534; through: 2026-11-16T01:20:09.349Z; digest: 995190EB10F33AA3044FDCFE589267E846C114CBA47C75A0C8C0F784B347F087
+Squad Scribe.md — 22 block(s) — identities: 5695bf00,9fe78ae7,cad0fee0,12dbd414,6ca2c06a,69f5d967,53612311,547e9950,7ba42eff,93002d50,eb329bc8,ff2c01c7,78dad352,a45f7fc2,26bfdafc,65d08f2e,1ce46eaa,d6b23985,4e7c8217,9b75ebee,45abfcfe,33493e0e
+Native usage snapshots — sessions: 3; records: 732; through: 2026-11-18T03:15:10.708Z; digest: 827E852FA819FEC7181A274632A1D461853ECC51B3CFCE6B2221159110F4F1D8
 researcher         requests 14     input 32         cached 1440041    cache-write 182879     output 65769      nano-AIU 125895560000 = 125.90 credits / 1.2590 USD
 lead               requests 12     input 28         cached 1172962    cache-write 148136     output 60436      nano-AIU 109205220000 = 109.21 credits / 1.0921 USD
 tester             requests 96     input 198        cached 17852814   cache-write 670414     output 273498     nano-AIU 185309799000 = 185.31 credits / 1.8531 USD
 analyst            requests 14     input 32         cached 1585168    cache-write 142951     output 40618      nano-AIU 92213830000 = 92.21 credits / 0.9221 USD
 analyst            requests 102    input 212        cached 22134773   cache-write 889807     output 193887     nano-AIU 637728880000 = 637.73 credits / 6.3773 USD
-product-owner      requests 191    input 400        cached 39508410   cache-write 1455670    output 409146     nano-AIU 1168227600000 = 1168.23 credits / 11.6823 USD
+product-owner      requests 217    input 458        cached 42425058   cache-write 1623613    output 468019     nano-AIU 1298264430000 = 1298.26 credits / 12.9826 USD
 experimenter       requests 21     input 46         cached 2708702    cache-write 166596     output 56197      nano-AIU 124942220000 = 124.94 credits / 1.2494 USD
 intake-validator   requests 5      input 12         cached 92781      cache-write 33270      output 19390      nano-AIU 28637710000 = 28.64 credits / 0.2864 USD
-orchestration      requests 79     input 166        cached 10704208   cache-write 1424138    output 61687      nano-AIU 524796780000 = 524.80 credits / 5.2480 USD
-total nano-AIU 2996957599000 = 2996.96 credits / 29.9696 USD
+backlog-executor   requests 107    input 226        cached 14572200   cache-write 1675754    output 270521     nano-AIU 835226700000 = 835.23 credits / 8.3523 USD
+orchestration      requests 144    input 310        cached 19827853   cache-write 2041046    output 102520     nano-AIU 811122030000 = 811.12 credits / 8.1112 USD
+total nano-AIU 4248546379000 = 4248.55 credits / 42.4855 USD
 ```
 
 > This is the initialization and fallback shape. Exact mode replaces `Turns` with
@@ -72,16 +76,16 @@ total nano-AIU 2996957599000 = 2996.96 credits / 29.9696 USD
 
 | Measure | Value | Label |
 | ------- | ----- | ----- |
-| Deliverables produced | 9 | derived |
+| Deliverables produced | 16 | derived |
 | Accepted by an independent review | 0 | derived |
 | Rejected | 0 | derived |
-| Unreviewed | 9 | derived |
-| Dispatches (excluding Scribe) | 14 | derived |
+| Unreviewed | 16 | derived |
+| Dispatches (excluding Scribe) | 21 | derived |
 | Rework dispatches | 3 | derived |
 | First-pass yield | n/a | derived |
 | Exact credits per accepted deliverable | n/a | measured |
 | Rework share of exact credits | n/a | unavailable without per-history-run identity |
-| Orchestration share of exact credits | 17.5% | measured |
+| Orchestration share of exact credits | 19.1% | measured |
 
 Value is counted only for deliverables an independent review-class verdict accepted; a produced but unaccepted deliverable adds cost and no value. A review that names deliverables covers only those it names. Rework counts a repeat of the same agent and deliverable path only: a fix by a different agent, to a different file, or with no deliverable path is not counted, so the rework figures are a floor. Compare runs only for like work, using medians of several runs. Source: FinOps Foundation unit-economics KPIs (cost per unit of value, error and retry waste).
 
@@ -89,9 +93,9 @@ Value is counted only for deliverables an independent review-class verdict accep
 
 | Scenario | Basis | AI Credits | USD |
 | -------- | ----- | ----------: | --: |
-| With HVE Squad through 2026-11-16T01:20:09.349Z | complete deduplicated native records; coordinator and descendants included | 2996.96 | 29.9696 |
-| Without HVE Squad: same exact role-request token categories on `claude-sonnet-5.5`, no coordinator or Scribe | calculated counterfactual from exact request tokens | 2906.52 | 29.0652 |
+| With HVE Squad through 2026-11-18T03:15:10.708Z | complete deduplicated native records; coordinator and descendants included | 4248.55 | 42.4855 |
+| Without HVE Squad: same exact role-request token categories on `claude-sonnet-5.5`, no coordinator or Scribe | calculated counterfactual from exact request tokens | 3871.78 | 38.7178 |
 
-HVE Squad is **0.9044 USD (3.1%) higher** than the same exact role traffic on `claude-sonnet-5.5`.
+HVE Squad is **3.7676 USD (9.7%) higher** than the same exact role traffic on `claude-sonnet-5.5`.
 
-> The HVE Squad row is exact as of 2 accumulated native session snapshots: 534 complete accounting records, cumulative digest `995190EB10F33AA3044FDCFE589267E846C114CBA47C75A0C8C0F784B347F087`. The without-Squad row is not an observed alternate run; it holds every exact role request's uncached input, cache read, cache write, and output counts constant, reprices them on one model, and excludes coordinator/Scribe overhead. It therefore measures routing savings on identical traffic and does not invent context growth, rework, or behavioral differences for a hypothetical manual run.
+> The HVE Squad row is exact as of 3 accumulated native session snapshots: 732 complete accounting records, cumulative digest `827E852FA819FEC7181A274632A1D461853ECC51B3CFCE6B2221159110F4F1D8`. The without-Squad row is not an observed alternate run; it holds every exact role request's uncached input, cache read, cache write, and output counts constant, reprices them on one model, and excludes coordinator/Scribe overhead. It therefore measures routing savings on identical traffic and does not invent context growth, rework, or behavioral differences for a hypothetical manual run.

@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.4",
-  "updated": "2026-11-16T01:20:09Z",
-  "turn": 15,
+  "updated": "2026-11-18T03:15:11Z",
+  "turn": 22,
   "mode": "autopilot",
   "activeRoles": [
-    "PRD Builder"
+    "Squad Backlog Executor"
   ],
   "openEscalations": [],
   "currentRun": {
     "sessionModel": "auto",
     "modelOverrides": {},
-    "estCostUsd": 29.9696,
-    "estCreditsTotal": 2996.96,
+    "estCostUsd": 42.4855,
+    "estCreditsTotal": 4248.55,
     "costPreflight": {
       "runId": "",
       "roundId": "",

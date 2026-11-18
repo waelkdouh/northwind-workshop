@@ -53,3 +53,16 @@ Entries are appended below in chronological order. Each entry records the decisi
 
 * Permits Downstream Dispatch: yes (Ready-With-Gaps)
 * Blocking Gaps Outstanding: 0
+
+## Roster Expansion 2026-11-18T02:49:03.6891060+00:00
+
+* Run: run-ado-publish-01
+* Turn retained: 16
+* Added packs: (none)
+* Added roles: backlog-executor
+* Already present: (none)
+* Previous provenance: product
+* Provenance: product
+* Pack resources: (none)
+* Rationale: User approved the Azure DevOps publication (waelconsulting/northwind-workshop); the tracker write needs the opt-in backlog-executor role.
+* Accounting: no model or Scribe dispatch; consumption.md, consumption-sessions.json when present, state.json, rates, notifications, and history are preserved byte-for-byte.

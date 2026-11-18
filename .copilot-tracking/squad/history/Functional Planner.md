@@ -127,3 +127,27 @@ Each entry records a request this agent handled, the findings or outcome it retu
   "basis": "tier-default"
 }
 ```
+
+### 2026-11-18T02:39:24Z Preview Azure DevOps publication of approved releases (111 items) for waelconsul
+
+* Turn: 16
+* Request: Preview Azure DevOps publication of approved releases (111 items) for waelconsulting/northwind-workshop, prefix wael-01; read-only, nothing created
+* Deliverable: `.copilot-tracking/plans/2026-11-17/ado-publish-preview.md`
+* Outcome: Preview and payload written for 111 items (7 epics, 28 features, 76 stories); target project uses Basic process (Epic/Issue/Task only), mapping needs user decision; nothing created in Azure DevOps
+
+#### Consumption
+
+```json
+{
+  "model": "unknown",
+  "model_source": "unresolved",
+  "priced_as": "Claude Sonnet 4.6",
+  "model_tier": "default",
+  "internal_turns": 35,
+  "input_tokens": 1134000,
+  "cached_tokens": 4536000,
+  "cache_write_tokens": 264000,
+  "output_tokens": 70000,
+  "basis": "tier-default"
+}
+```

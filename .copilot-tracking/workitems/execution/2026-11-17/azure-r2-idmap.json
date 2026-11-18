@@ -1,0 +1,11 @@
+{
+  "release": "azure-r2",
+  "organization": "waelconsulting",
+  "project": "northwind-workshop",
+  "EPIC-103": 22,
+  "FEAT-106": 23, "FEAT-109": 24, "FEAT-113": 25, "FEAT-107": 26, "FEAT-108": 27,
+  "EA-07": 28, "EA-06": 29, "EA-15": 30,
+  "STORY-140": 31, "STORY-141": 32, "EA-12": 33, "STORY-144": 34,
+  "EA-10": 35, "EA-04": 36, "STORY-142": 37,
+  "STORY-143": 38, "STORY-145": 39, "STORY-146": 40, "EA-08": 41
+}
